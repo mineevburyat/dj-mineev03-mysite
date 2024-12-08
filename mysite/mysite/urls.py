@@ -16,8 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from filebrowser.sites import site
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
+    path('admin/filebrowser/', site.urls),
+    path('grappelli/', include('grappelli.urls')),
     path('admin/', admin.site.urls),
-    path('spending/', include('spending.urls', namespace='spanding')),
-]
+    path('', include('main.urls', namespace='main')),
+    path('blog/', include('blog.urls', namespace='blog')),
+    path('tinymce/', include('tinymce.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

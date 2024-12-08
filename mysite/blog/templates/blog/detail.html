@@ -1,0 +1,13 @@
+{% extends "blog/base.html" %}
+
+{% block detail %}
+<small>
+    {{ post.created_on.date }} | Categories:
+    {% for category in post.categories.all %}
+    <a href="#">
+        {{ category.name }}
+    </a>
+    {% endfor %}
+</small>
+<p>{{ post.body | safe }}</p>
+{% endblock %}
