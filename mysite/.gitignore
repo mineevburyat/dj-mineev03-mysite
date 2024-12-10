@@ -17,3 +17,4 @@ db.sqlite3
 .isort.cfg
 .mypy.ini
 .notpublic/
+media/

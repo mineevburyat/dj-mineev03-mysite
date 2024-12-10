@@ -1,0 +1,16 @@
+{% extends "library/base.html" %}
+
+{% block list %}
+{% for ebook in ebooks %}
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="{{ebook.url}}" target="_blank">{{ ebook.book.title }}</a>
+            <small class="text-muted">{{ ebook.book.author.name }}</small>
+        </div>
+        <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+        <p class="article-content">{{ post.get_tags }}</p>
+    </div>
+</article>
+{% endfor %}
+{% endblock %}
