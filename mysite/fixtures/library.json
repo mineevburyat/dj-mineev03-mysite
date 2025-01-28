@@ -1,0 +1,306 @@
+[
+{
+    "model": "library.genre",
+    "pk": 1,
+    "fields": {
+        "name": "Специальная литература"
+    }
+},
+{
+    "model": "library.genre",
+    "pk": 2,
+    "fields": {
+        "name": "Математика"
+    }
+},
+{
+    "model": "library.genre",
+    "pk": 3,
+    "fields": {
+        "name": "Информатика"
+    }
+},
+{
+    "model": "library.genre",
+    "pk": 4,
+    "fields": {
+        "name": "Аппаратное обеспечение"
+    }
+},
+{
+    "model": "library.genre",
+    "pk": 5,
+    "fields": {
+        "name": "Радиоэлектроника"
+    }
+},
+{
+    "model": "library.genre",
+    "pk": 6,
+    "fields": {
+        "name": "Радиофизика"
+    }
+},
+{
+    "model": "library.book",
+    "pk": 1,
+    "fields": {
+        "title": "основы радиотехники",
+        "author": 1,
+        "summary": "<p>Излагаются базовые сведения по методам расчета электронных схем, принципам работы, построения и применения основных электронных приборов, радиотехнических устройств, систем связи и телевидения, позволяющие понять, грамотно применить и объяснить работу современной радиоэлектронной аппаратуры.&nbsp;</p>\r\n<p>Для студентов нерадиотехнических специальностей.</p>",
+        "isbn": "9785811407613",
+        "genre": [
+            1
+        ]
+    }
+},
+{
+    "model": "library.book",
+    "pk": 2,
+    "fields": {
+        "title": "Любовь и математика. Сердце скрытой реальности.",
+        "author": 2,
+        "summary": "<p>В этой книге известный математик открывает доселе скрытые стороны математики, позволяя нам увидеть в ней красоту и элегантность, свойственные только величайшим шедеврам. \"Математика это портал в неизведанный мир, ключ к пониманию глубинных тайн Вселенной и нас самих. Величайший математик приглашает всех нас в этот таинственный мир</p>",
+        "isbn": "9785496011211",
+        "genre": [
+            1
+        ]
+    }
+},
+{
+    "model": "library.book",
+    "pk": 3,
+    "fields": {
+        "title": "Машины Тьюринга и рекурсивные функции",
+        "author": 3,
+        "summary": "<p>Этот коллективный труд немецких математиков содержит элементарное изложение теории Машин Тьюринга и рекурсивных функций - важного раздела современной математической логики, нашедшего широкое применение в кибернетике. Изложение ведется строго, но доступно, содержит много пояснений и примеров.</p>\r\n<p>Книгу прочтут с интересом читатели разных категорий, начиная от учащихся старших классов и кончая научными работниками.</p>",
+        "isbn": "980223",
+        "genre": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "library.book",
+    "pk": 4,
+    "fields": {
+        "title": "Python Graphics. A reference for creating 2D and 3D images",
+        "author": 4,
+        "summary": "<p>Раскрываются основные принципы компьютерной графики на примере Python и библиотеки numpy и matplotlib. Преобразования двумерных изображений. Трехмерные изображения, изометрия и перспектива. Трасировка лучей. Анимация.</p>",
+        "isbn": "9781484233771",
+        "genre": [
+            1,
+            3
+        ]
+    }
+},
+{
+    "model": "library.book",
+    "pk": 5,
+    "fields": {
+        "title": "Основы искусственного интеллекта в примерах на Python",
+        "author": 5,
+        "summary": "<p>Описаны инструментальные средства для разработки приложений искусственного интеллекта. Расмотрены вопросы программной реализации элементов нейронной сети и построения многослойных нейронных сетей. Электронное приложение архив.&nbsp;&nbsp;</p>",
+        "isbn": "9785977567657",
+        "genre": [
+            1,
+            3
+        ]
+    }
+},
+{
+    "model": "library.book",
+    "pk": 6,
+    "fields": {
+        "title": "USB Complete (2nd Edition)",
+        "author": 6,
+        "summary": "<div>The Universal Serial Bus (USB) is a fast and flexible interface for connecting</div>\r\n<div>devices to computers. Every new PC has at least a couple of USB ports. The</div>\r\n<div>interface is versatile enough to use with standard peripherals like keyboards</div>\r\n<div>and disk drives as well as more specialized devices, including one-of-a-kind</div>\r\n<div>designs. USB is designed from the ground up to be easy for end users, with</div>\r\n<div>no user configuring required in hardware or software.</div>",
+        "isbn": "notISBN",
+        "genre": [
+            3,
+            4
+        ]
+    }
+},
+{
+    "model": "library.book",
+    "pk": 7,
+    "fields": {
+        "title": "Хрестоматия радиолюбителя",
+        "author": 7,
+        "summary": "<p>Книга представляет собой учебное пособие для радиокружков</p>",
+        "isbn": "434-70notISBN",
+        "genre": [
+            5
+        ]
+    }
+},
+{
+    "model": "library.book",
+    "pk": 8,
+    "fields": {
+        "title": "СПЕКТР СИГНАЛА",
+        "author": 8,
+        "summary": "<p>Учебно-методическое пособие &laquo;Спектр сигнала&raquo; предназначено<br>для самостоятельной подготовки студентов отделения &laquo;Радиофизика и<br>информационные системы&raquo; Института физики по соответствующим<br>разделам теоретического курса &laquo;Радиоэлектроника&raquo;. Пособие будет<br>полезно при работе в лабораториях кафедры радиофизики &laquo;Практикум по радиофизике и электронике&raquo; при выполнении лабораторной<br>работы &laquo;Амплитудные спектры сигналов&raquo;. А также в лаборатории<br>&laquo;Статистической радиофизики и цифровой обработки сигналов&raquo; при<br>выполнении лабораторной работы &laquo;Теорема Котельникова&raquo;. В пособии приводятся базовые положения спектрального анализа как аналоговых, так и дискретных сигналов. Обсуждается взаимосвязь<br>спектров различных классов сигналов. Отмечается преимущество<br>спектрального анализа перед временным анализом при синтезе линейных цепей с заданными частотными свойствами.</p>",
+        "isbn": "УДК 621.391",
+        "genre": [
+            2,
+            3,
+            6
+        ]
+    }
+},
+{
+    "model": "library.ebookinstance",
+    "pk": "038702fd-9553-4001-83f1-a31753b80580",
+    "fields": {
+        "book": 5,
+        "imprint": "БХВ-Питербург, 2021, УДК 004.8 ББК 32.813",
+        "url": "https://disk.yandex.ru/i/vqv3Ubg9MdyzyQ",
+        "count_load": 0
+    }
+},
+{
+    "model": "library.ebookinstance",
+    "pk": "33affcc7-90bb-4e8f-8c40-fec9faa57506",
+    "fields": {
+        "book": 6,
+        "imprint": "June 2001",
+        "url": "https://disk.yandex.ru/i/0z55-MnNGwxGZg",
+        "count_load": 0
+    }
+},
+{
+    "model": "library.ebookinstance",
+    "pk": "540d3f09-7368-4bde-9b85-6e246bb40fda",
+    "fields": {
+        "book": 3,
+        "imprint": "Издательство МИР, 1972 г., УДК 517.11",
+        "url": "https://disk.yandex.ru/i/umPT1I86h5VB2Q",
+        "count_load": 0
+    }
+},
+{
+    "model": "library.ebookinstance",
+    "pk": "6dd51d8b-a924-429a-989a-dae4f12f8999",
+    "fields": {
+        "book": 2,
+        "imprint": "ООО ПитерПресс, перевод Шикарева Е.",
+        "url": "https://disk.yandex.ru/i/Oz63sHiFqg0RMQ",
+        "count_load": 0
+    }
+},
+{
+    "model": "library.ebookinstance",
+    "pk": "7fed383f-2235-4999-8c66-2c52daf9bac6",
+    "fields": {
+        "book": 1,
+        "imprint": "Изд. Лань 2007 г. защищен авторским правом ББК 32.84",
+        "url": "https://disk.yandex.ru/i/yYPobeMkS0QwRA",
+        "count_load": 0
+    }
+},
+{
+    "model": "library.ebookinstance",
+    "pk": "8ab3b7fb-7b31-4073-8d60-86c23592ffcf",
+    "fields": {
+        "book": 8,
+        "imprint": "ФГАОУВПО Казанский (Приволжский) Федеральный университет 2014",
+        "url": "https://disk.yandex.ru/i/yhBZuYvnD5v8tQ",
+        "count_load": 0
+    }
+},
+{
+    "model": "library.ebookinstance",
+    "pk": "d184b1d9-41e5-4387-bd72-0d2fa70c5a17",
+    "fields": {
+        "book": 7,
+        "imprint": "Энергия 1971",
+        "url": "https://disk.yandex.ru/i/8n_XPHYWnnIkMg",
+        "count_load": 0
+    }
+},
+{
+    "model": "library.ebookinstance",
+    "pk": "f12b9a3a-3f5f-46b4-8d69-67617caf1308",
+    "fields": {
+        "book": 4,
+        "imprint": "appress, 2018, Massachusetts",
+        "url": "https://disk.yandex.ru/i/28PxoesNC5NEIQ",
+        "count_load": 0
+    }
+},
+{
+    "model": "library.author",
+    "pk": 1,
+    "fields": {
+        "name": "Догадин Н.Б.",
+        "date_of_birth": null,
+        "date_of_death": null
+    }
+},
+{
+    "model": "library.author",
+    "pk": 2,
+    "fields": {
+        "name": "Френкель Эдуард",
+        "date_of_birth": null,
+        "date_of_death": null
+    }
+},
+{
+    "model": "library.author",
+    "pk": 3,
+    "fields": {
+        "name": "Эббинхауз Г.-Д., Якобс К., Ман Ф.-К. Хермес Г.",
+        "date_of_birth": null,
+        "date_of_death": null
+    }
+},
+{
+    "model": "library.author",
+    "pk": 4,
+    "fields": {
+        "name": "Korites B.J.",
+        "date_of_birth": null,
+        "date_of_death": null
+    }
+},
+{
+    "model": "library.author",
+    "pk": 5,
+    "fields": {
+        "name": "Анатолий Постолит",
+        "date_of_birth": null,
+        "date_of_death": null
+    }
+},
+{
+    "model": "library.author",
+    "pk": 6,
+    "fields": {
+        "name": "Jan Axelson",
+        "date_of_birth": null,
+        "date_of_death": null
+    }
+},
+{
+    "model": "library.author",
+    "pk": 7,
+    "fields": {
+        "name": "Бурлянд В.А.",
+        "date_of_birth": null,
+        "date_of_death": null
+    }
+},
+{
+    "model": "library.author",
+    "pk": 8,
+    "fields": {
+        "name": "Бойко Б.П.",
+        "date_of_birth": null,
+        "date_of_death": null
+    }
+}
+]

@@ -1,0 +1,606 @@
+[
+{
+    "model": "main.menu",
+    "pk": 1,
+    "fields": {
+        "name": "Главная",
+        "url": "/",
+        "position": 1
+    }
+},
+{
+    "model": "main.menu",
+    "pk": 2,
+    "fields": {
+        "name": "Блог",
+        "url": "/blog",
+        "position": 2
+    }
+},
+{
+    "model": "main.menu",
+    "pk": 3,
+    "fields": {
+        "name": "Читаю",
+        "url": "/library",
+        "position": 3
+    }
+},
+{
+    "model": "main.menu",
+    "pk": 4,
+    "fields": {
+        "name": "Проекты",
+        "url": "/projects",
+        "position": 4
+    }
+},
+{
+    "model": "main.menu",
+    "pk": 5,
+    "fields": {
+        "name": "Обо мне",
+        "url": "/about",
+        "position": 5
+    }
+},
+{
+    "model": "main.menu",
+    "pk": 6,
+    "fields": {
+        "name": "Услуги",
+        "url": "/services",
+        "position": 3
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 1,
+    "fields": {
+        "name": "Сотворим вместе задания по электронике",
+        "url": "https://sotvorimvmeste.ru/viewforum.php?f=9",
+        "description": "Первые шаги с микросхемами серии 155. Полезно для ознакомлением с работой логических винтелей и различных генераторов",
+        "added": "2024-12-13T09:35:28.515Z",
+        "usefulness": 1
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 2,
+    "fields": {
+        "name": "Электронный конструктор, не бьющий током",
+        "url": "https://habr.com/ru/companies/ruvds/articles/709384/",
+        "description": "статья о простом электронном симуляторе на js в браузере. Как пример симуляции электрических процессов.",
+        "added": "2024-12-13T09:48:07.154Z",
+        "usefulness": 1
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 3,
+    "fields": {
+        "name": "Полезные проекты от Алекса Гувера",
+        "url": "https://kit.alexgyver.ru/tutorials/",
+        "description": "Arduino проекты",
+        "added": "2024-12-13T09:49:55.836Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 4,
+    "fields": {
+        "name": "Логические операции с битами от Алекса Гувера",
+        "url": "https://alexgyver.ru/lessons/bitmath/",
+        "description": "Лучшие практики по битовым операциям на микроконтроллере.",
+        "added": "2024-12-13T09:51:09.070Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 5,
+    "fields": {
+        "name": "USB in a NutShell - путеводитель по стандарту USB",
+        "url": "https://microsin.net/programming/arm-working-with-usb/usb-in-a-nutshell-part1.html",
+        "description": "отличный обзор стандарта USB",
+        "added": "2024-12-13T10:04:40.770Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 6,
+    "fields": {
+        "name": "libusb library",
+        "url": "https://libusb.info/",
+        "description": "Документ на библиотеку libusb 1.0",
+        "added": "2024-12-13T10:09:37.459Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 7,
+    "fields": {
+        "name": "Программирование с PyUSB 1.0",
+        "url": "https://habr.com/ru/articles/430528/",
+        "description": "работа с usb устройствами через python",
+        "added": "2024-12-13T10:12:42.957Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 8,
+    "fields": {
+        "name": "pyusb manual github",
+        "url": "https://github.com/pyusb/pyusb/blob/master/docs/tutorial.rst",
+        "description": "",
+        "added": "2024-12-13T10:16:05.344Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 9,
+    "fields": {
+        "name": "Отличный портал для изучения языков от Сергея Балакирева",
+        "url": "https://proproprogs.ru/index.php",
+        "description": "Не только языки, но и фреймворки. Отличная подача материала",
+        "added": "2024-12-13T10:20:18.099Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 10,
+    "fields": {
+        "name": "Resources for Developers, by Developers",
+        "url": "https://developer.mozilla.org/ru/",
+        "description": "Отличные самоучители и лучшие практики создания приложений (например местная библиотека)",
+        "added": "2024-12-13T10:22:35.822Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 11,
+    "fields": {
+        "name": "Декодируем JPEG-изображение с помощью Python",
+        "url": "https://habr.com/ru/companies/vk/articles/512004/",
+        "description": "Подробно описывается процесс распаковки структуры jpg файла yf Python",
+        "added": "2024-12-13T10:24:36.551Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 12,
+    "fields": {
+        "name": "Изобретаем JPEG",
+        "url": "https://habr.com/ru/articles/206264/",
+        "description": "Описывается принцип упаковки изображения, затрагивается принцип архивации и предлагается свой алгоритм упаковки",
+        "added": "2024-12-13T10:26:05.007Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 13,
+    "fields": {
+        "name": "rtsp to mjpeg",
+        "url": "https://github.com/eroji/rtsp2mjpg",
+        "description": "",
+        "added": "2024-12-13T13:35:40.464Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 14,
+    "fields": {
+        "name": "захват видео с сетевых камер",
+        "url": "https://habr.com/ru/articles/115808/",
+        "description": "описан клиент на python способный получать поток  mjpeg от камеры",
+        "added": "2024-12-13T13:37:10.074Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 15,
+    "fields": {
+        "name": "Работа с видеофайлами с помощью Python",
+        "url": "https://codeby.net/threads/rabota-s-videofajlami-s-pomoschju-python.80169/",
+        "description": "",
+        "added": "2024-12-13T13:37:46.287Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 16,
+    "fields": {
+        "name": "Проигрыватель для очень медленного воспроизведения видеофайл",
+        "url": "https://habr.com/ru/companies/ruvds/articles/546044/",
+        "description": "покадровое Отображение видеофайла на электронной бумаге",
+        "added": "2024-12-13T13:43:35.239Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 17,
+    "fields": {
+        "name": "Извлекаем метаданные из фото, аудио и видео файлов с помощью",
+        "url": "https://codeby.net/threads/izvlekaem-metadannye-iz-foto-audio-i-video-fajlov-s-pomoschju-python.80200/",
+        "description": "работа с форматами файлов с помощью библиотек",
+        "added": "2024-12-13T13:45:45.517Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 18,
+    "fields": {
+        "name": "Блог программиста",
+        "url": "https://jenyay.net/blog/",
+        "description": "много интересных статей и справочной информации",
+        "added": "2024-12-13T14:03:21.333Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 19,
+    "fields": {
+        "name": "Формат файла BMP",
+        "url": "https://jenyay.net/Programming/Bmp",
+        "description": "",
+        "added": "2024-12-13T14:03:53.011Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 20,
+    "fields": {
+        "name": "Формат звуковых файлов WAV",
+        "url": "https://radioprog.ru/post/1025#p1025_img01",
+        "description": "",
+        "added": "2024-12-13T14:04:48.151Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 21,
+    "fields": {
+        "name": "Полезный сайт",
+        "url": "http://RadioProg.RU",
+        "description": "",
+        "added": "2024-12-13T14:06:37.262Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 22,
+    "fields": {
+        "name": "Создание видео из изображений OpenCV в Python Источник: http",
+        "url": "https://tonais.ru/library/sozdanie-video-iz-izobrazheniy-opencv-v-python",
+        "description": "",
+        "added": "2024-12-13T14:07:41.440Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 23,
+    "fields": {
+        "name": "Работа с изображениями на Python",
+        "url": "https://habr.com/ru/companies/oleg-bunin/articles/425471/",
+        "description": "Обзор библиотек и бенчмаркинг",
+        "added": "2024-12-13T14:08:33.542Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 24,
+    "fields": {
+        "name": "Структура WAV файла",
+        "url": "https://audiocoding.cc/articles/2008-05-22-wav-file-structure/",
+        "description": "",
+        "added": "2024-12-13T14:10:35.440Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 25,
+    "fields": {
+        "name": "audiocoding",
+        "url": "https://audiocoding.cc/",
+        "description": "",
+        "added": "2024-12-13T14:11:57.775Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 26,
+    "fields": {
+        "name": "Ранние подходы к организации БД.",
+        "url": "https://citforum.ru/database/osbd/glava_9.shtml",
+        "description": "Системы, основанные на инвертированных списках, иерархические и сетевые СУБД. Примеры. Сильные места и недостатки ранних систем",
+        "added": "2024-12-14T10:29:53.448Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 27,
+    "fields": {
+        "name": "База данных Access Авиалинии",
+        "url": "https://accesshelp.ru/baza-dannyh-access-avialinii/",
+        "description": "для примера баз данных в учебных целях",
+        "added": "2024-12-14T10:41:08.577Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 28,
+    "fields": {
+        "name": "Введение в реляционные базы данных",
+        "url": "https://intuit.ru/studies/courses/74/74/lecture/27901",
+        "description": "",
+        "added": "2024-12-14T10:47:29.999Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 29,
+    "fields": {
+        "name": "SQL запросы быстро. Часть 1",
+        "url": "https://habr.com/ru/articles/480838/",
+        "description": "",
+        "added": "2024-12-14T10:48:39.460Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 30,
+    "fields": {
+        "name": "Введение в БПЛА",
+        "url": "https://lectoriy.2035.university/collection/Pogrujenie-v-BPL",
+        "description": "",
+        "added": "2024-12-14T10:50:32.498Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 31,
+    "fields": {
+        "name": "15 баз данных, где можно найти практически все",
+        "url": "https://changellenge.com/article/15-baz-dannykh-gde-mozhno-nayti-prakticheski-vse/",
+        "description": "",
+        "added": "2024-12-14T10:52:08.380Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 32,
+    "fields": {
+        "name": "fpv drone sites",
+        "url": "https://www.getfpv.com/learn/new-to-fpv/all-about-multirotor-drone-fpv-video-transmitter/",
+        "description": "заблокирован доступ через впн или веб архив",
+        "added": "2024-12-14T16:13:24.443Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 33,
+    "fields": {
+        "name": "sdr rtl",
+        "url": "https://www.rtl-sdr.com/scanning-spectrum-8ghz-per-second-new-hackrf-update/",
+        "description": "",
+        "added": "2024-12-14T16:23:57.951Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 34,
+    "fields": {
+        "name": "Аналого-цифровое преобразование для начинающих",
+        "url": "https://habr.com/ru/articles/125029/",
+        "description": "Способы АЦП и ссылка на симулятор который запрещен в Россию как содержащий важную информацию",
+        "added": "2024-12-15T00:43:48.882Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 35,
+    "fields": {
+        "name": "Обработка больших файлов с использованием Python",
+        "url": "https://dev-gang.ru/article/obrabotka-bolshih-failov-s-ispolzovaniem-python-8btakx0nzr/",
+        "description": "Способы перебора чанков в большом файле",
+        "added": "2024-12-15T00:54:23.704Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 36,
+    "fields": {
+        "name": "Потоко-безопасные очереди FIFO, LIFO и очереди с приотитетом",
+        "url": "https://docs-python.ru/standart-library/modul-queue-python/",
+        "description": "стандартные библиотеки",
+        "added": "2024-12-15T01:00:45.224Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 37,
+    "fields": {
+        "name": "Стандартные библиотеки Python3.",
+        "url": "https://docs-python.ru/standart-library/",
+        "description": "Полезные библиотеки позволяющие не изобретать велосипед",
+        "added": "2024-12-15T01:01:47.618Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 38,
+    "fields": {
+        "name": "Структуры данных и алгоритмы в Python",
+        "url": "https://teletype.in/@pythontalk/data_structures_algorithms",
+        "description": "",
+        "added": "2024-12-15T01:07:28.073Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 39,
+    "fields": {
+        "name": "Практикум по компьютерным технологиям на Python",
+        "url": "https://fadeevlecturer.github.io/python_lectures/notebooks/homework/1.html",
+        "description": "Этот ресурс представляет из себя набор сопроводительных материалов для курса лекций физического факультета по дисциплине “Практикум по компьютерным технологиям”.",
+        "added": "2024-12-15T07:06:28.219Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 40,
+    "fields": {
+        "name": "Виртуальная файловая система— Python: Деревья",
+        "url": "https://ru.hexlet.io/courses/python-trees/lessons/filetree/theory_unit",
+        "description": "Интересная статья про построение файловой системы в виде дерева (лучше смотреть через веб архив)",
+        "added": "2024-12-15T07:23:25.846Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 41,
+    "fields": {
+        "name": "What Is A Hierarchical Data Model? | Definition And Examples",
+        "url": "https://www.datamation.com/big-data/what-is-a-hierarchical-data-model-definition-and-examples/",
+        "description": "Примеры иерархических данных",
+        "added": "2024-12-15T07:30:17.315Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 42,
+    "fields": {
+        "name": "дамп базы данных для примеров нормализации",
+        "url": "https://github.com/hexlet-components/pg-dump-example",
+        "description": "",
+        "added": "2024-12-15T07:34:18.805Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 43,
+    "fields": {
+        "name": "скрипты учебных БД, к которым адресуются запросы в упражнени",
+        "url": "https://sql-ex.ru/db_script_download.php?Lang=0",
+        "description": "",
+        "added": "2024-12-15T07:36:17.694Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 44,
+    "fields": {
+        "name": "Демонстрационная база данных",
+        "url": "https://postgrespro.ru/education/demodb",
+        "description": "",
+        "added": "2024-12-15T07:37:06.550Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 45,
+    "fields": {
+        "name": "Курс лекций «Основы цифровой обработки сигналов»",
+        "url": "https://habr.com/ru/articles/460445/",
+        "description": "",
+        "added": "2024-12-15T07:39:25.890Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 46,
+    "fields": {
+        "name": "This HTML version of Think DSP is provided for convenience",
+        "url": "https://greenteapress.com/thinkdsp/html/thinkdsp002.html#sec6",
+        "description": "",
+        "added": "2024-12-15T07:52:59.149Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 47,
+    "fields": {
+        "name": "Открытый курс машинного обучения. Тема 1. Первичный анализ д",
+        "url": "https://habr.com/ru/companies/ods/articles/322626/",
+        "description": "",
+        "added": "2024-12-15T07:54:05.551Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 48,
+    "fields": {
+        "name": "Перевод книги Linux From Scratch",
+        "url": "https://book.linuxfromscratch.ru/",
+        "description": "",
+        "added": "2024-12-15T07:55:11.566Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 49,
+    "fields": {
+        "name": "debian",
+        "url": "https://www.debian.org/doc/manuals/debmake-doc/debmake-doc.ru.pdf",
+        "description": "",
+        "added": "2024-12-15T07:56:11.048Z",
+        "usefulness": 0
+    }
+},
+{
+    "model": "main.usefullink",
+    "pk": 50,
+    "fields": {
+        "name": "Linux для себя",
+        "url": "https://lx4u.ru/rel/stable/",
+        "description": "",
+        "added": "2024-12-15T07:57:45.878Z",
+        "usefulness": 0
+    }
+}
+]
