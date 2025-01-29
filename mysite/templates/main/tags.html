@@ -7,7 +7,7 @@
     <div class="single_catagory_item category">
         <ul class="list-unstyled">
             {% for tag in tags %}
-            <li><a href="tags?q={{tag.slug}}">{{tag}}</a> <span></span> </li>
+            <li><a href="{% url 'blog:listpost_by_tags'%}?q={{tag.slug}}">{{tag}}</a> <span></span> </li>
             {% endfor %}
 
         </ul>

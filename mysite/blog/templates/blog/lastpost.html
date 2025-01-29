@@ -7,7 +7,7 @@
         <img src="img/sidebar/sidebar_1.png" alt="">
     </div>
     <div class="post_text_1 pr_30">
-        <a href="#">
+        <a href="{% url 'blog:post' post.slug %}">
             {{post.title}}
         </a>
         <p>{{post.publish|date:"d.m.Y"}}</p>
