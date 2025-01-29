@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth.models import User
 from tinymce.models import HTMLField
-
+from mptt.models import MPTTModel, TreeForeignKey
 
 class Post(models.Model):
     STATUS_CHOICES = (
@@ -24,7 +24,10 @@ class Post(models.Model):
     body = HTMLField(verbose_name='основной текст', 
                             null=True, 
                             blank=True)
-    categories = models.ManyToManyField("Category", related_name="posts")
+    category = TreeForeignKey('CategoryTree', 
+                                on_delete=models.PROTECT, 
+                                related_name='posts', 
+                                verbose_name='Категория') 
     publish = models.DateTimeField(default=timezone.now,
                                    verbose_name="Публикация")
     created = models.DateTimeField(auto_now_add=True,
@@ -33,8 +36,6 @@ class Post(models.Model):
                                    verbose_name="Изменено")
     status = models.CharField(
         max_length=10, choices=STATUS_CHOICES, default='draft')
-
-
     class Meta:
         ordering = ('-publish',)
         verbose_name = 'статья'
@@ -48,15 +49,33 @@ class Post(models.Model):
         return reverse('blog:detail', kwargs={'slug': self.slug})
     
     def get_tags(self):
-        return ', '.join([tag.name for tag in self.categories.all()])
+        return ''
+        # return ', '.join([tag.title for tag in self.category.all()])
         
 
+   
+class CategoryTree(MPTTModel):
+    title = models.CharField(max_length=30,
+                            unique=True,
+                            verbose_name='название категории')
+    parent = TreeForeignKey('self', 
+                            on_delete=models.PROTECT, 
+                            null=True, 
+                            blank=True, 
+                            related_name='children',
+                            verbose_name='Родительская категория')
+    slug = models.SlugField()
 
-class Category(models.Model):
-    name = models.CharField(max_length=30)
+    class MPTTMeta:
+        order_insertion_by = ['title']
     class Meta:
-        ordering = ('id',)
+        unique_together = [['parent', 'slug']]
+        # ordering = ('id',)
         verbose_name = 'категория'
         verbose_name_plural = 'категории'
+
     def __str__(self):
-        return self.name
+        return self.title
+    
+    def get_absolute_url(self):
+        return reverse('post-by-category', args=[str(self.slug)])
