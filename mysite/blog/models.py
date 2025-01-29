@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from tinymce.models import HTMLField
 from mptt.models import MPTTModel, TreeForeignKey
+from taggit.managers import TaggableManager
 
 class Post(models.Model):
     STATUS_CHOICES = (
@@ -36,11 +37,11 @@ class Post(models.Model):
                                    verbose_name="Изменено")
     status = models.CharField(
         max_length=10, choices=STATUS_CHOICES, default='draft')
+    tags = TaggableManager()
     class Meta:
         ordering = ('-publish',)
         verbose_name = 'статья'
         verbose_name_plural = 'статьи'
-
 
     def __str__(self):
         return self.title
@@ -65,12 +66,18 @@ class CategoryTree(MPTTModel):
                             related_name='children',
                             verbose_name='Родительская категория')
     slug = models.SlugField()
+    order = models.IntegerField(verbose_name='сортировка',
+                                default=1,
+                                help_text='значимость категории')
+    description = models.TextField(verbose_name='описание',
+                                   max_length=60,
+                                   blank=True,
+                                   null=True)
 
     class MPTTMeta:
-        order_insertion_by = ['title']
+        order_insertion_by = ['order']
     class Meta:
         unique_together = [['parent', 'slug']]
-        # ordering = ('id',)
         verbose_name = 'категория'
         verbose_name_plural = 'категории'
 
@@ -78,4 +85,16 @@ class CategoryTree(MPTTModel):
         return self.title
     
     def get_absolute_url(self):
-        return reverse('post-by-category', args=[str(self.slug)])
+        return reverse('blog:listposts', args=[str(self.slug)])
+    
+    def get_posts_count(self):
+        sum = self.posts.count()
+        for child in self.get_children():
+            sum += child.posts.count()
+        return sum
+    get_posts_count.short_description = 'к-во статей'
+    
+    def is_description(self):
+        return bool(self.description)
+    is_description.boolean = True
+    is_description.short_description = 'описание'

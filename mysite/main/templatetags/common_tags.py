@@ -3,6 +3,8 @@
 
 from django import template
 from ..models import Menu
+from taggit.models import Tag 
+
 register = template.Library()
 
 
@@ -12,3 +14,10 @@ def show_top_menu(context):
     return {
         "menu_items": menu_items,
     }
+
+@register.inclusion_tag('main/tags.html')
+def show_tags(*args, **kwargs): 
+    tags = Tag.objects.all() 
+    return {
+        "tags": tags
+    } 

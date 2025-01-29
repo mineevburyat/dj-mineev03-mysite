@@ -1,0 +1,15 @@
+{% load static %}
+
+<div class="single_sidebar_wiget">
+    <div class="sidebar_tittle">
+        <h5>Тэги</h5>
+    </div>
+    <div class="single_catagory_item category">
+        <ul class="list-unstyled">
+            {% for tag in tags %}
+            <li><a href="tags?q={{tag.slug}}">{{tag}}</a> <span></span> </li>
+            {% endfor %}
+
+        </ul>
+    </div>
+</div>

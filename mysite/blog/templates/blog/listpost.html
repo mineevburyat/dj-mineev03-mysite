@@ -1,0 +1,78 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% load mptt_tags %}
+{% load blog_tags %}
+{% load common_tags %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'blog/search.css' %}">
+<!-- style CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="all_post section_padding">
+    <div class="container">
+        {% if tagpage %}
+        <p>статьи с тэгом {{tagpage}}</p>
+        {% else %}
+        <p>Напрвление {{category.get_ancestors.last.title}} - {{category.title}}</p>
+        {% endif %}
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row">
+                    {% for post in posts %}
+                    <div class="col-lg-6 col-sm-3">
+                        <div class="single_post post_1">
+                            <div class="single_post_img">
+                                <img src="img/post/post_12.png" alt="">
+                            </div>
+
+                            <div class="single_post_text text-center">
+                                <a href="#">
+                                    <h2>{{post.title}}</h2>
+                                </a>
+                                <p>Направление: {{post.category}}</p>
+                                <p>Опубликовано: {{post.publish}}</p>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <!-- пагинатор -->
+
+                <!-- пагинатор -->
+            </div>
+            <div class="col-lg-4">
+                <div class="sidebar_widget">
+                    <div class="single_sidebar_wiget search_form_widget">
+                        <form action="#">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder='ключевые слова'
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
+                                <div class="btn_1">Поиск</div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="single_sidebar_wiget">
+                        {% show_category %}
+                    </div>
+                    <div class="single_sidebar_wiget">
+                        {% show_tags %}
+                    </div>
+                    <div class="single_sidebar_wiget">
+                        {% show_last_posts %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- feature_post end-->
+
+
+{% endblock %}

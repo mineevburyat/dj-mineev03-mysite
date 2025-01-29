@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mptt',
+    'django_mptt_admin',
+    'taggit',
     'blog',
     'main',
     'library',
@@ -227,3 +229,4 @@ VERSIONS = getattr(settings, "FILEBROWSER_VERSIONS", {
 
 VERSION_QUALITY = getattr(settings, 'FILEBROWSER_VERSION_QUALITY', 90)
 
+TAGGIT_CASE_INSENSITIVE = True
