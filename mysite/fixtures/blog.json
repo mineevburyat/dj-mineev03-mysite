@@ -1,272 +1,396 @@
 [
-{
-    "model": "blog.post",
-    "pk": 1,
-    "fields": {
-        "title": "Формат jpg",
-        "slug": "format-jpg",
-        "body": "<p><img src=\"http://localhost:8000/media/detektor-dronov-vizor-m.jpg\" alt=\"\" width=\"308\" height=\"259\"></p>",
-        "publish": "2024-12-07T14:52:19Z",
-        "created": "2024-12-07T14:56:03.572Z",
-        "updated": "2024-12-08T06:57:14.808Z",
-        "status": "draft",
-        "categories": [
-            1,
-            2,
-            3
-        ]
+    {
+        "model": "blog.post",
+        "pk": 1,
+        "fields": {
+            "title": "Формат jpg",
+            "slug": "format-jpg",
+            "body": "<p><img src=\"http://localhost:8000/media/detektor-dronov-vizor-m.jpg\" alt=\"\" width=\"308\" height=\"259\"></p>",
+            "category": 8,
+            "publish": "2024-12-07T14:52:19Z",
+            "created": "2024-12-07T14:56:03.572Z",
+            "updated": "2025-01-29T05:12:48.114Z",
+            "status": "draft"
+        }
+    },
+    {
+        "model": "blog.post",
+        "pk": 2,
+        "fields": {
+            "title": "Дескредитация и квантование аудиосигнала",
+            "slug": "deskreditaciya-i-kvantovanie-audiosignala",
+            "body": "",
+            "category": 7,
+            "publish": "2024-12-07T15:03:09Z",
+            "created": "2024-12-07T15:03:59.441Z",
+            "updated": "2025-01-29T05:12:57.371Z",
+            "status": "draft"
+        }
+    },
+    {
+        "model": "blog.post",
+        "pk": 3,
+        "fields": {
+            "title": "Изображение в компьютере",
+            "slug": "izobrazhenie-v-kompyutere",
+            "body": "",
+            "category": 8,
+            "publish": "2024-12-07T15:04:15Z",
+            "created": "2024-12-07T15:04:31.444Z",
+            "updated": "2025-01-29T05:13:10.723Z",
+            "status": "draft"
+        }
+    },
+    {
+        "model": "blog.post",
+        "pk": 4,
+        "fields": {
+            "title": "Иерархическая база данных",
+            "slug": "ierarhicheskaya-baza-dannyh",
+            "body": "",
+            "category": 10,
+            "publish": "2024-12-07T15:04:49Z",
+            "created": "2024-12-07T15:05:16.789Z",
+            "updated": "2025-01-29T05:13:19.465Z",
+            "status": "draft"
+        }
+    },
+    {
+        "model": "blog.post",
+        "pk": 5,
+        "fields": {
+            "title": "Формат изображения BMP",
+            "slug": "format-izobrazheniya-bmp",
+            "body": "",
+            "category": 8,
+            "publish": "2024-12-07T15:05:22Z",
+            "created": "2024-12-07T15:05:53.638Z",
+            "updated": "2025-01-29T05:13:27.906Z",
+            "status": "draft"
+        }
+    },
+    {
+        "model": "blog.post",
+        "pk": 6,
+        "fields": {
+            "title": "Формат файла wav",
+            "slug": "format-fajla-wav",
+            "body": "",
+            "category": 7,
+            "publish": "2024-12-07T15:05:58Z",
+            "created": "2024-12-07T15:06:25.784Z",
+            "updated": "2025-01-29T05:13:35.555Z",
+            "status": "draft"
+        }
+    },
+    {
+        "model": "blog.post",
+        "pk": 7,
+        "fields": {
+            "title": "Получение сэмплов с микрофона",
+            "slug": "poluchenie-semplov-s-mikrofona",
+            "body": "",
+            "category": 7,
+            "publish": "2024-12-07T15:07:10Z",
+            "created": "2024-12-07T15:07:59.712Z",
+            "updated": "2025-01-29T05:13:42.961Z",
+            "status": "draft"
+        }
+    },
+    {
+        "model": "blog.post",
+        "pk": 9,
+        "fields": {
+            "title": "Удобный visiwig редактор для TextField Django c загрузкой изображений",
+            "slug": "udobnyj-visiwig-redaktor-dlya-textfield-django-c-zagruzkoj-izobrazhenij",
+            "body": "<p><a title=\"не до конца проверенный метод\" href=\"https://alexdzen.medium.com/django-tinymce-%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B8-%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BE%D0%BA-%D0%B2-%D1%80%D0%B5%D0%B4%D0%B0%D0%BA%D1%82%D0%BE%D1%80-django-tinymce-upload-image-4dc8ab8bff83\" target=\"_blank\" rel=\"noopener\">не проверенный способ</a></p>\r\n<p>&nbsp;</p>\r\n<p><a href=\"https://pro-cod.ru/kak-nastroit-django-tinymce-filebrowser.html\" target=\"_blank\" rel=\"noopener\">проверенный способ используемый на этом сайте</a></p>",
+            "category": 11,
+            "publish": "2024-12-08T06:57:59Z",
+            "created": "2024-12-08T07:02:14.263Z",
+            "updated": "2025-01-29T05:14:31.078Z",
+            "status": "published"
+        }
+    },
+    {
+        "model": "blog.post",
+        "pk": 10,
+        "fields": {
+            "title": "Сравнительная стоимость теплоносителей для частного дома",
+            "slug": "sravnitelnaya-stoimost-teplonositelej-dlya-chastnogo-doma",
+            "body": "<p>Статья показывает как правильно посчитать стоимость отопления в зависимости от энергоносителя.</p>\r\n<p>В частном секторе применяются следующие способы отопления:</p>\r\n<p>&nbsp;</p>\r\n<table style=\"border-collapse: collapse; width: 31.4338%; height: 179.125px;\" border=\"1\"><colgroup><col style=\"width: 6.86106%;\"><col style=\"width: 55.4031%;\"><col style=\"width: 37.7358%;\"></colgroup>\r\n<tbody>\r\n<tr style=\"height: 44.7812px;\">\r\n<td style=\"height: 44.7812px; text-align: center;\"><strong>№ п.п.</strong></td>\r\n<td style=\"height: 44.7812px; text-align: center;\"><strong>Основной способ</strong></td>\r\n<td style=\"height: 44.7812px; text-align: center;\"><strong>Стоимость</strong></td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">1</td>\r\n<td style=\"height: 22.3906px;\">Дрова</td>\r\n<td style=\"height: 22.3906px;\">4500 руб./ куб.</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">2</td>\r\n<td style=\"height: 22.3906px;\">Уголь</td>\r\n<td style=\"height: 22.3906px;\">350 руб./мешок.</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">3</td>\r\n<td style=\"height: 22.3906px;\">Пелеты</td>\r\n<td style=\"height: 22.3906px;\">200 руб./пачка</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">4</td>\r\n<td style=\"height: 22.3906px;\">Сжиженный газ</td>\r\n<td style=\"height: 22.3906px;\">79 руб./кг.</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">5</td>\r\n<td style=\"height: 22.3906px;\">Дизель</td>\r\n<td style=\"height: 22.3906px;\">75 руб../литр</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">6</td>\r\n<td style=\"height: 22.3906px;\">Электроотопление</td>\r\n<td style=\"height: 22.3906px;\">3,6 руб./кВтчас</td>\r\n</tr>\r\n<tr>\r\n<td>7</td>\r\n<td>Теплоотопление</td>\r\n<td>2601 руб./гкалл.</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>Глядя на таблицу не понятно какой способ отопления самый оптимальный и экономичный, потому как используется разные меры тепловой энергии: мешки, пачки, кубы и литры. Необходимо привести эти стоимости к единому показатели. И этим показателем является энергия, которая измеряется в МДж (Мега джоули).</p>\r\n<p>Самый простой пособ перевода у электроэнергии и тепловой энергии: 1кВтчас = 3,6МДж, а 1гкал=4186МДж. Ксати эти виды энергии мы непосредственно преобразуем в тепло через электронагреватели с к КПД порядка 90% и через радиаторы отопления с КПД порядка 80%.</p>\r\n<p>Если мы не будем учитывать КПД, то наша табличка начент выглядеть так:</p>\r\n<table style=\"border-collapse: collapse; width: 31.4338%; height: 179.125px;\" border=\"1\"><colgroup><col style=\"width: 6.86106%;\"><col style=\"width: 55.4031%;\"><col style=\"width: 37.7358%;\"></colgroup>\r\n<tbody>\r\n<tr style=\"height: 44.7812px;\">\r\n<td style=\"height: 44.7812px; text-align: center;\"><strong>№ п.п.</strong></td>\r\n<td style=\"height: 44.7812px; text-align: center;\"><strong>Основной способ</strong></td>\r\n<td style=\"height: 44.7812px; text-align: center;\"><strong>Стоимость</strong></td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">1</td>\r\n<td style=\"height: 22.3906px;\">Дрова</td>\r\n<td style=\"height: 22.3906px;\">4500 руб./ куб.</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">2</td>\r\n<td style=\"height: 22.3906px;\">Уголь</td>\r\n<td style=\"height: 22.3906px;\">350 руб./мешок.</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">3</td>\r\n<td style=\"height: 22.3906px;\">Пелеты</td>\r\n<td style=\"height: 22.3906px;\">200 руб./пачка</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">4</td>\r\n<td style=\"height: 22.3906px;\">Сжиженный газ</td>\r\n<td style=\"height: 22.3906px;\">79 руб./кг.</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">5</td>\r\n<td style=\"height: 22.3906px;\">Дизель</td>\r\n<td style=\"height: 22.3906px;\">75 руб./литр</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">6</td>\r\n<td style=\"height: 22.3906px;\">Электроотопление</td>\r\n<td style=\"height: 22.3906px;\">1 руб./МДж.</td>\r\n</tr>\r\n<tr>\r\n<td>7</td>\r\n<td>Теплоотопление</td>\r\n<td>0,62 руб./МДж.</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>Другие виды энергоносителей для преобразования в тепло необходимо сжечь. Из школьного курса физики мы знает о такой табличной величине как удельная теплота сгорания - это теплота, которая выделится при сгорании 1 кг топлива:</p>\r\n<table style=\"border-collapse: collapse; width: 48.5294%; height: 156.734px;\" border=\"1\"><colgroup><col style=\"width: 7.97101%;\"><col style=\"width: 29.8551%;\"><col style=\"width: 27.971%;\"><col style=\"width: 34.058%;\"></colgroup>\r\n<tbody>\r\n<tr style=\"height: 44.7812px;\">\r\n<td style=\"text-align: center; height: 44.7812px;\"><strong>№ п.п.</strong></td>\r\n<td style=\"text-align: center; height: 44.7812px;\"><strong>Топливо</strong></td>\r\n<td style=\"text-align: center; height: 44.7812px;\"><strong>Удельная теплота сгорания</strong></td>\r\n<td style=\"text-align: center;\"><strong>Примечание</strong></td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">1</td>\r\n<td style=\"height: 22.3906px;\">Дрова</td>\r\n<td style=\"height: 22.3906px;\">14,5 МДж/кг</td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">2</td>\r\n<td style=\"height: 22.3906px;\">Уголь</td>\r\n<td style=\"height: 22.3906px;\">22 МДж/кг</td>\r\n<td>в среднем, зависит от качества</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">3</td>\r\n<td style=\"height: 22.3906px;\">Пелеты</td>\r\n<td style=\"height: 22.3906px;\">19 МДж/кг</td>\r\n<td>из рекламного буклета, но сомнительно как те же дрова хоть и спресованные в брекет вдруг при сжигании выделяют больше энергии чем обычные дрова&nbsp;&nbsp;</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">4</td>\r\n<td style=\"height: 22.3906px;\">Сжиженный газ</td>\r\n<td style=\"height: 22.3906px;\">43 МДж/кг</td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">5</td>\r\n<td style=\"height: 22.3906px;\">Дизель</td>\r\n<td style=\"height: 22.3906px;\">42 МДж/кг</td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>Итак энергия зависит только от массы сжигаемого вещества, а не от объема. Сжиженный гах мы можем легко перевести в руб./МДж. Пелеты так же - обычно в пакете RUF пачка весит 10 кг. Дизельное топливо в кг можно перевести зная плотность дизельного топлива - это 830 кг на м. куб., значит 1 литр будет весить 0,83 кг. Мешок угля принимается за 50 кг. Производим арифметические операции и получаем следующую таблицу:</p>\r\n<table style=\"border-collapse: collapse; width: 31.4338%; height: 179.125px;\" border=\"1\"><colgroup><col style=\"width: 6.86106%;\"><col style=\"width: 55.4031%;\"><col style=\"width: 37.7358%;\"></colgroup>\r\n<tbody>\r\n<tr style=\"height: 44.7812px;\">\r\n<td style=\"height: 44.7812px; text-align: center;\"><strong>№ п.п.</strong></td>\r\n<td style=\"height: 44.7812px; text-align: center;\"><strong>Основной способ</strong></td>\r\n<td style=\"height: 44.7812px; text-align: center;\"><strong>Стоимость</strong></td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">1</td>\r\n<td style=\"height: 22.3906px;\">Дрова</td>\r\n<td style=\"height: 22.3906px;\">4500 руб./ куб.</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">2</td>\r\n<td style=\"height: 22.3906px;\">Уголь</td>\r\n<td style=\"height: 22.3906px;\">0,32 руб./МДж</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">3</td>\r\n<td style=\"height: 22.3906px;\">Пелеты</td>\r\n<td style=\"height: 22.3906px;\">1 руб./МДж</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">4</td>\r\n<td style=\"height: 22.3906px;\">Сжиженный газ</td>\r\n<td style=\"height: 22.3906px;\">1,84 руб./МДж</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">5</td>\r\n<td style=\"height: 22.3906px;\">Дизель</td>\r\n<td style=\"height: 22.3906px;\">2,15 руб./МДж</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">6</td>\r\n<td style=\"height: 22.3906px;\">Электроотопление</td>\r\n<td style=\"height: 22.3906px;\">1 руб./МДж.</td>\r\n</tr>\r\n<tr>\r\n<td>7</td>\r\n<td>Теплоотопление</td>\r\n<td>0,62 руб./МДж.</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>Самый сложный способ определения стоимости одного мегаджоуля у дров. Потому как не понятно что понимается под объемом дров. Вообще выделяют чистый объем, свальный объем и расчетный объемы дров. Кроме того необходимо понимать что дрова должны быть просушены, влажные дрова при сжигании выделяют мало тепловой энергии. Нас для расчета тепловой энергии интересует чистый объем дров, который составляет 60% от свального объема. Таким образом продав нам свальных дров 1 куб, мы получим 0,65 кубов чистых дров и учитывая что в 1 кубе содержится 450 кг древесины, которая преобразуется в 6525МДж энергии. Получаем следующую таблицу отсортированную по стоимости:</p>\r\n<table style=\"border-collapse: collapse; width: 64.8284%; height: 179.125px;\" border=\"1\"><colgroup><col style=\"width: 10.0284%;\"><col style=\"width: 24.5033%;\"><col style=\"width: 14.4827%;\"><col style=\"width: 50.9856%;\"></colgroup>\r\n<tbody>\r\n<tr style=\"height: 44.7812px;\">\r\n<td style=\"height: 44.7812px; text-align: center;\"><strong>№ п.п.</strong></td>\r\n<td style=\"height: 44.7812px; text-align: center;\"><strong>Основной способ отопления</strong></td>\r\n<td style=\"height: 44.7812px; text-align: center;\"><strong>Стоимость</strong></td>\r\n<td style=\"text-align: center;\"><strong>Примечание</strong></td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">1</td>\r\n<td style=\"height: 22.3906px;\">Уголь</td>\r\n<td style=\"height: 22.3906px;\">0,32 руб./МДж</td>\r\n<td>Нужен ТТ котел и система разводки и радиаторов. Экологичность страдает.</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">2</td>\r\n<td style=\"height: 22.3906px;\">Теплоотопление</td>\r\n<td style=\"height: 22.3906px;\">0,62 руб./МДж.</td>\r\n<td>Отдельные частные дома не подключают. За экологичность отвечает теплогенерирующая компания. Зависимость от черной кошки в городской котельной.</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">3</td>\r\n<td style=\"height: 22.3906px;\">Дрова</td>\r\n<td style=\"height: 22.3906px;\">0,69 руб./МДж</td>\r\n<td>Нужен ТТ котел и система разводки и радиаторов. Экологичность чуть получше чем с углем. Но если это котел длительного горения, то об экологичности нет и речи.</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">4</td>\r\n<td style=\"height: 22.3906px;\">Электроотопление</td>\r\n<td style=\"height: 22.3906px;\">1 руб./МДж</td>\r\n<td>Нужно купить только электроотопители и не забыть о качестве электропроводки. И мощность подключения нынче еще регулируют</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">5</td>\r\n<td style=\"height: 22.3906px;\">Пелеты</td>\r\n<td style=\"height: 22.3906px;\">1 руб./МДж</td>\r\n<td>Сомнительные способ. И фитнес пропал. зато чистенько в огороде. Экологичность как у дров, нужен кател и система разводки, а стоимость как у электроэнергии.</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">6</td>\r\n<td style=\"height: 22.3906px;\">Сжиженный газ</td>\r\n<td style=\"height: 22.3906px;\">1,84 руб./МДж.</td>\r\n<td>Пламя модулируется (управляется). Но кроме котла и системы разводки нужен газгольдер или грядка балонов и учитывать безопасность.</td>\r\n</tr>\r\n<tr>\r\n<td>7</td>\r\n<td>Дизель</td>\r\n<td>2,15 руб./МДж</td>\r\n<td>Самый не рентабельный способ отопления.</td>\r\n</tr>\r\n</tbody>\r\n</table>",
+            "category": 1,
+            "publish": "2024-12-08T13:11:03Z",
+            "created": "2024-12-08T14:07:21.706Z",
+            "updated": "2025-01-29T06:31:00.453Z",
+            "status": "draft"
+        }
+    },
+    {
+        "model": "blog.post",
+        "pk": 11,
+        "fields": {
+            "title": "Каталог dev в Linux",
+            "slug": "katalog-dev-v-linux",
+            "body": "<p>Правила написания правил udev https://www.reactivated.net/writing_udev_rules.html</p>",
+            "category": 5,
+            "publish": "2024-12-12T05:24:47Z",
+            "created": "2024-12-12T05:26:49.680Z",
+            "updated": "2025-01-29T05:14:11.514Z",
+            "status": "draft"
+        }
+    },
+    {
+        "model": "blog.post",
+        "pk": 12,
+        "fields": {
+            "title": "Python usb",
+            "slug": "python-usb",
+            "body": "<p>Подключение к устройству USB в линукс и виндовс.</p>\r\n<p>&nbsp;</p>",
+            "category": 9,
+            "publish": "2024-12-12T06:10:56Z",
+            "created": "2024-12-12T06:15:17.038Z",
+            "updated": "2025-01-29T06:32:19.692Z",
+            "status": "draft"
+        }
+    },
+    {
+        "model": "blog.categorytree",
+        "pk": 1,
+        "fields": {
+            "title": "Милый милый дом",
+            "parent": null,
+            "slug": "mydom",
+            "order": 2,
+            "description": "",
+            "lft": 1,
+            "rght": 4,
+            "tree_id": 4,
+            "level": 0
+        }
+    },
+    {
+        "model": "blog.categorytree",
+        "pk": 2,
+        "fields": {
+            "title": "Моя профессия",
+            "parent": null,
+            "slug": "professiya",
+            "order": 50,
+            "description": "",
+            "lft": 1,
+            "rght": 8,
+            "tree_id": 2,
+            "level": 0
+        }
+    },
+    {
+        "model": "blog.categorytree",
+        "pk": 3,
+        "fields": {
+            "title": "Электроника",
+            "parent": null,
+            "slug": "elektronika",
+            "order": 3,
+            "description": "",
+            "lft": 1,
+            "rght": 4,
+            "tree_id": 3,
+            "level": 0
+        }
+    },
+    {
+        "model": "blog.categorytree",
+        "pk": 4,
+        "fields": {
+            "title": "Информационные технологии",
+            "parent": null,
+            "slug": "it",
+            "order": 100,
+            "description": "",
+            "lft": 1,
+            "rght": 16,
+            "tree_id": 1,
+            "level": 0
+        }
+    },
+    {
+        "model": "blog.categorytree",
+        "pk": 5,
+        "fields": {
+            "title": "Linux",
+            "parent": 4,
+            "slug": "linux",
+            "order": 1,
+            "description": null,
+            "lft": 6,
+            "rght": 7,
+            "tree_id": 1,
+            "level": 1
+        }
+    },
+    {
+        "model": "blog.categorytree",
+        "pk": 6,
+        "fields": {
+            "title": "python",
+            "parent": 4,
+            "slug": "python",
+            "order": 2,
+            "description": "",
+            "lft": 4,
+            "rght": 5,
+            "tree_id": 1,
+            "level": 1
+        }
+    },
+    {
+        "model": "blog.categorytree",
+        "pk": 7,
+        "fields": {
+            "title": "Обработка звука",
+            "parent": 4,
+            "slug": "audio",
+            "order": 101,
+            "description": "",
+            "lft": 14,
+            "rght": 15,
+            "tree_id": 1,
+            "level": 1
+        }
+    },
+    {
+        "model": "blog.categorytree",
+        "pk": 8,
+        "fields": {
+            "title": "Изображения",
+            "parent": 4,
+            "slug": "images",
+            "order": 2,
+            "description": "",
+            "lft": 2,
+            "rght": 3,
+            "tree_id": 1,
+            "level": 1
+        }
+    },
+    {
+        "model": "blog.categorytree",
+        "pk": 9,
+        "fields": {
+            "title": "Hardware",
+            "parent": 4,
+            "slug": "hardware",
+            "order": 50,
+            "description": "",
+            "lft": 12,
+            "rght": 13,
+            "tree_id": 1,
+            "level": 1
+        }
+    },
+    {
+        "model": "blog.categorytree",
+        "pk": 10,
+        "fields": {
+            "title": "Базы данных",
+            "parent": 4,
+            "slug": "db",
+            "order": 1,
+            "description": null,
+            "lft": 8,
+            "rght": 9,
+            "tree_id": 1,
+            "level": 1
+        }
+    },
+    {
+        "model": "blog.categorytree",
+        "pk": 11,
+        "fields": {
+            "title": "django",
+            "parent": 4,
+            "slug": "django",
+            "order": 50,
+            "description": "",
+            "lft": 10,
+            "rght": 11,
+            "tree_id": 1,
+            "level": 1
+        }
+    },
+    {
+        "model": "blog.categorytree",
+        "pk": 12,
+        "fields": {
+            "title": "Теплоэффективность",
+            "parent": 1,
+            "slug": "teploeffektivnost",
+            "order": 1,
+            "description": null,
+            "lft": 2,
+            "rght": 3,
+            "tree_id": 4,
+            "level": 1
+        }
+    },
+    {
+        "model": "blog.categorytree",
+        "pk": 13,
+        "fields": {
+            "title": "Arduino",
+            "parent": 3,
+            "slug": "arduino",
+            "order": 1,
+            "description": null,
+            "lft": 2,
+            "rght": 3,
+            "tree_id": 3,
+            "level": 1
+        }
+    },
+    {
+        "model": "blog.categorytree",
+        "pk": 14,
+        "fields": {
+            "title": "законы",
+            "parent": 2,
+            "slug": "zakony",
+            "order": 1,
+            "description": null,
+            "lft": 2,
+            "rght": 3,
+            "tree_id": 2,
+            "level": 1
+        }
+    },
+    {
+        "model": "blog.categorytree",
+        "pk": 15,
+        "fields": {
+            "title": "Нормативные акты",
+            "parent": 2,
+            "slug": "normativnye-akty",
+            "order": 1,
+            "description": null,
+            "lft": 6,
+            "rght": 7,
+            "tree_id": 2,
+            "level": 1
+        }
+    },
+    {
+        "model": "blog.categorytree",
+        "pk": 16,
+        "fields": {
+            "title": "Инструкции",
+            "parent": 2,
+            "slug": "instrukcii",
+            "order": 1,
+            "description": null,
+            "lft": 4,
+            "rght": 5,
+            "tree_id": 2,
+            "level": 1
+        }
     }
-},
-{
-    "model": "blog.post",
-    "pk": 2,
-    "fields": {
-        "title": "Дескредитация и квантование аудиосигнала",
-        "slug": "deskreditaciya-i-kvantovanie-audiosignala",
-        "body": "",
-        "publish": "2024-12-07T15:03:09Z",
-        "created": "2024-12-07T15:03:59.441Z",
-        "updated": "2024-12-07T15:03:59.441Z",
-        "status": "draft",
-        "categories": [
-            1,
-            2,
-            4
-        ]
-    }
-},
-{
-    "model": "blog.post",
-    "pk": 3,
-    "fields": {
-        "title": "Изображение в компьютере",
-        "slug": "izobrazhenie-v-kompyutere",
-        "body": "",
-        "publish": "2024-12-07T15:04:15Z",
-        "created": "2024-12-07T15:04:31.444Z",
-        "updated": "2024-12-07T15:04:31.444Z",
-        "status": "draft",
-        "categories": [
-            1,
-            2,
-            3
-        ]
-    }
-},
-{
-    "model": "blog.post",
-    "pk": 4,
-    "fields": {
-        "title": "Иерархическая база данных",
-        "slug": "ierarhicheskaya-baza-dannyh",
-        "body": "",
-        "publish": "2024-12-07T15:04:49Z",
-        "created": "2024-12-07T15:05:16.789Z",
-        "updated": "2024-12-07T15:05:16.789Z",
-        "status": "draft",
-        "categories": [
-            1,
-            5
-        ]
-    }
-},
-{
-    "model": "blog.post",
-    "pk": 5,
-    "fields": {
-        "title": "Формат изображения BMP",
-        "slug": "format-izobrazheniya-bmp",
-        "body": "",
-        "publish": "2024-12-07T15:05:22Z",
-        "created": "2024-12-07T15:05:53.638Z",
-        "updated": "2024-12-07T15:05:53.638Z",
-        "status": "draft",
-        "categories": [
-            1,
-            2,
-            3
-        ]
-    }
-},
-{
-    "model": "blog.post",
-    "pk": 6,
-    "fields": {
-        "title": "Формат файла wav",
-        "slug": "format-fajla-wav",
-        "body": "",
-        "publish": "2024-12-07T15:05:58Z",
-        "created": "2024-12-07T15:06:25.784Z",
-        "updated": "2024-12-07T15:06:25.784Z",
-        "status": "draft",
-        "categories": [
-            1,
-            2,
-            4
-        ]
-    }
-},
-{
-    "model": "blog.post",
-    "pk": 7,
-    "fields": {
-        "title": "Получение сэмплов с микрофона",
-        "slug": "poluchenie-semplov-s-mikrofona",
-        "body": "",
-        "publish": "2024-12-07T15:07:10Z",
-        "created": "2024-12-07T15:07:59.712Z",
-        "updated": "2024-12-07T15:07:59.712Z",
-        "status": "draft",
-        "categories": [
-            1,
-            4
-        ]
-    }
-},
-{
-    "model": "blog.post",
-    "pk": 8,
-    "fields": {
-        "title": "test",
-        "slug": "test",
-        "body": "<p>xcvxcvx</p>\r\n<p>&nbsp;</p>\r\n<p><audio src=\"http://localhost:8000/media/%D0%B7%D0%B2%D1%83%D0%BA.wav\" controls=\"controls\"></audio></p>",
-        "publish": "2024-12-07T17:01:58Z",
-        "created": "2024-12-07T17:03:01.829Z",
-        "updated": "2024-12-08T07:37:11.195Z",
-        "status": "draft",
-        "categories": [
-            1
-        ]
-    }
-},
-{
-    "model": "blog.post",
-    "pk": 9,
-    "fields": {
-        "title": "Удобный visiwig редактор для TextField Django c загрузкой изображений",
-        "slug": "udobnyj-visiwig-redaktor-dlya-textfield-django-c-zagruzkoj-izobrazhenij",
-        "body": "<p><a title=\"не до конца проверенный метод\" href=\"https://alexdzen.medium.com/django-tinymce-%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B8-%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BE%D0%BA-%D0%B2-%D1%80%D0%B5%D0%B4%D0%B0%D0%BA%D1%82%D0%BE%D1%80-django-tinymce-upload-image-4dc8ab8bff83\" target=\"_blank\" rel=\"noopener\">не проверенный способ</a></p>\r\n<p>&nbsp;</p>\r\n<p><a href=\"https://pro-cod.ru/kak-nastroit-django-tinymce-filebrowser.html\" target=\"_blank\" rel=\"noopener\">проверенный способ используемый на этом сайте</a></p>",
-        "publish": "2024-12-08T06:57:59Z",
-        "created": "2024-12-08T07:02:14.263Z",
-        "updated": "2024-12-08T07:02:14.263Z",
-        "status": "published",
-        "categories": [
-            1,
-            6
-        ]
-    }
-},
-{
-    "model": "blog.post",
-    "pk": 10,
-    "fields": {
-        "title": "Сравнительная стоимость теплоносителей для частного дома",
-        "slug": "sravnitelnaya-stoimost-teplonositelej-dlya-chastnogo-doma",
-        "body": "<p>Статья показывает как правильно посчитать стоимость отопления в зависимости от энергоносителя.</p>\r\n<p>В частном секторе применяются следующие способы отопления:</p>\r\n<p>&nbsp;</p>\r\n<table style=\"border-collapse: collapse; width: 31.4338%; height: 179.125px;\" border=\"1\"><colgroup><col style=\"width: 6.86106%;\"><col style=\"width: 55.4031%;\"><col style=\"width: 37.7358%;\"></colgroup>\r\n<tbody>\r\n<tr style=\"height: 44.7812px;\">\r\n<td style=\"height: 44.7812px; text-align: center;\"><strong>№ п.п.</strong></td>\r\n<td style=\"height: 44.7812px; text-align: center;\"><strong>Основной способ</strong></td>\r\n<td style=\"height: 44.7812px; text-align: center;\"><strong>Стоимость</strong></td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">1</td>\r\n<td style=\"height: 22.3906px;\">Дрова</td>\r\n<td style=\"height: 22.3906px;\">4500 руб./ куб.</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">2</td>\r\n<td style=\"height: 22.3906px;\">Уголь</td>\r\n<td style=\"height: 22.3906px;\">350 руб./мешок.</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">3</td>\r\n<td style=\"height: 22.3906px;\">Пелеты</td>\r\n<td style=\"height: 22.3906px;\">200 руб./пачка</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">4</td>\r\n<td style=\"height: 22.3906px;\">Сжиженный газ</td>\r\n<td style=\"height: 22.3906px;\">79 руб./кг.</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">5</td>\r\n<td style=\"height: 22.3906px;\">Дизель</td>\r\n<td style=\"height: 22.3906px;\">75 руб../литр</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">6</td>\r\n<td style=\"height: 22.3906px;\">Электроотопление</td>\r\n<td style=\"height: 22.3906px;\">3,6 руб./кВтчас</td>\r\n</tr>\r\n<tr>\r\n<td>7</td>\r\n<td>Теплоотопление</td>\r\n<td>2601 руб./гкалл.</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>Глядя на таблицу не понятно какой способ отопления самый оптимальный и экономичный, потому как используется разные меры тепловой энергии: мешки, пачки, кубы и литры. Необходимо привести эти стоимости к единому показатели. И этим показателем является энергия, которая измеряется в МДж (Мега джоули).</p>\r\n<p>Самый простой пособ перевода у электроэнергии и тепловой энергии: 1кВтчас = 3,6МДж, а 1гкал=4186МДж. Ксати эти виды энергии мы непосредственно преобразуем в тепло через электронагреватели с к КПД порядка 90% и через радиаторы отопления с КПД порядка 80%.</p>\r\n<p>Если мы не будем учитывать КПД, то наша табличка начент выглядеть так:</p>\r\n<table style=\"border-collapse: collapse; width: 31.4338%; height: 179.125px;\" border=\"1\"><colgroup><col style=\"width: 6.86106%;\"><col style=\"width: 55.4031%;\"><col style=\"width: 37.7358%;\"></colgroup>\r\n<tbody>\r\n<tr style=\"height: 44.7812px;\">\r\n<td style=\"height: 44.7812px; text-align: center;\"><strong>№ п.п.</strong></td>\r\n<td style=\"height: 44.7812px; text-align: center;\"><strong>Основной способ</strong></td>\r\n<td style=\"height: 44.7812px; text-align: center;\"><strong>Стоимость</strong></td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">1</td>\r\n<td style=\"height: 22.3906px;\">Дрова</td>\r\n<td style=\"height: 22.3906px;\">4500 руб./ куб.</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">2</td>\r\n<td style=\"height: 22.3906px;\">Уголь</td>\r\n<td style=\"height: 22.3906px;\">350 руб./мешок.</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">3</td>\r\n<td style=\"height: 22.3906px;\">Пелеты</td>\r\n<td style=\"height: 22.3906px;\">200 руб./пачка</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">4</td>\r\n<td style=\"height: 22.3906px;\">Сжиженный газ</td>\r\n<td style=\"height: 22.3906px;\">79 руб./кг.</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">5</td>\r\n<td style=\"height: 22.3906px;\">Дизель</td>\r\n<td style=\"height: 22.3906px;\">75 руб./литр</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">6</td>\r\n<td style=\"height: 22.3906px;\">Электроотопление</td>\r\n<td style=\"height: 22.3906px;\">1 руб./МДж.</td>\r\n</tr>\r\n<tr>\r\n<td>7</td>\r\n<td>Теплоотопление</td>\r\n<td>0,62 руб./МДж.</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>Другие виды энергоносителей для преобразования в тепло необходимо сжечь. Из школьного курса физики мы знает о такой табличной величине как удельная теплота сгорания - это теплота, которая выделится при сгорании 1 кг топлива:</p>\r\n<table style=\"border-collapse: collapse; width: 48.5294%; height: 156.734px;\" border=\"1\"><colgroup><col style=\"width: 7.97101%;\"><col style=\"width: 29.8551%;\"><col style=\"width: 27.971%;\"><col style=\"width: 34.058%;\"></colgroup>\r\n<tbody>\r\n<tr style=\"height: 44.7812px;\">\r\n<td style=\"text-align: center; height: 44.7812px;\"><strong>№ п.п.</strong></td>\r\n<td style=\"text-align: center; height: 44.7812px;\"><strong>Топливо</strong></td>\r\n<td style=\"text-align: center; height: 44.7812px;\"><strong>Удельная теплота сгорания</strong></td>\r\n<td style=\"text-align: center;\"><strong>Примечание</strong></td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">1</td>\r\n<td style=\"height: 22.3906px;\">Дрова</td>\r\n<td style=\"height: 22.3906px;\">14,5 МДж/кг</td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">2</td>\r\n<td style=\"height: 22.3906px;\">Уголь</td>\r\n<td style=\"height: 22.3906px;\">22 МДж/кг</td>\r\n<td>в среднем, зависит от качества</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">3</td>\r\n<td style=\"height: 22.3906px;\">Пелеты</td>\r\n<td style=\"height: 22.3906px;\">19 МДж/кг</td>\r\n<td>из рекламного буклета, но сомнительно как те же дрова хоть и спресованные в брекет вдруг при сжигании выделяют больше энергии чем обычные дрова&nbsp;&nbsp;</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">4</td>\r\n<td style=\"height: 22.3906px;\">Сжиженный газ</td>\r\n<td style=\"height: 22.3906px;\">43 МДж/кг</td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">5</td>\r\n<td style=\"height: 22.3906px;\">Дизель</td>\r\n<td style=\"height: 22.3906px;\">42 МДж/кг</td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>Итак энергия зависит только от массы сжигаемого вещества, а не от объема. Сжиженный гах мы можем легко перевести в руб./МДж. Пелеты так же - обычно в пакете RUF пачка весит 10 кг. Дизельное топливо в кг можно перевести зная плотность дизельного топлива - это 830 кг на м. куб., значит 1 литр будет весить 0,83 кг. Мешок угля принимается за 50 кг. Производим арифметические операции и получаем следующую таблицу:</p>\r\n<table style=\"border-collapse: collapse; width: 31.4338%; height: 179.125px;\" border=\"1\"><colgroup><col style=\"width: 6.86106%;\"><col style=\"width: 55.4031%;\"><col style=\"width: 37.7358%;\"></colgroup>\r\n<tbody>\r\n<tr style=\"height: 44.7812px;\">\r\n<td style=\"height: 44.7812px; text-align: center;\"><strong>№ п.п.</strong></td>\r\n<td style=\"height: 44.7812px; text-align: center;\"><strong>Основной способ</strong></td>\r\n<td style=\"height: 44.7812px; text-align: center;\"><strong>Стоимость</strong></td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">1</td>\r\n<td style=\"height: 22.3906px;\">Дрова</td>\r\n<td style=\"height: 22.3906px;\">4500 руб./ куб.</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">2</td>\r\n<td style=\"height: 22.3906px;\">Уголь</td>\r\n<td style=\"height: 22.3906px;\">0,32 руб./МДж</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">3</td>\r\n<td style=\"height: 22.3906px;\">Пелеты</td>\r\n<td style=\"height: 22.3906px;\">1 руб./МДж</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">4</td>\r\n<td style=\"height: 22.3906px;\">Сжиженный газ</td>\r\n<td style=\"height: 22.3906px;\">1,84 руб./МДж</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">5</td>\r\n<td style=\"height: 22.3906px;\">Дизель</td>\r\n<td style=\"height: 22.3906px;\">2,15 руб./МДж</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">6</td>\r\n<td style=\"height: 22.3906px;\">Электроотопление</td>\r\n<td style=\"height: 22.3906px;\">1 руб./МДж.</td>\r\n</tr>\r\n<tr>\r\n<td>7</td>\r\n<td>Теплоотопление</td>\r\n<td>0,62 руб./МДж.</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>Самый сложный способ определения стоимости одного мегаджоуля у дров. Потому как не понятно что понимается под объемом дров. Вообще выделяют чистый объем, свальный объем и расчетный объемы дров. Кроме того необходимо понимать что дрова должны быть просушены, влажные дрова при сжигании выделяют мало тепловой энергии. Нас для расчета тепловой энергии интересует чистый объем дров, который составляет 60% от свального объема. Таким образом продав нам свальных дров 1 куб, мы получим 0,65 кубов чистых дров и учитывая что в 1 кубе содержится 450 кг древесины, которая преобразуется в 6525МДж энергии. Получаем следующую таблицу отсортированную по стоимости:</p>\r\n<table style=\"border-collapse: collapse; width: 64.8284%; height: 179.125px;\" border=\"1\"><colgroup><col style=\"width: 10.0284%;\"><col style=\"width: 24.5033%;\"><col style=\"width: 14.4827%;\"><col style=\"width: 50.9856%;\"></colgroup>\r\n<tbody>\r\n<tr style=\"height: 44.7812px;\">\r\n<td style=\"height: 44.7812px; text-align: center;\"><strong>№ п.п.</strong></td>\r\n<td style=\"height: 44.7812px; text-align: center;\"><strong>Основной способ отопления</strong></td>\r\n<td style=\"height: 44.7812px; text-align: center;\"><strong>Стоимость</strong></td>\r\n<td style=\"text-align: center;\"><strong>Примечание</strong></td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">1</td>\r\n<td style=\"height: 22.3906px;\">Уголь</td>\r\n<td style=\"height: 22.3906px;\">0,32 руб./МДж</td>\r\n<td>Нужен ТТ котел и система разводки и радиаторов. Экологичность страдает.</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">2</td>\r\n<td style=\"height: 22.3906px;\">Теплоотопление</td>\r\n<td style=\"height: 22.3906px;\">0,62 руб./МДж.</td>\r\n<td>Отдельные частные дома не подключают. За экологичность отвечает теплогенерирующая компания. Зависимость от черной кошки в городской котельной.</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">3</td>\r\n<td style=\"height: 22.3906px;\">Дрова</td>\r\n<td style=\"height: 22.3906px;\">0,69 руб./МДж</td>\r\n<td>Нужен ТТ котел и система разводки и радиаторов. Экологичность чуть получше чем с углем. Но если это котел длительного горения, то об экологичности нет и речи.</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">4</td>\r\n<td style=\"height: 22.3906px;\">Электроотопление</td>\r\n<td style=\"height: 22.3906px;\">1 руб./МДж</td>\r\n<td>Нужно купить только электроотопители и не забыть о качестве электропроводки. И мощность подключения нынче еще регулируют</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">5</td>\r\n<td style=\"height: 22.3906px;\">Пелеты</td>\r\n<td style=\"height: 22.3906px;\">1 руб./МДж</td>\r\n<td>Сомнительные способ. И фитнес пропал. зато чистенько в огороде. Экологичность как у дров, нужен кател и система разводки, а стоимость как у электроэнергии.</td>\r\n</tr>\r\n<tr style=\"height: 22.3906px;\">\r\n<td style=\"height: 22.3906px;\">6</td>\r\n<td style=\"height: 22.3906px;\">Сжиженный газ</td>\r\n<td style=\"height: 22.3906px;\">1,84 руб./МДж.</td>\r\n<td>Пламя модулируется (управляется). Но кроме котла и системы разводки нужен газгольдер или грядка балонов и учитывать безопасность.</td>\r\n</tr>\r\n<tr>\r\n<td>7</td>\r\n<td>Дизель</td>\r\n<td>2,15 руб./МДж</td>\r\n<td>Самый не рентабельный способ отопления.</td>\r\n</tr>\r\n</tbody>\r\n</table>",
-        "publish": "2024-12-08T13:11:03Z",
-        "created": "2024-12-08T14:07:21.706Z",
-        "updated": "2024-12-08T14:07:21.706Z",
-        "status": "draft",
-        "categories": [
-            7,
-            8
-        ]
-    }
-},
-{
-    "model": "blog.post",
-    "pk": 11,
-    "fields": {
-        "title": "Каталог dev в Linux",
-        "slug": "katalog-dev-v-linux",
-        "body": "<p>Правила написания правил udev https://www.reactivated.net/writing_udev_rules.html</p>",
-        "publish": "2024-12-12T05:24:47Z",
-        "created": "2024-12-12T05:26:49.680Z",
-        "updated": "2024-12-12T05:26:49.680Z",
-        "status": "draft",
-        "categories": [
-            9
-        ]
-    }
-},
-{
-    "model": "blog.post",
-    "pk": 12,
-    "fields": {
-        "title": "Python usb",
-        "slug": "python-usb",
-        "body": "<p>Подключение к устройству USB в линукс и виндовс.</p>\r\n<p>&nbsp;</p>",
-        "publish": "2024-12-12T06:10:56Z",
-        "created": "2024-12-12T06:15:17.038Z",
-        "updated": "2024-12-12T06:15:17.038Z",
-        "status": "draft",
-        "categories": [
-            1,
-            2
-        ]
-    }
-},
-{
-    "model": "blog.category",
-    "pk": 1,
-    "fields": {
-        "name": "python"
-    }
-},
-{
-    "model": "blog.category",
-    "pk": 2,
-    "fields": {
-        "name": "Архитектура аппаратных средств"
-    }
-},
-{
-    "model": "blog.category",
-    "pk": 3,
-    "fields": {
-        "name": "Изображения"
-    }
-},
-{
-    "model": "blog.category",
-    "pk": 4,
-    "fields": {
-        "name": "Звук"
-    }
-},
-{
-    "model": "blog.category",
-    "pk": 5,
-    "fields": {
-        "name": "Базы данных"
-    }
-},
-{
-    "model": "blog.category",
-    "pk": 6,
-    "fields": {
-        "name": "django"
-    }
-},
-{
-    "model": "blog.category",
-    "pk": 7,
-    "fields": {
-        "name": "Умный дом"
-    }
-},
-{
-    "model": "blog.category",
-    "pk": 8,
-    "fields": {
-        "name": "Теплоэффективность"
-    }
-},
-{
-    "model": "blog.category",
-    "pk": 9,
-    "fields": {
-        "name": "Linux"
-    }
-}
 ]
