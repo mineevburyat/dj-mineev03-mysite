@@ -6,8 +6,8 @@
     <h1 class="display-5 fw-bold">Личный блог айтишника</h1>
     <p class="col-md-8 fs-4">Передать опыт и знания.
       Полезные ссылки, книги. Реализованные проекты</p>
-    <button class="btn btn-primary btn-lg" type="link" href="blog_index.html">Перейти в блог</button>
-    <button class="btn btn-primary btn-lg" type="button">Обо мне</button>
+    <a class="btn btn-primary btn-lg" type="link" href="{% url 'blog:index' %}">Перейти в блог</a>
+    <a class="btn btn-primary btn-lg" type="link" href="{% url 'about:index' %}">Обо мне</a>
   </div>
   <div class="container px-2 py-1" id="custom-cards">
     <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
@@ -18,7 +18,7 @@
             <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Мои проекты</h3>
             <ul class="d-flex list-unstyled mt-auto">
               <li class="me-auto">
-                <button class="btn btn-info btn-small" type="button">Подробнее</button>
+                <a class="btn btn-info btn-small" type="link" href="{% url 'project:index' %}">Подробнее</a>
               </li>
               <li class="d-flex align-items-center me-3 .text-light">
                 <!-- <svg class="bi me-2 " width="1em" height="1em">
@@ -44,7 +44,7 @@
             <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Обучающие курсы</h3>
             <ul class="d-flex list-unstyled mt-auto">
               <li class="me-auto">
-                <button class="btn btn-info btn-small" type="button">Подробнее</button>
+                <a class="btn btn-info btn-small" type="link" href="{% url 'service:index' %}">Подробнее</a>
               </li>
               <li class="d-flex align-items-center me-3">
                 <!-- <svg class="bi me-2" width="1em" height="1em">
@@ -70,7 +70,7 @@
             <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Библиотека</h3>
             <ul class="d-flex list-unstyled mt-auto">
               <li class="me-auto">
-                <button class="btn btn-info btn-small" type="button">Подробнее</button>
+                <a class="btn btn-info btn-small" type="link" href="{% url 'library:index' %}">Подробнее</a>
               </li>
               <li class="d-flex align-items-center me-3">
                 <!-- <svg class="bi me-2" width="1em" height="1em">
