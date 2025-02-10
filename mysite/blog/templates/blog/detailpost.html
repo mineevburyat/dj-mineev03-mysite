@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+{% block breadcrumb %}
+{% include 'blog/_breadcrumb.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="row g-5 mt-1">
+    <div class="col-md-8 mt-1">
+        <article class="blog-post">
+            <h2 class="display-5 link-body-emphasis mb-1">{{post.title}}</h2>
+            <p class="blog-post-meta">{{post.publish}}</p>
+            {{post.body|safe}}
+        </article>
+
+        <nav class="blog-pagination" aria-label="Pagination">
+            <a class="btn btn-outline-primary rounded-pill" href="#">Предыдущая</a>
+            <a class="btn btn-outline-secondary rounded-pill disabled" aria-disabled="true">Следующая</a>
+        </nav>
+
+    </div>
+
+    {% include 'blog/_sub.html' %}
+</div>
+
+
+{% endblock %}

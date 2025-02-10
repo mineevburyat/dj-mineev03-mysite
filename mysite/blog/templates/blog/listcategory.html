@@ -1,79 +1,53 @@
-{% extends "main/base.html" %}
-{% load static %}
+{% extends 'base.html' %}
 {% load mptt_tags %}
-{% load common_tags %}
-{% load blog_tags %}
 
-{% block styles %}
-<link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'blog/search.css' %}">
-<!-- style CSS -->
-<link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
+{% block breadcrumb %}
+{% include 'blog/_breadcrumb.html' %}
 {% endblock %}
 
 {% block content %}
-
-<section class="all_post section_padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="row">
-
-                    {% recursetree categorys %}
-                    <div class="col-lg-6 col-sm-3">
-                        <div class="single_post post_1">
-                            <div class="single_post_img">
-                                <img src="img/post/post_12.png" alt="">
-                            </div>
-
-                            <div class="single_post_text text-center">
-                                <a href="{{node.get_absolute_url}}">
-                                    <h2>{{node.title}}</h2>
-                                </a>
-                                {% for child in node.get_children %}
-                                {% if child.get_posts_count %}
-                                <a href="{{child.get_absolute_url}}">
-                                    <h3>{{ child.title }} ({{child.get_posts_count}})</h5>
-                                </a>
-                                {% endif %}
-                                {% endfor %}
-                                <p>Всего подкатегорий - {{node.get_descendant_count}}</p>
-                                <p>Всего заметок - {{node.get_posts_count}}</p>
-                            </div>
-
-
-                        </div>
-                    </div>
-                    {% endrecursetree %}
-                </div>
-                <!-- пагинатор -->
-
-                <!-- пагинатор -->
-            </div>
-            <div class="col-lg-4">
-                <div class="sidebar_widget">
-                    <div class="single_sidebar_wiget search_form_widget">
-                        <form action="#">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder='ключевые слова'
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
-                                <div class="btn_1">Поиск</div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="single_sidebar_wiget">
-                        {% show_tags %}
-                    </div>
-                    <div class="single_sidebar_wiget">
-                        {% show_last_posts %}
-                    </div>
-
-                </div>
-            </div>
+<section class="py-1 text-center container">
+    <div class="row">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">Блог айтишника</h1>
+            <p class="lead text-body-secondary">Мои основные интересы:</p>
         </div>
     </div>
 </section>
-<!-- feature_post end-->
 
+<div class="album bg-body-tertiary">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 justify-content-center">
+            {% recursetree categorys %}
+            <div class="col">
+                <div class="card shadow-sm">
+                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
+                            dy=".3em">Thumbnail</text>
+                    </svg>
+                    <div class="card-body">
+                        <h2 class="card-text">{{node.title}}</h2>
+                        <p>Всего подкатегорий - {{node.get_descendant_count}}</p>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a href="{% url 'blog:listposts' node.slug %}" type="button"
+                                    class="btn btn-sm btn-outline-secondary">Перейти</a>
+                                {% if user.is_staff %}
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Редактировать</button>
+                                {% endif %}
+                            </div>
+                            <small class="text-body-secondary">{{node.get_posts_count}} статей</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endrecursetree %}
+        </div>
+    </div>
+</div>
 
 {% endblock %}

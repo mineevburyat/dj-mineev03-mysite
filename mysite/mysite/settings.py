@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 from django.conf import settings
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -230,3 +231,7 @@ VERSIONS = getattr(settings, "FILEBROWSER_VERSIONS", {
 VERSION_QUALITY = getattr(settings, 'FILEBROWSER_VERSION_QUALITY', 90)
 
 TAGGIT_CASE_INSENSITIVE = True
+
+LOGIN_REDIRECT_URL = 'main:index'
+LOGOUT_REDIRECT_URL = 'main:index'
+LOGIN_URL = reverse_lazy('login')

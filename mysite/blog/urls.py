@@ -5,11 +5,12 @@ from .views import (ListPost,
 app_name = 'blog'
 
 urlpatterns = [
-    path('', ListCategory.as_view(), name='listcatrgory'),
+    path('', ListCategory.as_view(), name='index'),
+    path('category/<slug:slug>', ListPost.as_view(), name='listposts'),
     path('tags', ListPostbyTags, name='listpost_by_tags'),
 
     # path('add/', AddPost.as_view(), name="add"),
-    path('<slug:slug>', ListPost.as_view(), name='listposts'),
+    
     path('post/<slug:slug>', DetailPost.as_view(), name='post'),
     
 ]

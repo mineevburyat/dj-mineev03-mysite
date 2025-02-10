@@ -54,7 +54,7 @@ def ListPostbyTags(request):
 	
 class DetailPost(DetailView):
 	model = Post
-	template_name = "blog/detail.html"
+	template_name = "blog/detailpost.html"
 	
 
 

@@ -1,0 +1,33 @@
+{% load static %}
+
+<!doctype html>
+<html lang="ru" class="h-100">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Минеев Александр">
+    <meta name="language" content="Russian">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!-- seo -->
+    {% include '_components/seo.html' %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link href="{% static '/assets/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+
+<body class="d-flex flex-column h-100">
+    {% include '_components/header.html' %}
+    {% include '_components/messages.html' %}
+    <main class="container pt-5" role="main">
+        {% block breadcrumb %}
+        {% endblock %}
+
+        {% block content %}
+        {% endblock %}
+    </main>
+    {% include '_components/footer.html' %}
+    <script src="{% static '/assets/dist/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+</html>

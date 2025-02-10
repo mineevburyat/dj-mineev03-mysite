@@ -1,13 +1,14 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, CreateView
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
 
 # Create your views here.
 class Index(TemplateView):
-    template_name = "main/index.html"
-    extra_context = {'sections': [
-        'main/slider.html',
-        'main/tasks.html',
-        'main/about.html',
-        'main/hobby.html',
-        'main/services.html'
-    ]}
+    template_name = "index.html"
+    
+
+class SignUpView(CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = "registration/signup.html"

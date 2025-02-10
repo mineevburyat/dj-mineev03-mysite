@@ -4,7 +4,7 @@ from .models import Menu, UsefulLink
 
 @admin.register(Menu)
 class MenuAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('name', 'url', 'position')
 
 @admin.register(UsefulLink)
 class UsefulLinkAdmin(admin.ModelAdmin):

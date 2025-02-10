@@ -31,7 +31,7 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
-            <a class="nav-link" href="blog_index.html">Блог</a>
+            <a class="nav-link active" aria-current="page" href="#">Блог</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Читаю</a>
@@ -48,23 +48,13 @@
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="искать по сайту" aria-label="Search">
-          <button class="btn btn-outline-primary" type="submit">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-              class="bi bi-binoculars-fill" viewBox="0 0 16 16">
-              <path
-                d="M4.5 1A1.5 1.5 0 0 0 3 2.5V3h4v-.5A1.5 1.5 0 0 0 5.5 1h-1zM7 4v1h2V4h4v.882a.5.5 0 0 0 .276.447l.895.447A1.5 1.5 0 0 1 15 7.118V13H9v-1.5a.5.5 0 0 1 .146-.354l.854-.853V9.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v.793l.854.853A.5.5 0 0 1 7 11.5V13H1V7.118a1.5 1.5 0 0 1 .83-1.342l.894-.447A.5.5 0 0 0 3 4.882V4h4zM1 14v.5A1.5 1.5 0 0 0 2.5 16h3A1.5 1.5 0 0 0 7 14.5V14H1zm8 0v.5a1.5 1.5 0 0 0 1.5 1.5h3a1.5 1.5 0 0 0 1.5-1.5V14H9zm4-11H9v-.5A1.5 1.5 0 0 1 10.5 1h1A1.5 1.5 0 0 1 13 2.5V3z" />
-            </svg>
-          </button>
+          <button class="btn btn-outline-primary" type="submit">Поиск</button>
         </form>
         <div class="px-1">
           <div class="dropdown dropstart">
             <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
               aria-expanded="false">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-door-closed-fill" viewBox="0 0 16 16">
-                <path
-                  d="M12 1a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2a1 1 0 0 1 1-1h8zm-2 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
-              </svg>
+              admin
             </button>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">Админка</a></li>
@@ -76,108 +66,171 @@
       </div>
     </div>
   </nav>
-  <div class="position-relative">
+  <div class="position-relative" hidden>
     <div class="position-absolute top-50 start-50 mt-5 w-50">
-      <div class="alert alert-primary" role="alert" hidden>
+      <div class="alert alert-primary" role="alert">
         messages alert
       </div>
     </div>
   </div>
 
   <main class="container pt-5" role="main">
-    <nav aria-label="breadcrumb" hidden>
+    <nav aria-label="breadcrumb">
       <ol class="breadcrumb p-3 bg-body-tertiary rounded-3">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item"><a href="#">Library</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Data</li>
+        <li class="breadcrumb-item"><a href="#">Главная</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="#">Блог</a></li>
       </ol>
     </nav>
-    <div class="p-2 mb-4 bg-body-tertiary rounded-3">
-      <div class="container-fluid py-3">
-        <h1 class="display-5 fw-bold">Личный блог айтишника</h1>
-        <p class="col-md-8 fs-4">Передать опыт и знания.
-          Полезные ссылки, книги. Реализованные проекты</p>
-        <button class="btn btn-primary btn-lg" type="link" href="blog_index.html">Перейти в блог</button>
-        <button class="btn btn-primary btn-lg" type="button">Обо мне</button>
+
+    <div class="p-1 p-md-3 mb-1 rounded text-body-emphasis bg-body-secondary">
+      <div class="col-lg-6 px-0">
+        <h1 class="display-4 fst-italic">Заголовок категории</h1>
+        <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently
+          about what’s most interesting in this post’s contents.</p>
+        <p class="lead mb-0"><a href="#" class="text-body-emphasis fw-bold">Continue reading...</a></p>
       </div>
-      <div class="container px-2 py-1" id="custom-cards">
-        <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-          <div class="col">
-            <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
-              style="background-image: url('../assets/img/unsplash-photo-1.jpg');">
-              <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Мои проекты</h3>
-                <ul class="d-flex list-unstyled mt-auto">
-                  <li class="me-auto">
-                    <button class="btn btn-info btn-small" type="button">Подробнее</button>
-                  </li>
-                  <li class="d-flex align-items-center me-3 .text-light">
-                    <!-- <svg class="bi me-2 " width="1em" height="1em">
-                      <use xlink:href="#geo-fill" />
-                    </svg> -->
-                    <small>Всего проектов</small>
-                  </li>
-                  <li class="d-flex align-items-center">
-                    <!-- <svg class="bi me-2" width="1em" height="1em">
-                      <use xlink:href="#calendar3" />
-                    </svg> -->
-                    <small>4</small>
-                  </li>
-                </ul>
+    </div>
+
+    <div class="row">
+      <div class="col-8">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+              <div class="col p-4 d-flex flex-column position-static">
+                <strong class="d-inline-block mb-2 text-primary-emphasis">World</strong>
+                <h3 class="mb-0">Featured post</h3>
+                <div class="mb-1 text-body-secondary">Nov 12</div>
+                <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to
+                  additional content.</p>
+                <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+                  Continue reading
+                  <svg class="bi">
+                    <use xlink:href="#chevron-right" />
+                  </svg>
+                </a>
+              </div>
+              <div class="col-auto d-none d-lg-block">
+                <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img"
+                  aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                  <title>Placeholder</title>
+                  <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
+                    dy=".3em">Thumbnail</text>
+                </svg>
               </div>
             </div>
           </div>
-
-          <div class="col">
-            <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
-              style="background-image: url('../assets/img/unsplash-photo-2.jpg');">
-              <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Обучающие курсы</h3>
-                <ul class="d-flex list-unstyled mt-auto">
-                  <li class="me-auto">
-                    <button class="btn btn-info btn-small" type="button">Подробнее</button>
-                  </li>
-                  <li class="d-flex align-items-center me-3">
-                    <!-- <svg class="bi me-2" width="1em" height="1em">
-                      <use xlink:href="#geo-fill" />
-                    </svg> -->
-                    <small>Всего курсов</small>
-                  </li>
-                  <li class="d-flex align-items-center">
-                    <!-- <svg class="bi me-2" width="1em" height="1em">
-                      <use xlink:href="#calendar3" />
-                    </svg> -->
-                    <small>1</small>
-                  </li>
-                </ul>
+          <div class="col-md-6">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+              <div class="col p-4 d-flex flex-column position-static">
+                <strong class="d-inline-block mb-2 text-success-emphasis">Design</strong>
+                <h3 class="mb-0">Post title</h3>
+                <div class="mb-1 text-body-secondary">Nov 11</div>
+                <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional
+                  content.</p>
+                <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+                  Continue reading
+                  <svg class="bi">
+                    <use xlink:href="#chevron-right" />
+                  </svg>
+                </a>
+              </div>
+              <div class="col-auto d-none d-lg-block">
+                <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img"
+                  aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                  <title>Placeholder</title>
+                  <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
+                    dy=".3em">Thumbnail</text>
+                </svg>
               </div>
             </div>
           </div>
-
-          <div class="col">
-            <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
-              style="background-image: url('../assets/img/unsplash-photo-3.jpg');">
-              <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-                <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Библиотека</h3>
-                <ul class="d-flex list-unstyled mt-auto">
-                  <li class="me-auto">
-                    <button class="btn btn-info btn-small" type="button">Подробнее</button>
-                  </li>
-                  <li class="d-flex align-items-center me-3">
-                    <!-- <svg class="bi me-2" width="1em" height="1em">
-                      <use xlink:href="#geo-fill" />
-                    </svg> -->
-                    <small>Всего книг</small>
-                  </li>
-                  <li class="d-flex align-items-center">
-                    <!-- <svg class="bi me-2" width="1em" height="1em">
-                      <use xlink:href="#calendar3" />
-                    </svg> -->
-                    <small>23</small>
-                  </li>
-                </ul>
-              </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="row">
+          <div class="mb-4">
+            <h4>Категории</h4>
+            <div class="list-group">
+              <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                The current link item
+              </a>
+              <a href="#" class="list-group-item list-group-item-action">A second link item</a>
+              <a href="#" class="list-group-item list-group-item-action">A third link item</a>
+              <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
+              <a class="list-group-item list-group-item-action disabled" aria-disabled="true">A disabled link item</a>
             </div>
+          </div>
+          <div class="container p-2 mb-2">
+            <h4 class="fst-italic">Тэги</h4>
+            <ol class="list-unstyled mb-0 d-flex flex-wrap gap-2">
+              <li><a href="#">March 2021</a></li>
+              <li><a href="#">February 2021</a></li>
+              <li><a href="#">January 2021</a></li>
+              <li><a href="#">December 2020</a></li>
+              <li><a href="#">November 2020</a></li>
+              <li><a href="#">October 2020</a></li>
+              <li><a href="#">September 2020</a></li>
+              <li><a href="#">August 2020</a></li>
+              <li><a href="#">July 2020</a></li>
+              <li><a href="#">June 2020</a></li>
+              <li><a href="#">May 2020</a></li>
+              <li><a href="#">April 2020</a></li>
+            </ol>
+          </div>
+          <div>
+            <h4 class="fst-italic">Читаемые статьи</h4>
+            <ul class="list-unstyled">
+              <li>
+                <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top"
+                  href="#">
+                  <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <rect width="100%" height="100%" fill="#777" />
+                  </svg>
+                  <div class="col-lg-8">
+                    <h6 class="mb-0">Example blog post title</h6>
+                    <small class="text-body-secondary">January 15, 2024</small>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top"
+                  href="#">
+                  <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <rect width="100%" height="100%" fill="#777" />
+                  </svg>
+                  <div class="col-lg-8">
+                    <h6 class="mb-0">This is another blog post title</h6>
+                    <small class="text-body-secondary">January 14, 2024</small>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top"
+                  href="#">
+                  <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <rect width="100%" height="100%" fill="#777" />
+                  </svg>
+                  <div class="col-lg-8">
+                    <h6 class="mb-0">Longer blog post title: This one has multiple lines!</h6>
+                    <small class="text-body-secondary">January 13, 2024</small>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+
+
+          <div class="p-4">
+            <h4 class="fst-italic">Elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">GitHub</a></li>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">Facebook</a></li>
+            </ol>
           </div>
         </div>
       </div>
