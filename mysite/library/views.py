@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, ListView
 
-from .models import Book, BookInstance, eBookInstance, Author, Genre
+from .models import Book, BookInstance, eBookInstance, Genre
 
 class ListBooks(ListView):
     template_name = "library/list.html"

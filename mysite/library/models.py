@@ -11,7 +11,7 @@ from taggit.managers import TaggableManager
 
 class Genre(models.Model):
     name = models.CharField(max_length=200, 
-                            help_text="жанр книги (научпоп, фантастика и пр.)",
+                            help_text="жанр книги согласно https://blog.selfpub.ru/genresofliterature",
                             unique=True)
     
     def __str__(self):
@@ -33,22 +33,26 @@ class Book(models.Model):
     title = models.CharField(max_length=120,
                              verbose_name='Название',
                              db_index=True)
-    author = models.ForeignKey('Author', on_delete=models.SET_NULL, null=True)
+    authors = models.CharField(verbose_name='авторы',
+                               max_length=100)
     summary = HTMLField(max_length=1000, 
                         help_text="Краткое описание книги")
-    isbn = models.CharField('ISBN',
-                            max_length=13, 
-                            help_text='13 Character <a href="https://www.isbn-international.org/content/what-isbn">ISBN number</a>')
-    genre = models.ManyToManyField(Genre, 
-                                   help_text="Выберите подходящие жанры")
+    genre = models.ForeignKey(Genre,
+                              help_text="Выберите жанр",
+                              on_delete=models.PROTECT,
+                              verbose_name='жанр',
+                              related_name='genre_books',
+                              )
+    cataloge = models.CharField(verbose_name='код каталога',
+                                help_text='код каталога или классификатора (ББК, УДК)',
+                                blank=True,
+                                null=True)
     category = TreeForeignKey(CategoryTree, 
                                 on_delete=models.PROTECT, 
                                 verbose_name='Категория',
-                                related_name='books',
-                                blank=True,
-                                null=True)
-    tags = TaggableManager()
-
+                                related_name='category_books',
+                                )
+    tags = TaggableManager(blank=True)
     class Meta:
         ordering = ('title',)
         verbose_name = 'книга'
@@ -60,10 +64,12 @@ class Book(models.Model):
     def get_absolute_url(self):
         return reverse('book-detail', args=[str(self.pk)])
        
-    
+
 class BookInstance(models.Model):
     """
-    существующий твердый экземпляр
+    Абстрактный класс для экземпляра книги (твердой или электронной)
+    Связь с книгой.
+    Технические характеристики.
     """
     id = models.UUIDField(primary_key=True, 
                           default=uuid.uuid4, 
@@ -71,48 +77,58 @@ class BookInstance(models.Model):
     book = models.ForeignKey('Book', 
                              on_delete=models.SET_NULL, 
                              null=True)
-    imprint = models.CharField(max_length=200,
-                               help_text="издательство, год печати, номер издания, переводчик")
+    publishing_house = models.CharField(verbose_name='издательство',
+                                        max_length=25,
+                                        blank=True,
+                                        null=True)
+    publishing_year = models.PositiveIntegerField(verbose_name='год издания',
+                                          blank=True, null=True)
+    isbn = models.CharField('ISBN',
+                            max_length=13, 
+                            help_text='13 Character <a href="https://www.isbn-international.org/content/what-isbn">ISBN number</a>',
+                            blank=True,
+                            null=True)
+    class Meta:
+        abstract = True
+
+    def __str__(self):
+        return '%s (%s)' % (self.id,self.book.title)
+
+class HardBookInstance(BookInstance):
+    """
+    существующий твердый экземпляр.
+    на месте ли, когда и кому дан на руки
+    """
     date_of_loan = models.DateField(null=True, blank=True,
                                 help_text="дата когда взяли почитать")
-
     LOAN_STATUS = (
         ('site', 'На полке'),
         ('loan', 'на руках'),
         ('lost', 'утерян'),
     )
-
     status = models.CharField(max_length=5, 
                               choices=LOAN_STATUS, 
                               blank=True, 
                               default='site', 
                               help_text='доступность книги')
-
     class Meta:
         ordering = ["date_of_loan"]
         verbose_name = "экземпляр книги"
         verbose_name_plural = "экземпляры книг"
 
-
-    def __str__(self):
-        return '%s (%s)' % (self.id,self.book.title)
-    
-class eBookInstance(models.Model):
+   
+class eBookInstance(BookInstance):
     """
     существующий электронный экземпляр
+    связь с книгой
+    ссылка на книгу
+    сколько раз скачивали
     """
-    id = models.UUIDField(primary_key=True, 
-                          default=uuid.uuid4, 
-                          help_text="Уникальный ID")
-    book = models.ForeignKey('Book', 
-                             on_delete=models.SET_NULL, 
-                             null=True)
-    imprint = models.CharField(max_length=200,
-                               help_text="издательство, год печати, номер издания, переводчик")
-    url = models.URLField(help_text="ссылка на яндекс диск", unique=True)
+    url = models.URLField(verbose_name='ссылка на книгу',
+                          help_text="ссылка на яндекс диск",
+                          unique=True)
     count_load = models.PositiveIntegerField('количество скачиваний', 
                                              default=0)
-
     class Meta:
         ordering = ["book"]
         verbose_name = "электронный экземпляр"
@@ -125,23 +141,4 @@ class eBookInstance(models.Model):
             ),
         ]
 
-    def __str__(self):
-        return '%s (%s)' % (self.id,self.book.title)
-    
-class Author(models.Model):
-    name = models.CharField('Полное имя',
-                            max_length=150,
-                            unique=True,
-                            db_index=True)
-    date_of_birth = models.DateField(null=True, blank=True)
-    date_of_death = models.DateField('Died', null=True, blank=True)
-
-    def get_absolute_url(self):
-        return reverse('author-detail', args=[str(self.pk)])
-
-    def __str__(self):
-        return '%s' % (self.name)
-    
-    class Meta:
-        verbose_name = "автор"
-        verbose_name_plural = "авторы"
+ 
