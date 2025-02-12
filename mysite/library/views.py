@@ -5,8 +5,8 @@ from .models import Book, BookInstance, eBookInstance, Author, Genre
 
 class ListBooks(ListView):
     template_name = "library/list.html"
-    model = eBookInstance
-    context_object_name = 'ebooks'
+    model = Book
+    context_object_name = 'books'
 
 class DetailBook(TemplateView):
     template_name = 'library/detail.html'

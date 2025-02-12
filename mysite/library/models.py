@@ -4,12 +4,16 @@ from tinymce.models import HTMLField
 import uuid
 from django.db.models import UniqueConstraint
 from django.db.models.functions import Lower
+from blog.models import CategoryTree
+from mptt.models import MPTTModel, TreeForeignKey
+from taggit.managers import TaggableManager
+
 
 class Genre(models.Model):
     name = models.CharField(max_length=200, 
                             help_text="жанр книги (научпоп, фантастика и пр.)",
                             unique=True)
-
+    
     def __str__(self):
         return self.name
     
@@ -25,6 +29,7 @@ class Genre(models.Model):
         verbose_name_plural = "жанры"
 
 class Book(models.Model):
+    """Книга как продукт автора и её описание"""
     title = models.CharField(max_length=120,
                              verbose_name='Название',
                              db_index=True)
@@ -36,21 +41,29 @@ class Book(models.Model):
                             help_text='13 Character <a href="https://www.isbn-international.org/content/what-isbn">ISBN number</a>')
     genre = models.ManyToManyField(Genre, 
                                    help_text="Выберите подходящие жанры")
-    
+    category = TreeForeignKey(CategoryTree, 
+                                on_delete=models.PROTECT, 
+                                verbose_name='Категория',
+                                related_name='books',
+                                blank=True,
+                                null=True)
+    tags = TaggableManager()
+
+    class Meta:
+        ordering = ('title',)
+        verbose_name = 'книга'
+        verbose_name_plural = 'книги'
+
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('book-detail', args=[str(self.id)])
-    
-    class Meta:
-        verbose_name = "книга"
-        verbose_name_plural = "книги"
-        
+        return reverse('book-detail', args=[str(self.pk)])
+       
     
 class BookInstance(models.Model):
     """
-    существующий экземпляр
+    существующий твердый экземпляр
     """
     id = models.UUIDField(primary_key=True, 
                           default=uuid.uuid4, 
@@ -124,7 +137,7 @@ class Author(models.Model):
     date_of_death = models.DateField('Died', null=True, blank=True)
 
     def get_absolute_url(self):
-        return reverse('author-detail', args=[str(self.id)])
+        return reverse('author-detail', args=[str(self.pk)])
 
     def __str__(self):
         return '%s' % (self.name)

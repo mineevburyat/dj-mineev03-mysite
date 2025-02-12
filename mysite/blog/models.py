@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from tinymce.models import HTMLField
 from mptt.models import MPTTModel, TreeForeignKey
 from taggit.managers import TaggableManager
+from django.db.models import UniqueConstraint
+from django.db.models.functions import Lower
 
 class Post(models.Model):
     STATUS_CHOICES = (
@@ -75,11 +77,19 @@ class CategoryTree(MPTTModel):
                                    null=True)
 
     class MPTTMeta:
-        order_insertion_by = ['order']
+        order_insertion_by = ('order', )
     class Meta:
         unique_together = [['parent', 'slug']]
         verbose_name = 'категория'
         verbose_name_plural = 'категории'
+        constraints = [
+            UniqueConstraint(
+                Lower('title'),
+                name='category_title_case_insensitive_unique',
+                violation_error_message = "Категория уже существует"
+            ),
+        ]
+        ordering = ('order',)
 
     def __str__(self):
         return self.title
