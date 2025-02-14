@@ -5,31 +5,37 @@ import uuid
 from django.db.models import UniqueConstraint
 from django.db.models.functions import Lower
 from blog.models import CategoryTree
-from mptt.models import MPTTModel, TreeForeignKey
+from mptt.models import TreeForeignKey, MPTTModel
 from taggit.managers import TaggableManager
 
 
-class Genre(models.Model):
-    name = models.CharField(max_length=200, 
-                            help_text="жанр книги согласно https://blog.selfpub.ru/genresofliterature",
+class GenreTree(MPTTModel):
+    name = models.CharField(verbose_name='название жанра', 
+                            max_length=70, 
                             unique=True)
+    parent = TreeForeignKey('self', 
+                            on_delete=models.PROTECT,
+                            null=True, 
+                            blank=True, 
+                            related_name='children')
+    description = models.TextField(verbose_name='Описание жанра')
+    class Meta:
+        # constraints = [
+        #     UniqueConstraint(
+        #         Lower('name'),
+        #         name='genretree_name_case_insensitive_unique',
+        #         violation_error_message = "Жанр уже существует"
+        #     ),
+        # ]
+        verbose_name = "жанр"
+        verbose_name_plural = "жанры"
     
     def __str__(self):
         return self.name
     
-    class Meta:
-        constraints = [
-            UniqueConstraint(
-                Lower('name'),
-                name='genre_name_case_insensitive_unique',
-                violation_error_message = "Жанр уже существует"
-            ),
-        ]
-        verbose_name = "жанр"
-        verbose_name_plural = "жанры"
 
 class Book(models.Model):
-    """Книга как продукт автора и её описание"""
+    """Книга как продукт автора и её описание, каталог знаний"""
     title = models.CharField(max_length=120,
                              verbose_name='Название',
                              db_index=True)
@@ -37,12 +43,6 @@ class Book(models.Model):
                                max_length=100)
     summary = HTMLField(max_length=1000, 
                         help_text="Краткое описание книги")
-    genre = models.ForeignKey(Genre,
-                              help_text="Выберите жанр",
-                              on_delete=models.PROTECT,
-                              verbose_name='жанр',
-                              related_name='genre_books',
-                              )
     cataloge = models.CharField(verbose_name='код каталога',
                                 help_text='код каталога или классификатора (ББК, УДК)',
                                 blank=True,
@@ -53,6 +53,12 @@ class Book(models.Model):
                                 related_name='category_books',
                                 )
     tags = TaggableManager(blank=True)
+    genretree = TreeForeignKey(GenreTree, 
+                                on_delete=models.PROTECT, 
+                                related_name='books', 
+                                verbose_name='Жанр',
+                                blank=True,
+                                null=True) 
     class Meta:
         ordering = ('title',)
         verbose_name = 'книга'

@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load mptt_tags %}
+
 {% block breadcrumb %}
 {% include 'library/_breadcrumb.html' %}
 {% endblock %}
@@ -7,8 +9,10 @@
 {% block content %}
 <div class="p-1 p-md-3 mb-1 rounded text-body-emphasis bg-body-secondary">
     <div class="col-lg-6 px-0">
-        <h1 class="display-4 fst-italic">{{category.title}}</h1>
-        <p class="lead my-3">{{category.description }}</p>
+        <h1 class="display-4 fst-italic">Жанры</h1>
+        {% recursetree genres %}
+        <p class="lead my-3">{{ node }}</p>
+        {% endrecursetree %}
 
     </div>
 </div>
