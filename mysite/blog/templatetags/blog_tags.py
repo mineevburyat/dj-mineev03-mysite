@@ -18,7 +18,7 @@ def show_category(*args):
         if isinstance(category, CategoryTree):
             subcategory = category.get_children()
     else:
-        subcategory = CategoryTree.objects.all()
+        subcategory = CategoryTree.objects.filter(level=0)
     return {
         "category": subcategory,
     }
