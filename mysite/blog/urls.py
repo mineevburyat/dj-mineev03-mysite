@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import (ListPost, 
-                    DetailPost,
+                    viewPost,
                     ListCategory, ListPostbyTags)
 app_name = 'blog'
 
@@ -11,6 +11,6 @@ urlpatterns = [
 
     # path('add/', AddPost.as_view(), name="add"),
     
-    path('post/<slug:slug>', DetailPost.as_view(), name='post'),
+    path('category/<slug:cslug>/post/<slug:pslug>', viewPost, name='post'),
     
 ]

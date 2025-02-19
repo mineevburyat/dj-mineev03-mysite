@@ -19,8 +19,7 @@
     {% include '_components/header.html' %}
     {% include '_components/messages.html' %}
     <main class="container pt-5" role="main">
-        {% block breadcrumb %}
-        {% endblock %}
+        {% include '_components/_breadcrumb.html' %}
 
         {% block content %}
         {% endblock %}

@@ -15,17 +15,14 @@ def show_last_posts():
 def show_category(*args):
     if len(args) == 1:
         category = args[0]
+        print(category, type(category))
         if isinstance(category, CategoryTree):
-            subcategory = category.get_children()
+            subcat = category.get_children() if category.get_children() else category.get_siblings()
+        else:
+            subcat = CategoryTree.objects.filter(level=0)
     else:
-        subcategory = CategoryTree.objects.filter(level=0)
+        subcat = CategoryTree.objects.filter(level=0)
     return {
-        "category": subcategory,
+        "category": subcat,
     }
 
-@register.inclusion_tag('blog/_breadcrumb.html')
-def show_breadcrumb():
-    subcategory = category.get_children()
-    return {
-        "category": subcategory,
-    }

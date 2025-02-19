@@ -7,10 +7,7 @@
     <a href="{% url 'blog:listposts' node.slug %}" class="list-group-item list-group-item-action">
         {{ node.title }} ({{node.get_posts_count}})
     </a>
-    {% else %}
-    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">
-        {{ node.title }} ({{node.get_posts_count}})
-    </a>
+
     {% endif %}
     {% endfor %}
 </div>

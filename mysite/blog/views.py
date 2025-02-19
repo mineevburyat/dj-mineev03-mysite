@@ -1,10 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, CreateView
 from .models import CategoryTree, Post
 from .forms import AddPostForm
 from taggit.models import Tag 
-
+from django.urls import reverse
 
 
 class ListCategory(ListView):
@@ -15,6 +15,10 @@ class ListCategory(ListView):
 		context = super().get_context_data(**kwargs)
 		context['title'] = 'Блог'
 		context['category'] = CategoryTree.objects.all()
+		context['breadcrumbs'] = (
+        {'name': 'Главная', 'url': '/'},
+        {'name': 'Интересы', 'url': ''},
+        )
 		return context
 
 class ListPost(ListView):
@@ -33,6 +37,16 @@ class ListPost(ListView):
 		context = super().get_context_data(**kwargs)
 		context['title'] = 'Интересы ' + self.category.title
 		context['category'] = self.category
+		root = self.category.get_root()
+		context['breadcrumbs'] = [
+        {'name': 'Главная', 'url': '/'},
+        {'name': 'Интересы', 'url': reverse('blog:index')}]
+		if root:
+			context['breadcrumbs'].append(
+				{'name': root.title, 
+	 			'url': reverse('blog:listposts', kwargs={'slug': root.slug})})
+		context['breadcrumbs'].append(
+			{'name': self.category.title, 'url': ''})
 		return context
 
 def ListPostbyTags(request):
@@ -51,11 +65,27 @@ def ListPostbyTags(request):
 		except:
 			return redirect('blog:listcatrgory')
 	
-	
-class DetailPost(DetailView):
-	model = Post
-	template_name = "blog/detailpost.html"
-	
+
+def viewPost(request, cslug, pslug):
+	category = get_object_or_404(CategoryTree, slug=cslug)
+	# CategoryTree.objects.get(slug=cslug)
+	post = get_object_or_404(Post, slug=pslug)
+	root = category.get_root()
+	breadcrumbs = [
+        {'name': 'Главная', 'url': '/'},
+        {'name': 'Интересы', 'url': reverse('blog:index')}]
+	if root:
+		breadcrumbs.append(
+				{'name': root.title, 
+	 			'url': reverse('blog:listposts', kwargs={'slug': root.slug})})
+	breadcrumbs.append(
+			{'name': category.title, 'url': ''})
+	context = {
+		'category': category,
+		'post': post,
+		'breadcrumbs': breadcrumbs
+	}
+	return render(request, "blog/detailpost.html", context)
 
 
 class AddPost(CreateView):

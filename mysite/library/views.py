@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, ListView
+from django.urls import reverse
 
 from .models import Book, GenreTree
 
@@ -11,6 +12,10 @@ class ListBooks(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['genres'] = GenreTree.objects.filter(level=1)
+        context['breadcrumbs'] = (
+        {'name': 'Главная', 'url': '/'},
+        {'name': 'Библиотека', 'url': ''},
+        )
         return context
 
 class DetailBook(TemplateView):
