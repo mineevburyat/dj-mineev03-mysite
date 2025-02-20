@@ -1,7 +1,36 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
-    <h1>Приложение обучающие курсы</h1>
+<div class="p-1 p-md-3 mb-1 rounded text-body-emphasis bg-body-secondary">
+    <div class="col-lg-6 px-0 mb-1">
+        <h2 class="display-5 fst-italic">Курсы</h2>
+        .
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-8">
+            {% for course in courses %}
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block mb-2 text-primary-emphasis">{{ book.genre }}</strong>
+                    <h3 class="mb-0">{{ course.title}}</h3>
+                    <div class="mb-1 text-body-secondary">Nov 12</div>
+                    <p class="card-text mb-auto">{{ course.description }}</p>
+                    <a href="{% url 'service:detail' %}" class="icon-link gap-1 icon-link-hover stretched-link">
+                        записаться
+                        <svg class="bi">
+                            <use xlink:href="#chevron-right" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="col-auto d-none d-lg-block">
+                    <img src="{{ course.icon.url }}">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% include 'service/_sub.html' %}
+    </div>
 </div>
 {% endblock %}
