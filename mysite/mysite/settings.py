@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'service',
     'project',
     'about',
+    'fgos',
 ]
 
 MIDDLEWARE = [
