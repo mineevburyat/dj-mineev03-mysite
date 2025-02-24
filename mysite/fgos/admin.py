@@ -11,7 +11,7 @@ class GroupScinceAdmin(admin.ModelAdmin):
 
 @admin.register(Speciality)
 class SpecialityAdmin(admin.ModelAdmin):
-    pass
+    list_filter = ('group',)
 
 @admin.register(FGOS)
 class FGOSAdmin(admin.ModelAdmin):

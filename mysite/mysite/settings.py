@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'project',
     'about',
     'fgos',
+    'profstandart',
 ]
 
 MIDDLEWARE = [

@@ -4,9 +4,13 @@ from django.db import models
 
 class Science(models.Model):
     name = models.CharField(verbose_name='название науки')
-    
+    class Meta:
+        verbose_name = 'наука'
+        verbose_name_plural = 'науки'
     def __str__(self):
         return self.name
+    
+
 
 class GroupScience(models.Model):
     cod = models.CharField(verbose_name='код',
@@ -18,7 +22,10 @@ class GroupScience(models.Model):
                                 verbose_name='наука',
                                 on_delete=models.PROTECT,
                                 related_name='groups')
-    
+    class Meta:
+        verbose_name = 'группа'
+        verbose_name_plural = 'группы'
+
     def __str__(self):
         return f"{self.cod} {self.title}"
 
@@ -32,7 +39,10 @@ class Speciality(models.Model):
                               verbose_name='группа специальностей',
                               on_delete=models.PROTECT,
                               related_name='specialitys')
-    
+    class Meta:
+        verbose_name = 'специальность'
+        verbose_name_plural = 'специальности'
+
     def __str__(self):
         return f"{self.cod} {self.title} ({self.group.title} - {self.group.science.name})"
 
@@ -49,6 +59,10 @@ class FGOS(models.Model):
                                    on_delete=models.PROTECT,
                                    blank=True,
                                    null=True)
+    class Meta:
+        verbose_name = 'образовательный стандарт'
+        verbose_name_plural = 'образовательные стандарты'
+
     def __str__(self):
         if self.speciality:
             return f"{self.title} {self.speciality.title}"
