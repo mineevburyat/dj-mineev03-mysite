@@ -1,10 +1,25 @@
 from django.contrib import admin
-from .models import Course, Competetion, CompetetionType, ActiviteType, Skill
+from .models import (Course, Competetion, CompetetionType, 
+                     ActiviteType, Skill, ChapterLesson,
+                     Lesson)
 
+class LessonAdminInLine(admin.StackedInline):
+    extra = 0
+    model = Lesson
+
+@admin.register(ChapterLesson)
+class ChapterAdmin(admin.ModelAdmin):
+    inlines = (LessonAdminInLine, )
+    fields = ('title', )
+
+class ChapterLessonInLine(admin.StackedInline):
+    extra = 0
+    model = ChapterLesson
 
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
     list_display = ('title', 'description', 'icon')
+    inlines = (ChapterLessonInLine, )
 
 @admin.register(Competetion)
 class CompetetionAdmin(admin.ModelAdmin):
@@ -23,3 +38,4 @@ class ActiviteTypeAdmin(admin.ModelAdmin):
 @admin.register(Skill)
 class SkillAdmin(admin.ModelAdmin):
     pass
+

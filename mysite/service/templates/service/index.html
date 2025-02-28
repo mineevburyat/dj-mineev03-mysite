@@ -10,21 +10,28 @@
     <div class="row">
         <div class="col-8">
             {% for course in courses %}
-            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-primary-emphasis">{{ book.genre }}</strong>
-                    <h3 class="mb-0">{{ course.title}}</h3>
-                    <div class="mb-1 text-body-secondary">Nov 12</div>
-                    <p class="card-text mb-auto">{{ course.description }}</p>
-                    <a href="{% url 'service:detail' %}" class="icon-link gap-1 icon-link-hover stretched-link">
-                        записаться
-                        <svg class="bi">
-                            <use xlink:href="#chevron-right" />
-                        </svg>
-                    </a>
-                </div>
-                <div class="col-auto d-none d-lg-block">
-                    <img src="{{ course.icon.url }}">
+            <div class="card mb-3">
+                <div class="row g-0 align-items-center">
+                    <div class="card-header bg-transparent border-primary">Header</div>
+                    <div class="col-md-3 mx-auto">
+                        <img src="{{ course.icon.url }}" class="img-fluid d-block mx-auto" alt="...">
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ course.title}}</h5>
+                            <p class="card-text">{{ course.description }}</p>
+                            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-primary">
+                        <a href="{% url 'service:detail' %}" class="icon-link gap-1 icon-link-hover stretched-link">
+                            записаться
+                            <svg class="bi">
+                                <use xlink:href="#chevron-right" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
             {% endfor %}
