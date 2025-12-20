@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Персональная страничка Айтишника</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- FullCalendar CSS -->
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
+    <link href="style.css" rel='stylesheet'>
+</head>
+<body>
+    <!-- Навигационная панель -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-terminal-fill me-2"></i>IT Personal Dashboard
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">
+                            <i class="bi bi-house-door me-1"></i>Главная
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="library.html">
+                            <i class="bi bi-book me-1"></i>Библиотека
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tasks.html">
+                            <i class="bi bi-check-square me-1"></i>Задачи
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="calendar.html">
+                            <i class="bi bi-calendar-event me-1"></i>Календарь
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle me-1"></i>Профиль
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Настройки</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right me-2"></i>Выход</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Заголовок дашборда -->
+    <div class="dashboard-header">
+        <div class="container">
+            <h1 class="display-5">Добро пожаловать, Александр!</h1>
+            <p class="lead">Ваш персональный IT-дашборд с задачами, книгами и календарем</p>
+            <div class="row mt-4">
+                <div class="col-md-3 col-6">
+                    <div class="stats-card">
+                        <div class="stats-number" id="totalActiveTasks">19</div>
+                        <div>Активных задач</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stats-card">
+                        <div class="stats-number" id="totalCompletedTasks">34</div>
+                        <div>Выполнено задач</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stats-card">
+                        <div class="stats-number" id="totalBooks">28</div>
+                        <div>Книг в библиотеке</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stats-card">
+                        <div class="stats-number" id="upcomingEvents">5</div>
+                        <div>Ближайших событий</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div class="container">
+        <div class="row">
+            <!-- Боковая панель с проектами -->
+            <div class="col-lg-3 mb-4">
+                <div class="sidebar">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="mb-0"><i class="bi bi-kanban me-2"></i>Мои проекты</h5>
+                        <button class="btn btn-sm btn-outline-primary" id="newProjectBtn">
+                            <i class="bi bi-plus"></i>
+                        </button>
+                    </div>
+                    
+                    <div id="projectsList">
+                        <!-- Проект 1 -->
+                        <div class="project-item project-high active" data-project="diploma">
+                            <div class="project-header">
+                                <h6 class="project-title">Дипломная работа</h6>
+                                <span class="project-tag">Высокий</span>
+                            </div>
+                            <div class="project-stats">
+                                <span class="text-danger">
+                                    <i class="bi bi-clock"></i> Активных: <strong>5</strong>
+                                </span>
+                                <span class="text-success">
+                                    <i class="bi bi-check-circle"></i> Выполнено: <strong>8</strong>
+                                </span>
+                            </div>
+                            <div class="project-progress">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <small>Прогресс</small>
+                                    <small><strong>62%</strong></small>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 62%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Проект 2 -->
+                        <div class="project-item project-medium" data-project="website">
+                            <div class="project-header">
+                                <h6 class="project-title">Корпоративный сайт</h6>
+                                <span class="project-tag">Средний</span>
+                            </div>
+                            <div class="project-stats">
+                                <span class="text-warning">
+                                    <i class="bi bi-clock"></i> Активных: <strong>4</strong>
+                                </span>
+                                <span class="text-success">
+                                    <i class="bi bi-check-circle"></i> Выполнено: <strong>12</strong>
+                                </span>
+                            </div>
+                            <div class="project-progress">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <small>Прогресс</small>
+                                    <small><strong>75%</strong></small>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Проект 3 -->
+                        <div class="project-item project-low" data-project="mobile-app">
+                            <div class="project-header">
+                                <h6 class="project-title">Мобильное приложение</h6>
+                                <span class="project-tag">Низкий</span>
+                            </div>
+                            <div class="project-stats">
+                                <span class="text-success">
+                                    <i class="bi bi-clock"></i> Активных: <strong>2</strong>
+                                </span>
+                                <span class="text-success">
+                                    <i class="bi bi-check-circle"></i> Выполнено: <strong>6</strong>
+                                </span>
+                            </div>
+                            <div class="project-progress">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <small>Прогресс</small>
+                                    <small><strong>75%</strong></small>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Проект 4 -->
+                        <div class="project-item project-medium" data-project="api">
+                            <div class="project-header">
+                                <h6 class="project-title">API разработка</h6>
+                                <span class="project-tag">Средний</span>
+                            </div>
+                            <div class="project-stats">
+                                <span class="text-warning">
+                                    <i class="bi bi-clock"></i> Активных: <strong>3</strong>
+                                </span>
+                                <span class="text-success">
+                                    <i class="bi bi-check-circle"></i> Выполнено: <strong>5</strong>
+                                </span>
+                            </div>
+                            <div class="project-progress">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <small>Прогресс</small>
+                                    <small><strong>63%</strong></small>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 63%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Проект 5 -->
+                        <div class="project-item project-high" data-project="devops">
+                            <div class="project-header">
+                                <h6 class="project-title">DevOps инфраструктура</h6>
+                                <span class="project-tag">Высокий</span>
+                            </div>
+                            <div class="project-stats">
+                                <span class="text-danger">
+                                    <i class="bi bi-clock"></i> Активных: <strong>5</strong>
+                                </span>
+                                <span class="text-success">
+                                    <i class="bi bi-check-circle"></i> Выполнено: <strong>3</strong>
+                                </span>
+                            </div>
+                            <div class="project-progress">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <small>Прогресс</small>
+                                    <small><strong>38%</strong></small>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 38%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Итоговая статистика -->
+                    <div class="mt-4 pt-3 border-top">
+                        <h6><i class="bi bi-bar-chart me-2"></i>Итоги по проектам</h6>
+                        <div class="small">
+                            <div class="d-flex justify-content-between">
+                                <span>Всего проектов:</span>
+                                <strong>5</strong>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>Всего задач:</span>
+                                <strong>53</strong>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>Общий прогресс:</span>
+                                <strong>65%</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Основная область контента -->
+            <div class="col-lg-9">
+                <div class="row">
+                    <!-- Менеджер задач -->
+                    <div class="col-lg-6 mb-4">
+                        <div class="card dashboard-card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <span><i class="bi bi-check-square me-2"></i>Менеджер задач</span>
+                                <div>
+                                    <span class="badge bg-danger me-2">Высокий: 10</span>
+                                    <span class="badge bg-warning me-2">Средний: 7</span>
+                                    <span class="badge bg-success">Низкий: 2</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <small>Общий прогресс выполнения</small>
+                                        <small><strong>65%</strong></small>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 65%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div id="taskList">
+                                    <!-- Задачи дипломной работы -->
+                                    <div class="task-item task-high">
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <input class="form-check-input me-2" type="checkbox">
+                                                <strong>Завершить дипломную работу</strong>
+                                                <span class="badge bg-danger task-project-badge">Диплом</span>
+                                            </div>
+                                            <span class="badge bg-danger priority-badge">Высокий</span>
+                                        </div>
+                                        <small class="text-muted">Срок: 15.06.2023</small>
+                                    </div>
+                                    
+                                    <div class="task-item task-medium">
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <input class="form-check-input me-2" type="checkbox" checked>
+                                                <span class="text-decoration-line-through">Изучить Bootstrap 5</span>
+                                                <span class="badge bg-warning task-project-badge">Сайт</span>
+                                            </div>
+                                            <span class="badge bg-warning text-dark priority-badge">Средний</span>
+                                        </div>
+                                        <small class="text-muted">Завершено</small>
+                                    </div>
+                                    
+                                    <div class="task-item task-low">
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <input class="form-check-input me-2" type="checkbox">
+                                                <strong>Написать тесты для проекта</strong>
+                                                <span class="badge bg-success task-project-badge">API</span>
+                                            </div>
+                                            <span class="badge bg-success priority-badge">Низкий</span>
+                                        </div>
+                                        <small class="text-muted">Срок: 30.06.2023</small>
+                                    </div>
+                                    
+                                    <div class="task-item task-medium">
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <input class="form-check-input me-2" type="checkbox">
+                                                <strong>Оптимизировать базу данных</strong>
+                                                <span class="badge bg-warning task-project-badge">DevOps</span>
+                                            </div>
+                                            <span class="badge bg-warning text-dark priority-badge">Средний</span>
+                                        </div>
+                                        <small class="text-muted">Срок: 25.06.2023</small>
+                                    </div>
+                                    
+                                    <div class="task-item task-high">
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <input class="form-check-input me-2" type="checkbox">
+                                                <strong>Подготовить презентацию</strong>
+                                                <span class="badge bg-danger task-project-badge">Диплом</span>
+                                            </div>
+                                            <span class="badge bg-danger priority-badge">Высокий</span>
+                                        </div>
+                                        <small class="text-muted">Срок: 20.06.2023</small>
+                                    </div>
+                                    
+                                    <div class="task-item task-high">
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <input class="form-check-input me-2" type="checkbox">
+                                                <strong>Настроить CI/CD пайплайн</strong>
+                                                <span class="badge bg-danger task-project-badge">DevOps</span>
+                                            </div>
+                                            <span class="badge bg-danger priority-badge">Высокий</span>
+                                        </div>
+                                        <small class="text-muted">Срок: 18.06.2023</small>
+                                    </div>
+                                    
+                                    <div class="task-item task-medium">
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <input class="form-check-input me-2" type="checkbox" checked>
+                                                <span class="text-decoration-line-through">Разработать главную страницу</span>
+                                                <span class="badge bg-warning task-project-badge">Сайт</span>
+                                            </div>
+                                            <span class="badge bg-warning text-dark priority-badge">Средний</span>
+                                        </div>
+                                        <small class="text-muted">Завершено</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-3">
+                                    <div class="input-group">
+                                        <select class="form-select" id="taskProjectSelect" style="max-width: 150px;">
+                                            <option value="diploma">Диплом</option>
+                                            <option value="website">Сайт</option>
+                                            <option value="mobile-app">Приложение</option>
+                                            <option value="api">API</option>
+                                            <option value="devops">DevOps</option>
+                                        </select>
+                                        <input type="text" class="form-control" placeholder="Новая задача..." id="newTaskInput">
+                                        <button class="btn btn-primary" type="button" id="addTaskBtn">
+                                            <i class="bi bi-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Календарь событий -->
+                    <div class="col-lg-6 mb-4">
+                        <div class="card dashboard-card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <span><i class="bi bi-calendar-event me-2"></i>Календарь событий</span>
+                                <a href="calendar.html" class="btn btn-sm btn-light">Полный календарь</a>
+                            </div>
+                            <div class="card-body">
+                                <div id="miniCalendar" class="calendar-container"></div>
+                                
+                                <div class="mt-3">
+                                    <h6><i class="bi bi-alarm me-2"></i>Ближайшие события по проектам</h6>
+                                    <div class="list-group list-group-flush">
+                                        <div class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                            <div>
+                                                <div class="fw-bold">Совещание по проекту "Диплом"</div>
+                                                <small class="text-muted">Сегодня, 14:00</small>
+                                            </div>
+                                            <span class="badge bg-danger rounded-pill">Высокий</span>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                            <div>
+                                                <div class="fw-bold">Демо приложения</div>
+                                                <small class="text-muted">Завтра, 10:00</small>
+                                            </div>
+                                            <span class="badge bg-success rounded-pill">Приложение</span>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                            <div>
+                                                <div class="fw-bold">Презентация API</div>
+                                                <small class="text-muted">20 июня, 18:30</small>
+                                            </div>
+                                            <span class="badge bg-warning rounded-pill">API</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Последние прочитанные книги -->
+                    <div class="col-12 mb-4">
+                        <div class="card dashboard-card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <span><i class="bi bi-book me-2"></i>Последние прочитанные книги</span>
+                                <a href="library.html" class="btn btn-sm btn-light">Вся библиотека</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="row" id="recentBooks">
+                                    <!-- Книги остаются без изменений -->
+                                    <div class="col-md-4">
+                                        <div class="book-item">
+                                            <img src="https://m.media-amazon.com/images/I/71e0gUMMrDL._AC_UF1000,1000_QL80_.jpg" alt="Обложка книги" class="book-cover">
+                                            <div>
+                                                <h6 class="mb-1">Чистый код</h6>
+                                                <p class="mb-1 small text-muted">Роберт Мартин</p>
+                                                <div class="small">
+                                                    <i class="bi bi-star-fill text-warning"></i>
+                                                    <i class="bi bi-star-fill text-warning"></i>
+                                                    <i class="bi bi-star-fill text-warning"></i>
+                                                    <i class="bi bi-star-fill text-warning"></i>
+                                                    <i class="bi bi-star-half text-warning"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-4">
+                                        <div class="book-item">
+                                            <img src="https://m.media-amazon.com/images/I/81gtKoapHFL._AC_UF1000,1000_QL80_.jpg" alt="Обложка книги" class="book-cover">
+                                            <div>
+                                                <h6 class="mb-1">Совершенный код</h6>
+                                                <p class="mb-1 small text-muted">Стив Макконнелл</p>
+                                                <div class="small">
+                                                    <i class="bi bi-star-fill text-warning"></i>
+                                                    <i class="bi bi-star-fill text-warning"></i>
+                                                    <i class="bi bi-star-fill text-warning"></i>
+                                                    <i class="bi bi-star-fill text-warning"></i>
+                                                    <i class="bi bi-star text-warning"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-4">
+                                        <div class="book-item">
+                                            <img src="https://m.media-amazon.com/images/I/81wgcld4wxL._AC_UF1000,1000_QL80_.jpg" alt="Обложка книги" class="book-cover">
+                                            <div>
+                                                <h6 class="mb-1">Архитектура компьютера</h6>
+                                                <p class="mb-1 small text-muted">Эндрю Таненбаум</p>
+                                                <div class="small">
+                                                    <i class="bi bi-star-fill text-warning"></i>
+                                                    <i class="bi bi-star-fill text-warning"></i>
+                                                    <i class="bi bi-star-fill text-warning"></i>
+                                                    <i class="bi bi-star-fill text-warning"></i>
+                                                    <i class="bi bi-star-fill text-warning"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>IT Personal Dashboard</h5>
+                    <p>Персональная страничка для управления проектами, задачами и событиями IT-специалиста</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Быстрые ссылки</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white-50">Главная</a></li>
+                        <li><a href="library.html" class="text-white-50">Библиотека</a></li>
+                        <li><a href="tasks.html" class="text-white-50">Задачи</a></li>
+                        <li><a href="calendar.html" class="text-white-50">Календарь</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Контакты</h5>
+                    <p class="mb-1">Email: it.specialist@example.com</p>
+                    <p class="mb-1">GitHub: github.com/itspecialist</p>
+                    <p class="mb-0">Telegram: @itspecialist</p>
+                </div>
+            </div>
+            <hr class="mt-4 mb-3 bg-light">
+            <div class="text-center">
+                <p class="mb-0">© 2023 IT Personal Dashboard. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS и зависимости -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- FullCalendar JS -->
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/ru.js'></script>
+    
+    <script>
+        // Данные проектов
+        const projectsData = {
+            'diploma': {
+                name: 'Дипломная работа',
+                active: 5,
+                completed: 8,
+                total: 13,
+                progress: 62,
+                priority: 'high',
+                color: 'danger'
+            },
+            'website': {
+                name: 'Корпоративный сайт',
+                active: 4,
+                completed: 12,
+                total: 16,
+                progress: 75,
+                priority: 'medium',
+                color: 'warning'
+            },
+            'mobile-app': {
+                name: 'Мобильное приложение',
+                active: 2,
+                completed: 6,
+                total: 8,
+                progress: 75,
+                priority: 'low',
+                color: 'success'
+            },
+            'api': {
+                name: 'API разработка',
+                active: 3,
+                completed: 5,
+                total: 8,
+                progress: 63,
+                priority: 'medium',
+                color: 'warning'
+            },
+            'devops': {
+                name: 'DevOps инфраструктура',
+                active: 5,
+                completed: 3,
+                total: 8,
+                progress: 38,
+                priority: 'high',
+                color: 'danger'
+            }
+        };
+
+        // Инициализация мини-календаря
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('miniCalendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'ru',
+                headerToolbar: {
+                    left: 'prev',
+                    center: 'title',
+                    right: 'next'
+                },
+                height: 'auto',
+                events: [
+                    {
+                        title: 'Совещание по диплому',
+                        start: new Date(),
+                        color: '#e74c3c'
+                    },
+                    {
+                        title: 'Дедлайн по API',
+                        start: '2023-06-15',
+                        color: '#f39c12'
+                    },
+                    {
+                        title: 'Демо приложения',
+                        start: '2023-06-20',
+                        color: '#27ae60'
+                    },
+                    {
+                        title: 'Встреча по DevOps',
+                        start: '2023-06-25',
+                        color: '#e74c3c'
+                    }
+                ]
+            });
+            calendar.render();
+            
+            // Обновление счетчиков
+            updateCounters();
+            
+            // Выбор проекта
+            document.querySelectorAll('.project-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    // Удаляем активный класс у всех проектов
+                    document.querySelectorAll('.project-item').forEach(proj => {
+                        proj.classList.remove('active');
+                    });
+                    
+                    // Добавляем активный класс выбранному проекту
+                    this.classList.add('active');
+                    
+                    // Фильтрация задач по проекту
+                    filterTasksByProject(this.dataset.project);
+                });
+            });
+            
+            // Добавление новой задачи
+            document.getElementById('addTaskBtn').addEventListener('click', function() {
+                addNewTask();
+            });
+            
+            // Обработка нажатия Enter в поле ввода задачи
+            document.getElementById('newTaskInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    addNewTask();
+                }
+            });
+            
+            // Отметка задачи как выполненной
+            document.getElementById('taskList').addEventListener('change', function(e) {
+                if (e.target.type === 'checkbox') {
+                    handleTaskCompletion(e);
+                }
+            });
+            
+            // Кнопка добавления нового проекта
+            document.getElementById('newProjectBtn').addEventListener('click', function() {
+                addNewProject();
+            });
+            
+            // Инициализируем отображение задач
+            updateTaskDisplay();
+        });
+        
+        function addNewTask() {
+            const taskInput = document.getElementById('newTaskInput');
+            const projectSelect = document.getElementById('taskProjectSelect');
+            
+            if (taskInput.value.trim() === '') return;
+            
+            const taskList = document.getElementById('taskList');
+            const projectId = projectSelect.value;
+            const projectData = projectsData[projectId];
+            
+            // Определяем приоритет для новой задачи
+            let priorityClass = 'task-medium';
+            let priorityBadge = 'warning';
+            let priorityText = 'Средний';
+            
+            if (projectData.priority === 'high') {
+                priorityClass = 'task-high';
+                priorityBadge = 'danger';
+                priorityText = 'Высокий';
+            } else if (projectData.priority === 'low') {
+                priorityClass = 'task-low';
+                priorityBadge = 'success';
+                priorityText = 'Низкий';
+            }
+            
+            const newTask = document.createElement('div');
+            newTask.className = `task-item ${priorityClass}`;
+            newTask.innerHTML = `
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <input class="form-check-input me-2" type="checkbox">
+                        <strong>${taskInput.value}</strong>
+                        <span class="badge bg-${projectData.color} task-project-badge">${projectData.name}</span>
+                    </div>
+                    <span class="badge bg-${priorityBadge} priority-badge">${priorityText}</span>
+                </div>
+                <small class="text-muted">Добавлено только что</small>
+            `;
+            
+            taskList.prepend(newTask);
+            taskInput.value = '';
+            
+            // Обновляем статистику проекта
+            updateProjectStats(projectId, 'add');
+            
+            // Обновляем общие счетчики
+            updateTotalCounters();
+        }
+        
+        function handleTaskCompletion(e) {
+            const taskItem = e.target.closest('.task-item');
+            const projectBadge = taskItem.querySelector('.task-project-badge');
+            let projectId = null;
+            
+            // Находим ID проекта по названию в бейдже
+            for (const [id, data] of Object.entries(projectsData)) {
+                if (data.name === projectBadge.textContent) {
+                    projectId = id;
+                    break;
+                }
+            }
+            
+            if (e.target.checked) {
+                const taskText = taskItem.querySelector('strong');
+                taskText.classList.add('text-decoration-line-through');
+                
+                // Обновляем статистику проекта
+                if (projectId) {
+                    updateProjectStats(projectId, 'complete');
+                }
+            } else {
+                const taskText = taskItem.querySelector('strong');
+                taskText.classList.remove('text-decoration-line-through');
+                
+                // Обновляем статистику проекта
+                if (projectId) {
+                    updateProjectStats(projectId, 'reopen');
+                }
+            }
+            
+            // Обновляем общие счетчики
+            updateTotalCounters();
+        }
+        
+        function updateProjectStats(projectId, action) {
+            const project = projectsData[projectId];
+            
+            switch(action) {
+                case 'add':
+                    project.active++;
+                    project.total++;
+                    break;
+                case 'complete':
+                    project.active--;
+                    project.completed++;
+                    break;
+                case 'reopen':
+                    project.active++;
+                    project.completed--;
+                    break;
+            }
+            
+            // Обновляем прогресс
+            project.progress = Math.round((project.completed / project.total) * 100);
+            
+            // Обновляем отображение проекта
+            updateProjectDisplay(projectId);
+        }
+        
+        function updateProjectDisplay(projectId) {
+            const project = projectsData[projectId];
+            const projectElement = document.querySelector(`.project-item[data-project="${projectId}"]`);
+            
+            if (projectElement) {
+                // Обновляем статистику
+                const statsElement = projectElement.querySelector('.project-stats');
+                statsElement.innerHTML = `
+                    <span class="text-${project.priority === 'high' ? 'danger' : project.priority === 'medium' ? 'warning' : 'success'}">
+                        <i class="bi bi-clock"></i> Активных: <strong>${project.active}</strong>
+                    </span>
+                    <span class="text-success">
+                        <i class="bi bi-check-circle"></i> Выполнено: <strong>${project.completed}</strong>
+                    </span>
+                `;
+                
+                // Обновляем прогресс-бар
+                const progressBar = projectElement.querySelector('.progress-bar');
+                progressBar.style.width = `${project.progress}%`;
+                progressBar.textContent = `${project.progress}%`;
+                
+                const progressText = projectElement.querySelector('.project-progress small strong');
+                progressText.textContent = `${project.progress}%`;
+            }
+        }
+        
+        function updateTotalCounters() {
+            let totalActive = 0;
+            let totalCompleted = 0;
+            let totalTasks = 0;
+            
+            // Считаем общую статистику по всем проектам
+            for (const project of Object.values(projectsData)) {
+                totalActive += project.active;
+                totalCompleted += project.completed;
+                totalTasks += project.total;
+            }
+            
+            // Обновляем счетчики в шапке
+            document.getElementById('totalActiveTasks').textContent = totalActive;
+            document.getElementById('totalCompletedTasks').textContent = totalCompleted;
+            
+            // Обновляем общий прогресс
+            const totalProgress = Math.round((totalCompleted / totalTasks) * 100);
+            const progressBar = document.querySelector('.card-body .progress-bar');
+            progressBar.style.width = `${totalProgress}%`;
+            
+            const progressText = document.querySelector('.card-body .progress + .d-flex small strong');
+            if (progressText) {
+                progressText.textContent = `${totalProgress}%`;
+            }
+            
+            // Обновляем итоги в боковой панели
+            updateProjectSummary();
+        }
+        
+        function updateProjectSummary() {
+            const summaryElement = document.querySelector('.border-top .small');
+            let totalProjects = Object.keys(projectsData).length;
+            let totalTasks = 0;
+            let totalCompleted = 0;
+            
+            for (const project of Object.values(projectsData)) {
+                totalTasks += project.total;
+                totalCompleted += project.completed;
+            }
+            
+            const totalProgress = Math.round((totalCompleted / totalTasks) * 100);
+            
+            summaryElement.innerHTML = `
+                <div class="d-flex justify-content-between">
+                    <span>Всего проектов:</span>
+                    <strong>${totalProjects}</strong>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <span>Всего задач:</span>
+                    <strong>${totalTasks}</strong>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <span>Общий прогресс:</span>
+                    <strong>${totalProgress}%</strong>
+                </div>
+            `;
+        }
+        
+        function filterTasksByProject(projectId) {
+            const project = projectsData[projectId];
+            const tasks = document.querySelectorAll('.task-item');
+            
+            tasks.forEach(task => {
+                const projectBadge = task.querySelector('.task-project-badge');
+                if (projectBadge && projectBadge.textContent === project.name) {
+                    task.style.display = 'block';
+                } else {
+                    task.style.display = 'none';
+                }
+            });
+        }
+        
+        function addNewProject() {
+            const projectName = prompt('Введите название нового проекта:');
+            if (!projectName) return;
+            
+            const priority = prompt('Выберите приоритет (высокий/средний/низкий):', 'средний');
+            let priorityClass = 'project-medium';
+            let priorityTag = 'Средний';
+            let priorityValue = 'medium';
+            let color = 'warning';
+            
+            if (priority === 'высокий') {
+                priorityClass = 'project-high';
+                priorityTag = 'Высокий';
+                priorityValue = 'high';
+                color = 'danger';
+            } else if (priority === 'низкий') {
+                priorityClass = 'project-low';
+                priorityTag = 'Низкий';
+                priorityValue = 'low';
+                color = 'success';
+            }
+            
+            const projectId = 'project-' + Date.now();
+            
+            // Добавляем проект в данные
+            projectsData[projectId] = {
+                name: projectName,
+                active: 0,
+                completed: 0,
+                total: 0,
+                progress: 0,
+                priority: priorityValue,
+                color: color
+            };
+            
+            // Создаем элемент проекта
+            const newProject = document.createElement('div');
+            newProject.className = `project-item ${priorityClass}`;
+            newProject.dataset.project = projectId;
+            newProject.innerHTML = `
+                <div class="project-header">
+                    <h6 class="project-title">${projectName}</h6>
+                    <span class="project-tag">${priorityTag}</span>
+                </div>
+                <div class="project-stats">
+                    <span class="text-${priorityValue === 'high' ? 'danger' : priorityValue === 'medium' ? 'warning' : 'success'}">
+                        <i class="bi bi-clock"></i> Активных: <strong>0</strong>
+                    </span>
+                    <span class="text-success">
+                        <i class="bi bi-check-circle"></i> Выполнено: <strong>0</strong>
+                    </span>
+                </div>
+                <div class="project-progress">
+                    <div class="d-flex justify-content-between mb-1">
+                        <small>Прогресс</small>
+                        <small><strong>0%</strong></small>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar bg-${color}" role="progressbar" style="width: 0%"></div>
+                    </div>
+                </div>
+            `;
+            
+            // Добавляем в список проектов
+            document.getElementById('projectsList').appendChild(newProject);
+            
+            // Добавляем опцию в выпадающий список задач
+            const select = document.getElementById('taskProjectSelect');
+            const option = document.createElement('option');
+            option.value = projectId;
+            option.textContent = projectName;
+            select.appendChild(option);
+            
+            // Добавляем обработчик клика
+            newProject.addEventListener('click', function() {
+                document.querySelectorAll('.project-item').forEach(proj => {
+                    proj.classList.remove('active');
+                });
+                this.classList.add('active');
+                filterTasksByProject(projectId);
+            });
+            
+            // Обновляем итоги
+            updateProjectSummary();
+        }
+        
+        function updateTaskDisplay() {
+            // Эта функция может быть расширена для более сложной логики отображения задач
+            updateTotalCounters();
+        }
+        
+        function updateCounters() {
+            const today = new Date();
+            const upcomingEvents = 5;
+            document.getElementById('upcomingEvents').textContent = upcomingEvents;
+        }
+    </script>
+</body>
+</html>

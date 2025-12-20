@@ -1,0 +1,203 @@
+:root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-bg: #f8f9fa;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 56px;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .dashboard-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #4a6fa5 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .dashboard-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+        
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-header {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 10px 10px 0 0 !important;
+            font-weight: 600;
+        }
+        
+        .task-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .task-item:last-child {
+            border-bottom: none;
+        }
+        
+        .task-high {
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .task-medium {
+            border-left: 4px solid #f39c12;
+        }
+        
+        .task-low {
+            border-left: 4px solid #27ae60;
+        }
+        
+        .book-cover {
+            width: 60px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+        
+        .book-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .book-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .calendar-container {
+            min-height: 400px;
+        }
+        
+        .stats-card {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+        
+        .footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .priority-badge {
+            font-size: 0.7rem;
+            padding: 3px 8px;
+        }
+        
+        .progress {
+            height: 8px;
+        }
+        
+        .sidebar {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            padding: 20px;
+            position: sticky;
+            top: 80px;
+        }
+        
+        .project-item {
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            background-color: #f8f9fa;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .project-item:hover {
+            background-color: #e9ecef;
+            transform: translateX(5px);
+        }
+        
+        .project-item.active {
+            background-color: #e3f2fd;
+            border-left-color: #2196f3;
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .project-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--primary-color);
+            margin: 0;
+        }
+        
+        .project-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+        }
+        
+        .project-progress {
+            margin-top: 8px;
+        }
+        
+        .project-tag {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            background-color: #e3f2fd;
+            color: var(--secondary-color);
+        }
+        
+        .project-high {
+            border-left-color: #e74c3c;
+        }
+        
+        .project-medium {
+            border-left-color: #f39c12;
+        }
+        
+        .project-low {
+            border-left-color: #27ae60;
+        }
+        
+        .task-project-badge {
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            margin-left: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                margin-bottom: 20px;
+            }
+        }
