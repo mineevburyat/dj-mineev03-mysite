@@ -5,9 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Минеев Александр | Python программист</title>
-    <meta name="description" content="Python разработчик с 5+ лет опыта. Python, Django, Scapy, PostgreSQL.">
-    <meta name="keywords" content="разработчик, программист, Python, Django, Scapy, pySDR">
+    <title>Минеев Александр | {{ title }} </title>
+    <meta name="description" content="{% block description %}{% endblock %}">
+    <meta name="keywords" content="{% block keywords %} {%endblock %}">
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
     <!-- Fonts -->
@@ -22,21 +22,9 @@
     <!-- Header -->
     {% include "header.html" %}
 
-    <!-- Hero Section -->
-    {% include "home.html" %}
-
-    <!-- About Section -->
-    {% include "about.html" %}
-
-    <!-- Skills Section -->
-    {% include "skills.html" %}
-
-    <!-- Projects Section -->
-    {% include "projects.html" %}
-
-    <!-- Contact Section -->
-    {% include "contact.html" %}
-
+    {% block content %}
+    {% endblock %}
+    
     <!-- Footer -->
     {% include "footer.html" %}
 
