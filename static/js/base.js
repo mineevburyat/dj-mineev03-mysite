@@ -2,6 +2,48 @@
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const mainNav = document.getElementById('mainNav');
 
+function resetMessages() {
+        // Скрываем все сообщения
+        document.querySelectorAll('.error-message, .success-message').forEach(el => {
+            el.style.display = 'none';
+            el.textContent = '';
+        });
+        
+        // Очищаем ошибки полей
+        document.querySelectorAll('.error').forEach(el => {
+            el.textContent = '';
+        });
+    }
+
+function showSuccess(message) {
+    const successEl = document.getElementById('success-message');
+    successEl.textContent = message;
+    successEl.style.display = 'block';
+}
+
+function showErrors(errors, generalMessage) {
+    if (errors) {
+        Object.keys(errors).forEach(field => {
+            const errorEl = document.getElementById(`${field}-error`);
+            if (errorEl) {
+                errorEl.innerHTML = errors[field].join('<br>');
+            }
+        });
+    }
+    
+    if (generalMessage) {
+        const errorEl = document.getElementById('error-message');
+        errorEl.textContent = generalMessage;
+        errorEl.style.display = 'block';
+    }
+}
+
+function showError(message) {
+    const errorEl = document.getElementById('error-message');
+    errorEl.textContent = message;
+    errorEl.style.display = 'block';
+}
+
 mobileMenuBtn.addEventListener('click', () => {
     mainNav.classList.toggle('active');
     mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
@@ -60,25 +102,156 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Form submission
-const contactForm = document.getElementById('contactForm');
-contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
+// const contactForm = document.getElementById('contactForm');
+// contactForm.addEventListener('submit', function(e) {
+//     e.preventDefault();
+//     const submitBtn = document.getElementById('submit-btn');
+//     const csrfToken = document.getElementById('csrf_token').value;
+//     // Here you would normally send the data to a server
+//     // Сброс сообщений и ошибок
+//     resetMessages();
+        
+//     // Показываем спиннер
+//     submitBtn.disabled = true;
+//     spinner.style.display = 'inline-block';
+        
+//     try {
+//         const formData = new FormData(contactForm);
+//         // const formData = {
+//         // name: document.getElementById('id_name').value,
+//         // email: document.getElementById('id_email').value,
+//         // subject: document.getElementById('id_subject').value,
+//         // message: document.getElementById('id_message').value
+//         // };
+//         console.log(formData)
+//         const response = fetch('/contact/ajax/', {
+//             method: 'POST',
+//             body: formData,
+//             headers: {
+//                 'X-Requested-With': 'XMLHttpRequest',
+//                 'X-CSRFToken': csrfToken
+//             }
+//         });
+        
+//         const data = response.json();
+//         console.log(data)
+//         if (response.ok && data.success) {
+//             showSuccess(data.message);
+//             form.reset();
+//         } else {
+//             showErrors(data.errors, data.message);
+//         }
+//     } catch (error) {
+//         showError('Произошла ошибка сети. Попробуйте еще раз.');
+//     } finally {
+//         submitBtn.disabled = false;
+//         spinner.style.display = 'none';
+//     }
+//     // For now, just show an alert
+//     // alert(`Спасибо, ${formData.name}! Ваше сообщение отправлено. Я свяжусь с вами в ближайшее время.`);
     
-    // Get form data
-    const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        subject: document.getElementById('subject').value,
-        message: document.getElementById('message').value
-    };
+//     // Reset form
+//     contactForm.reset();
+// });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submit-btn');
+    const spinner = document.getElementById('spinner');
+    const csrfToken = document.getElementById('csrf_token').value;
     
-    // Here you would normally send the data to a server
-    // For now, just show an alert
-    alert(`Спасибо, ${formData.name}! Ваше сообщение отправлено. Я свяжусь с вами в ближайшее время.`);
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Сброс сообщений и ошибок
+        resetMessages();
+        
+        // Показываем спиннер
+        submitBtn.disabled = true;
+        spinner.style.display = 'inline-block';
+        
+        try {
+            const formData = new FormData(form);
+            
+            const response = await fetch('contact/ajax/', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRFToken': csrfToken
+                }
+            });
+            
+            const data = await response.json();
+            
+            if (response.ok && data.success) {
+                showSuccess(data.message);
+                form.reset();
+            } else {
+                showErrors(data.errors, data.message);
+            }
+        } catch (error) {
+            showError('Произошла ошибка сети. Попробуйте еще раз.');
+        } finally {
+            submitBtn.disabled = false;
+            spinner.style.display = 'none';
+        }
+    });
     
-    // Reset form
-    contactForm.reset();
+    function resetMessages() {
+        // Скрываем все сообщения
+        document.querySelectorAll('.error-message, .success-message').forEach(el => {
+            el.style.display = 'none';
+            el.textContent = '';
+        });
+        
+        // Очищаем ошибки полей
+        document.querySelectorAll('.error').forEach(el => {
+            el.textContent = '';
+        });
+    }
+    
+    function showSuccess(message) {
+        const successEl = document.getElementById('success-message');
+        successEl.textContent = message;
+        successEl.style.display = 'block';
+    }
+    
+    function showErrors(errors, generalMessage) {
+        if (errors) {
+            Object.keys(errors).forEach(field => {
+                const errorEl = document.getElementById(`${field}-error`);
+                if (errorEl) {
+                    errorEl.innerHTML = errors[field].join('<br>');
+                }
+            });
+        }
+        
+        if (generalMessage) {
+            const errorEl = document.getElementById('error-message');
+            errorEl.textContent = generalMessage;
+            errorEl.style.display = 'block';
+        }
+    }
+    
+    function showError(message) {
+        const errorEl = document.getElementById('error-message');
+        errorEl.textContent = message;
+        errorEl.style.display = 'block';
+    }
+    
+    // Очистка ошибок при вводе
+    document.querySelectorAll('.form-control').forEach(input => {
+        input.addEventListener('input', function() {
+            const fieldName = this.name;
+            const errorEl = document.getElementById(`${fieldName}-error`);
+            if (errorEl) {
+                errorEl.textContent = '';
+            }
+        });
+    });
 });
+
 
 // Animate skill bars on scroll
 const animateSkillBars = () => {
