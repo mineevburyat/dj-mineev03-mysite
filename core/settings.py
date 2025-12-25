@@ -18,7 +18,10 @@ import environ
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = environ.Env(
-    DEBUG=(bool, False)
+    DEBUG=(bool, False),
+    EMAIL_USE_SSL=(bool, True),
+    EMAIL_USE_TLS=(bool, False)
+
 )
 env.read_env(BASE_DIR / '.env')
 # Quick-start development settings - unsuitable for production
@@ -55,6 +58,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# длительность сессии
+SESSION_COOKIE_AGE = 12096000 
 
 ROOT_URLCONF = 'core.urls'
 
@@ -131,3 +137,16 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# 
+
+# sending email
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+CONTACT_EMAIL = env('CONTACT_EMAIL')
+EMAIL_FROM = env('EMAIL_FROM')
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_PORT = env('EMAIL_PORT')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+EMAIL_USE_SSL = env('EMAIL_USE_SSL')
+EMAIL_USE_TLS = env('EMAIL_USE_TLS')
