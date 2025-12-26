@@ -22,7 +22,7 @@ env = environ.Env(
     EMAIL_USE_SSL=(bool, True),
     EMAIL_USE_TLS=(bool, False),
     ALLOWED_HOSTS=(list, []),
-    SECURE_SSL_REDIRECT=(bool,True)
+    SECURE_SSL_REDIRECT=(bool,False)
 )
 env.read_env(BASE_DIR / '.env')
 # Quick-start development settings - unsuitable for production
@@ -60,7 +60,7 @@ MIDDLEWARE = [
 ]
 
 # длительность сессии
-SESSION_COOKIE_AGE = 12096000 
+SESSION_COOKIE_AGE = 120960
 
 ROOT_URLCONF = 'core.urls'
 

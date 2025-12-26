@@ -74,7 +74,7 @@ def contact_ajax_form_view(request):
                     'success': True,
                     'message': 'Сообщение успешно отправлено!'
                 })
-                response.set_cookie('email_sent', 'true', max_age=settings.SESSION_ENGINE)
+                response.set_cookie('email_sent', 'true', max_age=int(settings.SESSION_COOKIE_AGE))
                 return response
             except Exception as e:
                 return JsonResponse({
