@@ -1,0 +1,17 @@
+[Unit]
+Description=gunicorn daemon for Django mineev03
+After=network.target
+Requires=gunicorn-mineev03.socket
+
+[Service]
+User=mineev
+Group=www-data
+WorkingDirectory=/home/mineev/mineev03/
+ExecStart=/home/mineev/venvmineev/bin/gunicorn --access-logfile \
+					 - \
+					 --workers 3 \
+					 --bind unix:/run/mineev03.sock \
+					core.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
