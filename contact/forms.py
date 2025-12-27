@@ -1,8 +1,10 @@
 from django import forms
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
+from captcha.fields import CaptchaField
 
 class AjaxContactForm(forms.Form):
+    captcha = CaptchaField()
     name = forms.CharField(
         max_length=100,
         widget=forms.TextInput(attrs={
