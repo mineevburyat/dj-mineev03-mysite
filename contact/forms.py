@@ -1,10 +1,12 @@
 from django import forms
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
-from captcha.fields import CaptchaField
+from captcha.fields import CaptchaTextInput, CaptchaField
+
+class CustomCaptchaTextInput(CaptchaTextInput):
+    template_name = 'custom_captcha_field.html'
 
 class AjaxContactForm(forms.Form):
-    captcha = CaptchaField()
     name = forms.CharField(
         max_length=100,
         widget=forms.TextInput(attrs={
@@ -46,3 +48,5 @@ class AjaxContactForm(forms.Form):
             'placeholder': 'Ваш телефон (необязательно)'
         })
     )
+
+    captcha = CaptchaField(label='Введите текст с картинки')

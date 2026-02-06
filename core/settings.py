@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'captcha',
     'home',
     'contact',
 ]
@@ -168,3 +169,10 @@ EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 EMAIL_USE_SSL = env('EMAIL_USE_SSL')
 EMAIL_USE_TLS = env('EMAIL_USE_TLS')
+
+# captcha
+CAPTCHA_FONT_SIZE = 40
+CAPTCHA_LENGTH = 6  # количество символов
+CAPTCHA_TIMEOUT = 5  # время жизни в минутах
+# CAPTCHA_IMAGE_SIZE = (150, 50)  # размер изображения
+# FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'

@@ -154,6 +154,40 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 //     contactForm.reset();
 // });
 
+// Функция обновления капчи
+async function refreshCaptcha() {
+    try {
+        const response = await fetch('/captcha/refresh/', {
+            headers: {
+                'Accept': 'application/json',
+            }
+        });
+        
+        if (!response.ok) {
+            throw new Error('Ошибка обновления капчи');
+        }
+        
+        const data = await response.json();
+        
+        // Обновляем изображение капчи
+        const captchaImage = document.getElementById('captcha-image');
+        captchaImage.src = data.image_url;
+        
+        // Обновляем скрытое поле с ключом
+        const captchaKey = document.getElementById('id_captcha_0');
+        captchaKey.value = data.key;
+        
+        // Очищаем поле ввода капчи
+        const captchaInput = document.getElementById('id_captcha_1');
+        captchaInput.value = '';
+        showFieldError('captcha', '');
+        
+    } catch (error) {
+        console.error('Ошибка при обновлении капчи:', error);
+        showFormMessage('Не удалось обновить капчу. Попробуйте позже.');
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('contactForm');
     const submitBtn = document.getElementById('submit-btn');

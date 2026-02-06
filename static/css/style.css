@@ -565,6 +565,38 @@ footer {
     display: none;
 }
 
+/* Captcha */
+.captcha-container {
+    margin: 10px 0;
+    padding: 5px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+.captcha-image {
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.captcha-input {
+    padding: 8px;
+    width: 200px;
+    margin-right: 10px;
+}
+.refresh-btn {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.refresh-btn:hover {
+    background-color: #5a6268;
+}
+
+
+
 @media (max-width: 768px) {
     .footer-content {
         flex-direction: column;

@@ -1,5 +1,6 @@
 from django import forms
 from django.core.mail import send_mail, EmailMessage
+from captcha.fields import CaptchaField
 
 class ContactForm(forms.Form):
     name = forms.CharField(
@@ -21,3 +22,4 @@ class ContactForm(forms.Form):
         widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 5})
     )
     
+    captcha = CaptchaField(label='Введите текст с картинки')

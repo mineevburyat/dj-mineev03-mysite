@@ -5,7 +5,7 @@ from .forms import ContactForm
 
 
 class HomePage(View):
-    template_name = 'home/index.html'
+    template_name = 'index2.html'
     context = {
         'title': 'Главная',
         'work_years': '8',

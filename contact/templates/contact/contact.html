@@ -95,7 +95,16 @@
                             <div class="error">{{ form.message.errors }}</div>
                         {% endif %}
                     </div>
-                    
+                    <!-- Капча -->
+                     {% include 'contact/capcha.html' %}
+                    <div class="captcha-container">
+                        <label for="id_captcha_1">Введите текст с картинки:</label>
+                        <div>
+                            {{ form.captcha }}
+                            <button type="button" class="refresh-btn" onclick="refreshCaptcha()">⟳ Обновить</button>
+                        </div>
+                        <div id="captcha-error" class="error"></div>
+                    </div>
                     <button type="submit" class="btn btn-primary" style="width: 100%;" id="submit-btn">
                         Отправить сообщение
                         <span class="spinner" id="spinner">

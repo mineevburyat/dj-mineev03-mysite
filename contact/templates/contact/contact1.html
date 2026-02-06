@@ -1,0 +1,119 @@
+<!-- Contact Section -->
+<section id="contact" style="background-color: rgba(37, 99, 235, 0.05);">
+    <div class="container">
+        <h2 class="section-title">Свяжитесь со мной</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="bi bi-envelope"></i>
+                    </div>
+                    <div>
+                        <h4>Email</h4>
+                        <p>{{ email }}</p>
+                        <small>Отвечаю в течение 24 часов</small>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="bi bi-telephone"></i>
+                    </div>
+                    <div>
+                        <h4>Телефон</h4>
+                        <p>{{ phone }}</p>
+                        <small>Пн-Пт, 9:00-18:00 (часовой пояс Иркутск)</small>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="bi bi-geo-alt"></i>
+                    </div>
+                    <div>
+                        <h4>Локация</h4>
+                        <p>Россия, Бурятия, Улан-Удэ</p>
+                        <small>Готов к удаленной работе</small>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4>Социальные сети</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="GitHub">
+                            <i class="bi bi-github"></i>
+                        </a>
+                        <a href="#" class="social-link" title="LinkedIn">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link" title="Telegram">
+                            <i class="bi bi-telegram"></i>
+                        </a>
+                        <a href="#" class="social-link" title="Twitter">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h3>Отправить сообщение</h3>
+                <!-- Сообщения об успехе/ошибке -->
+                <div id="success-message" class="success-message"></div>
+                <div id="error-message" class="error-message"></div>
+                <form id="contactForm" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" id="csrf_token" value="{{ csrf_token }}">
+                    <div class="form-group">
+                        <label for="id_name">Имя</label>
+                        {{ form.name }}
+                        {% if form.name.errors %}
+                            <div class="error">{{ form.name.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="id_email">Email</label>
+                        {{ form.email }}
+                        {% if form.email.errors %}
+                            <div class="error">{{ form.email.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="id_subject">Тема</label>
+                        {{ form.subject }}
+                        {% if form.subject.errors %}
+                            <div class="error">{{ form.subject.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="id_message">Сообщение</label>
+                        {{ form.message }}
+                        {% if form.message.errors %}
+                            <div class="error">{{ form.message.errors }}</div>
+                        {% endif %}
+                    </div>
+                    <!-- Капча -->
+                     {% include 'contact/capcha.html' %}
+                    <div class="captcha-container">
+                        <label for="id_captcha_1">Введите текст с картинки:</label>
+                        <div>
+                            {{ form.captcha }}
+                            <button type="button" class="refresh-btn" onclick="refreshCaptcha()">⟳ Обновить</button>
+                        </div>
+                        <div id="captcha-error" class="error"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;" id="submit-btn">
+                        Отправить сообщение
+                        <span class="spinner" id="spinner">
+                            <img src="https://cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif" alt="Loading...">
+                        </span>
+                    </button>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

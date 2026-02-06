@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>СБОРКА | Свобода через знание</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            /* Цвета Бурятии */
+            --buriatia-sky: #1e3a8a;    /* Вечно синее небо - темно-синий */
+            --buriatia-sky-light: #3b82f6; /* Небесный светлый */
+            --buriatia-fire: #dc2626;    /* Огонь - ярко-красный */
+            --buriatia-fire-light: #ef4444; /* Светлый огонь */
+            --buriatia-hearth: #f59e0b;   /* Домашний очаг - теплый оранжевый */
+            --buriatia-snow: #f8fafc;    /* Девственный снег - почти белый */
+            --buriatia-earth: #78350f;   /* Земля - глубокий коричневый */
+            --buriatia-gold: #d97706;    /* Золото орнаментов */
+            
+            /* Темная тема (по умолчанию) */
+            --bg-primary: #0f172a;       /* Темно-синий фон */
+            --bg-secondary: #1e293b;     /* Вторичный фон */
+            --text-primary: #e2e8f0;     /* Основной текст */
+            --text-secondary: #94a3b8;   /* Вторичный текст */
+            --card-bg: rgba(30, 41, 59, 0.7); /* Фон карточек */
+            --border-color: #334155;     /* Цвет границ */
+        }
+        
+        [data-bs-theme="light"] {
+            /* Светлая тема */
+            --bg-primary: #f0f9ff;       /* Светло-голубой фон */
+            --bg-secondary: #e0f2fe;     /* Вторичный фон */
+            --text-primary: #0f172a;     /* Основной текст */
+            --text-secondary: #475569;   /* Вторичный текст */
+            --card-bg: rgba(255, 255, 255, 0.9); /* Фон карточек */
+            --border-color: #cbd5e1;     /* Цвет границ */
+        }
+        
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            overflow-x: hidden;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+        
+        /* Орнаменты Бурятии */
+        .buriatia-ornament-top {
+            height: 40px;
+            background: linear-gradient(90deg, 
+                var(--buriatia-sky) 0%, 
+                var(--buriatia-fire) 25%, 
+                var(--buriatia-snow) 50%, 
+                var(--buriatia-hearth) 75%, 
+                var(--buriatia-sky) 100%);
+            position: relative;
+            margin: 2rem 0;
+        }
+        
+        .buriatia-ornament-top::after {
+            content: "ᠰᠠᠶᠤᠮᠪᠤ"; /* Саёмбо на монгольском */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .section-divider {
+            position: relative;
+            height: 60px;
+            margin: 4rem 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,30 Q25,0 50,30 T100,30' stroke='%23d97706' fill='none' stroke-width='2'/%3E%3Ccircle cx='25' cy='30' r='3' fill='%23dc2626'/%3E%3Ccircle cx='50' cy='30' r='3' fill='%23f59e0b'/%3E%3Ccircle cx='75' cy='30' r='3' fill='%231e3a8a'/%3E%3C/svg%3E") repeat-x center;
+            opacity: 0.8;
+        }
+        
+        /* Hero секция с видео-фоном */
+        .hero-video {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        /* Стили для заголовков */
+        .manifesto-title {
+            font-family: 'Georgia', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, 
+                var(--buriatia-sky-light), 
+                var(--buriatia-fire-light), 
+                var(--buriatia-hearth));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .manifesto-subtitle {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            opacity: 0.9;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+        
+        /* Специальные кнопки в стиле Бурятии */
+        .btn-buriatia {
+            background: linear-gradient(135deg, 
+                var(--buriatia-sky), 
+                var(--buriatia-fire));
+            border: 2px solid var(--buriatia-gold);
+            color: var(--buriatia-snow);
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-buriatia:hover {
+            color: var(--buriatia-snow);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
+            border-color: var(--buriatia-hearth);
+        }
+        
+        .btn-buriatia::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(245, 158, 11, 0.3), 
+                transparent);
+            transition: left 0.7s ease;
+            z-index: -1;
+        }
+        
+        .btn-buriatia:hover::before {
+            left: 100%;
+        }
+        
+        /* Стили карточек */
+        .card-buriatia {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            transition: all 0.4s ease;
+            height: 100%;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .card-buriatia:hover {
+            transform: translateY(-8px);
+            border-color: var(--buriatia-gold);
+            box-shadow: 0 15px 35px rgba(30, 58, 138, 0.2);
+        }
+        
+        .card-header-buriatia {
+            background: linear-gradient(90deg, 
+                var(--buriatia-sky), 
+                var(--buriatia-fire));
+            border-bottom: 2px solid var(--buriatia-gold);
+            padding: 1.5rem;
+            color: white;
+        }
+        
+        /* Стили навигации */
+        .navbar-buriatia {
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            border-bottom: 2px solid var(--buriatia-gold);
+        }
+        
+        [data-bs-theme="light"] .navbar-buriatia {
+            background-color: rgba(240, 249, 255, 0.95);
+        }
+        
+        .nav-link-buriatia {
+            color: var(--text-primary) !important;
+            font-weight: 600;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link-buriatia::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--buriatia-fire);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link-buriatia:hover {
+            color: var(--buriatia-fire) !important;
+        }
+        
+        .nav-link-buriatia:hover::after {
+            width: 100%;
+        }
+        
+        .nav-brand-buriatia {
+            font-family: 'Georgia', serif;
+            font-weight: 900;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, 
+                var(--buriatia-sky-light), 
+                var(--buriatia-fire-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        /* Переключатель темы */
+        .theme-switch {
+            width: 60px;
+            height: 30px;
+            background: var(--buriatia-sky);
+            border-radius: 15px;
+            position: relative;
+            cursor: pointer;
+            border: 2px solid var(--buriatia-gold);
+            transition: all 0.3s ease;
+        }
+        
+        .theme-switch::before {
+            content: '🌙';
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        [data-bs-theme="light"] .theme-switch {
+            background: var(--buriatia-hearth);
+        }
+        
+        [data-bs-theme="light"] .theme-switch::before {
+            content: '☀️';
+            left: 35px;
+        }
+        
+        .theme-switch-handle {
+            position: absolute;
+            right: 5px;
+            top: 3px;
+            width: 20px;
+            height: 20px;
+            background: var(--buriatia-snow);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        [data-bs-theme="light"] .theme-switch-handle {
+            right: 35px;
+            background: var(--buriatia-snow);
+        }
+        
+        /* Секции */
+        .section-title-buriatia {
+            font-family: 'Georgia', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            color: var(--text-primary);
+        }
+        
+        .section-title-buriatia::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, 
+                var(--buriatia-sky), 
+                var(--buriatia-fire), 
+                var(--buriatia-hearth));
+            border-radius: 2px;
+        }
+        
+        /* Индикатор "сейчас в голове" */
+        .mind-widget-buriatia {
+            background: linear-gradient(135deg, 
+                rgba(30, 58, 138, 0.1), 
+                rgba(220, 38, 38, 0.1));
+            border-left: 5px solid var(--buriatia-gold);
+            padding: 1.5rem;
+            margin-top: 3rem;
+            border-radius: 0 12px 12px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mind-widget-buriatia::before {
+            content: 'ᠰᠠᠶᠤᠮᠪᠤ';
+            position: absolute;
+            right: 10px;
+            bottom: 5px;
+            font-size: 2rem;
+            opacity: 0.1;
+            color: var(--buriatia-fire);
+        }
+        
+        /* Таймлайн для библиотеки */
+        .timeline-marker-buriatia {
+            width: 24px;
+            height: 24px;
+            background: radial-gradient(circle, 
+                var(--buriatia-fire), 
+                var(--buriatia-hearth));
+            border-radius: 50%;
+            position: absolute;
+            left: -12px;
+            top: 5px;
+            border: 2px solid var(--buriatia-gold);
+            box-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+        }
+        
+        .timeline-item-buriatia {
+            position: relative;
+            padding-left: 2.5rem;
+            margin-bottom: 2.5rem;
+            border-left: 2px solid var(--buriatia-sky);
+        }
+        
+        /* Кастомные теги */
+        .content-tag-buriatia {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: linear-gradient(135deg, 
+                var(--buriatia-sky), 
+                var(--buriatia-fire));
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid var(--buriatia-gold);
+        }
+        
+        /* Цитаты */
+        .quote-buriatia {
+            border-left: 4px solid var(--buriatia-gold);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            position: relative;
+        }
+        
+        .quote-buriatia::before {
+            content: '"';
+            position: absolute;
+            left: 0.5rem;
+            top: -0.5rem;
+            font-size: 3rem;
+            color: var(--buriatia-fire);
+            opacity: 0.3;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .manifesto-title {
+                font-size: 2.8rem;
+            }
+            
+            .manifesto-subtitle {
+                font-size: 1.2rem;
+                padding: 0 1rem;
+            }
+            
+            .hero-video {
+                min-height: 600px;
+                height: auto;
+                padding: 6rem 0;
+            }
+            
+            .section-title-buriatia {
+                font-size: 2.2rem;
+            }
+            
+            .buriatia-ornament-top::after {
+                font-size: 1rem;
+            }
+        }
+        
+        /* Анимация появления */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-up {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        /* Футер с орнаментом */
+        .footer-ornament {
+            height: 60px;
+            background: url("data:image/svg+xml,%3Csvg width='120' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='ornament' patternUnits='userSpaceOnUse' width='120' height='60'%3E%3Cpath d='M0,30 Q30,10 60,30 T120,30' stroke='%23d97706' fill='none' stroke-width='2'/%3E%3Cpath d='M0,30 Q30,50 60,30 T120,30' stroke='%23dc2626' fill='none' stroke-width='2'/%3E%3Ccircle cx='30' cy='30' r='4' fill='%23f59e0b'/%3E%3Ccircle cx='60' cy='30' r='4' fill='%231e3a8a'/%3E%3Ccircle cx='90' cy='30' r='4' fill='%23dc2626'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23ornament)'/%3E%3C/svg%3E") repeat-x;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar navbar-expand-lg navbar-buriatia fixed-top">
+        <div class="container">
+            <a class="navbar-brand nav-brand-buriatia" href="#">СБОРКА</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-buriatia" href="#library">БИБЛИОТЕКА</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-buriatia" href="#heroes">ГЕРОИ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-buriatia" href="#courses">АРСЕНАЛ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-buriatia" href="#excursions">ЭКСКУРСИИ</a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <div class="theme-switch" id="themeSwitch">
+                            <div class="theme-switch-handle"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Орнамент перед героем -->
+    <div class="buriatia-ornament-top"></div>
+
+    <!-- Hero секция - Манифест -->
+    <section class="hero-video">
+        <!-- Видео фон с небом Бурятии -->
+        <video autoplay muted loop class="video-background">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-blue-sky-with-white-clouds-2404-large.mp4" type="video/mp4">
+            <!-- Запасной контент - градиент неба Бурятии -->
+            <div style="position: absolute; top:0; left:0; width:100%; height:100%; 
+                background: linear-gradient(135deg, var(--buriatia-sky) 0%, var(--buriatia-sky-light) 100%);"></div>
+        </video>
+        
+        <div class="hero-content container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-xl-8 animate-fade-up">
+                    <h1 class="manifesto-title">СВОБОДА ЧЕРЕЗ ЗНАНИЕ</h1>
+                    <p class="manifesto-subtitle">
+                        Как вечно синее небо Бурятии — так безгранично познание. 
+                        Как огонь домашнего очага — так горит жажда понимания. 
+                        Присоединяйся к тем, кто видит схему за магией.
+                    </p>
+                    <button class="btn btn-buriatia" onclick="scrollToPillars()">
+                        НАЧАТЬ ПУТЬ К СВОБОДЕ
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Разделитель с орнаментом -->
+    <div class="section-divider"></div>
+
+    <!-- Три столпа свободы -->
+    <section id="pillars" class="py-5" style="background-color: var(--bg-secondary);">
+        <div class="container py-5">
+            <h2 class="section-title-buriatia text-center mb-5">ТРИ СТОЛПА СВОБОДЫ</h2>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card card-buriatia h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="mb-4" style="font-size: 3rem; color: var(--buriatia-sky-light);">
+                                <i class="bi bi-cloud-sun"></i>
+                            </div>
+                            <h3 class="h4 mb-3">Небесная Мудрость</h3>
+                            <p class="text-muted">Статьи, библиотека, герои. Собери свою картину мира как ясное небо над степью — чистое и безграничное.</p>
+                            <a href="#library" class="btn btn-outline-primary mt-3" style="border-color: var(--buriatia-sky); color: var(--buriatia-sky);">
+                                Смотреть в небо
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card card-buriatia h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="mb-4" style="font-size: 3rem; color: var(--buriatia-fire);">
+                                <i class="bi bi-fire"></i>
+                            </div>
+                            <h3 class="h4 mb-3">Огонь Понимания</h3>
+                            <p class="text-muted">Курсы по ОС, сетям, данным. Разжигай огонь познания в домашнем очаге своего разума.</p>
+                            <a href="#courses" class="btn btn-outline-danger mt-3" style="border-color: var(--buriatia-fire); color: var(--buriatia-fire);">
+                                Разжечь огонь
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card card-buriatia h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="mb-4" style="font-size: 3rem; color: var(--buriatia-hearth);">
+                                <i class="bi bi-house-heart"></i>
+                            </div>
+                            <h3 class="h4 mb-3">Земной Опыт</h3>
+                            <p class="text-muted">Экскурсии в мастерские, на заводы, в серверные. Прикоснись к реальности, как к родной земле.</p>
+                            <a href="#excursions" class="btn btn-outline-warning mt-3" style="border-color: var(--buriatia-hearth); color: var(--buriatia-hearth);">
+                                Ступить на землю
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Разделитель -->
+    <div class="section-divider"></div>
+
+    <!-- Библиотека -->
+    <section id="library" class="py-5">
+        <div class="container py-5">
+            <h2 class="section-title-buriatia">БИБЛИОТЕКА</h2>
+            <p class="lead mb-5" style="color: var(--text-secondary);">
+                Хроносфера мыслей под вечно синим небом. Фильтруй как ветер в степи.
+            </p>
+            
+            <div class="row mb-4">
+                <div class="col">
+                    <span class="content-tag-buriatia">📚 Книга</span>
+                    <span class="content-tag-buriatia">🎬 Фильм</span>
+                    <span class="content-tag-buriatia">🖼 Картина</span>
+                    <span class="content-tag-buriatia">📝 Статья</span>
+                    <span class="content-tag-buriatia">🧠 Мудрость</span>
+                    <span class="content-tag-buriatia">⚙️ Технология</span>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="card card-buriatia h-100">
+                        <div class="card-header-buriatia">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-light text-dark">📚 Книга</span>
+                                <span class="badge" style="background: var(--buriatia-sky);">🧠 Мудрость</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title" style="color: var(--buriatia-sky);">"Феномен человека" - Тейяр де Шарден</h4>
+                            <p class="card-text">Точка сборки для технократа. Что если эволюция — это не случайность, а закономерный рост сложности и сознания? Техносфера как продолжение ноосферы.</p>
+                            <div class="timeline-item-buriatia mt-4">
+                                <div class="timeline-marker-buriatia"></div>
+                                <h5 style="color: var(--buriatia-fire);">Уровень: Планетарный</h5>
+                                <small class="text-muted">Рекомендуется после базовых материалов по системному мышлению</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 mb-4">
+                    <div class="card card-buriatia h-100">
+                        <div class="card-header-buriatia">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-light text-dark">🎬 Фильм</span>
+                                <span class="badge" style="background: var(--buriatia-earth);">🏭 Система</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title" style="color: var(--buriatia-fire);">"Марсианин" - Ридли Скотт</h4>
+                            <p class="card-text">Гимн системному мышлению и инженерной изобретательности. Как один человек, используя научный метод и доступные ресурсы, решает каскад сложнейших проблем.</p>
+                            <div class="timeline-item-buriatia mt-4">
+                                <div class="timeline-marker-buriatia"></div>
+                                <h5 style="color: var(--buriatia-hearth);">Уровень: Личностный → Планетарный</h5>
+                                <small class="text-muted">Идеально для понимания ценности междисциплинарности</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Виджет "Сейчас в голове" -->
+            <div class="mind-widget-buriatia">
+                <h5 style="color: var(--buriatia-gold);">
+                    <i class="bi bi-stars"></i> СЕЙЧАС В ГОЛОВЕ
+                </h5>
+                <p class="mb-1">Читаю: "Дизайн привычных вещей" Дональда Нормана</p>
+                <p class="mb-0">Размышляю: Почему плохой интерфейс — это не просто неудобство, а этическая проблема?</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Разделитель -->
+    <div class="section-divider"></div>
+
+    <!-- Герои -->
+    <section id="heroes" class="py-5" style="background-color: var(--bg-secondary);">
+        <div class="container py-5">
+            <h2 class="section-title-buriatia">ТЕ, КТО ДЕЛАЕТ</h2>
+            <p class="lead mb-5" style="color: var(--text-secondary);">
+                Как огонь в очаге — их дела согревают мир. Знакомьтесь с теми, кто создаёт.
+            </p>
+            
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card card-buriatia h-100">
+                        <div class="row g-0 h-100">
+                            <div class="col-md-5" style="
+                                background: linear-gradient(rgba(30, 58, 138, 0.7), rgba(30, 58, 138, 0.7)), 
+                                            url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80') center/cover;
+                                position: relative;
+                            ">
+                                <div class="position-absolute bottom-0 start-0 p-3">
+                                    <span class="badge" style="background: var(--buriatia-fire);">Строитель</span>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="card-body d-flex flex-column h-100">
+                                    <h4 class="card-title" style="color: var(--buriatia-sky);">Термоблок</h4>
+                                    <h6 class="card-subtitle mb-3" style="color: var(--buriatia-fire);">
+                                        Мечтатель, создавший свой строительный материал
+                                    </h6>
+                                    <p class="card-text flex-grow-1">
+                                        Инженер-самоучка, который разработал новый тип строительных блоков с уникальными теплоизоляционными свойствами. Дарит людям энергоэффективные дома, минуя гигантов рынка.
+                                    </p>
+                                    <div class="quote-buriatia mt-3">
+                                        <p class="small mb-0">"Если ты не пробуешь сделать лучше — ты просто обслуживаешь чужую посредственность."</p>
+                                    </div>
+                                    <div class="mt-auto pt-3">
+                                        <a href="#" class="btn btn-sm" style="background: var(--buriatia-sky); color: white;">История героя</a>
+                                        <a href="#excursions" class="btn btn-sm ms-2" style="background: var(--buriatia-fire); color: white;">Кофе с героем</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card card-buriatia h-100">
+                        <div class="row g-0 h-100">
+                            <div class="col-md-5" style="
+                                background: linear-gradient(rgba(245, 158, 11, 0.7), rgba(245, 158, 11, 0.7)), 
+                                            url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80') center/cover;
+                                position: relative;
+                            ">
+                                <div class="position-absolute bottom-0 start-0 p-3">
+                                    <span class="badge" style="background: var(--buriatia-sky);">Изобретатель</span>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="card-body d-flex flex-column h-100">
+                                    <h4 class="card-title" style="color: var(--buriatia-hearth);">Дмитрий Сельский</h4>
+                                    <h6 class="card-subtitle mb-3" style="color: var(--buriatia-sky);">
+                                        Мужик, упростивший жизнь себе и другим
+                                    </h6>
+                                    <p class="card-text flex-grow-1">
+                                        Создатель десятков простых технических устройств для сельского хозяйства и быта. Его девиз — "сложное должно быть простым". Превращает трудоёмкие процессы в элементарные операции.
+                                    </p>
+                                    <div class="quote-buriatia mt-3">
+                                        <p class="small mb-0">"Лень — двигатель прогресса. Но только если ты ленишься делать одно и то же дважды."</p>
+                                    </div>
+                                    <div class="mt-auto pt-3">
+                                        <a href="#" class="btn btn-sm" style="background: var(--buriatia-hearth); color: white;">История героя</a>
+                                        <a href="#excursions" class="btn btn-sm ms-2" style="background: var(--buriatia-sky); color: white;">Визит в мастерскую</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Разделитель -->
+    <div class="section-divider"></div>
+
+    <!-- Курсы (Арсенал) -->
+    <section id="courses" class="py-5">
+        <div class="container py-5">
+            <h2 class="section-title-buriatia">АРСЕНАЛ</h2>
+            <p class="lead mb-5" style="color: var(--text-secondary);">
+                Ключи от чёрных ящиков. Знание — это сила управлять, а не потреблять.
+            </p>
+            
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card card-buriatia h-100">
+                        <div class="card-header-buriatia">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="mb-0" style="color: white;">Курс 1</h4>
+                                <span class="badge" style="background: var(--buriatia-hearth);">Популярный</span>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="card-title h4" style="color: var(--buriatia-sky);">Операционная система: от магии к власти</h3>
+                            <p class="card-subtitle mb-3" style="color: var(--buriatia-fire);">
+                                Разбери компьютер до винтика мысли. От пользователя — к системному программисту.
+                            </p>
+                            <ul class="list-unstyled mb-4">
+                                <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--buriatia-fire);"></i> Пишем свой командный шелл на Python/C</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--buriatia-fire);"></i> Изучаем ядро Linux не для работы, а для понимания</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--buriatia-fire);"></i> Алгоритмы и структуры данных как грамматика мысли машины</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--buriatia-fire);"></i> От абстракции процессора до системных вызовов</li>
+                            </ul>
+                            <div class="mt-auto">
+                                <a href="#" class="btn w-100 py-2" style="background: linear-gradient(135deg, var(--buriatia-sky), var(--buriatia-fire)); color: white; border: none;">
+                                    НАЧАТЬ СБОРКУ КЛЮЧА
+                                </a>
+                                <small class="text-muted d-block mt-2 text-center">Ссылка на Stepik</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="card card-buriatia h-100">
+                        <div class="card-header-buriatia">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="mb-0" style="color: white;">Курс 2</h4>
+                                <span class="badge" style="background: var(--buriatia-sky);">Скоро</span>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="card-title h4" style="color: var(--buriatia-fire);">Сети: стань повелителем протоколов</h3>
+                            <p class="card-subtitle mb-3" style="color: var(--buriatia-sky);">
+                                Напиши свои сетевые утилиты. Почувствуй поток битов как настоящий хакер — тот, кто понимает.
+                            </p>
+                            <ul class="list-unstyled mb-4">
+                                <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--buriatia-sky);"></i> Свой ping, traceroute, HTTP-сервер на Python</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--buriatia-sky);"></i> TCP/IP стек без магии: от Ethernet до приложения</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--buriatia-sky);"></i> REST API как lingua franca современного интернета</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--buriatia-sky);"></i> Пишем свой SIP-звонок и понимаем VoIP</li>
+                            </ul>
+                            <div class="mt-auto">
+                                <a href="#" class="btn w-100 py-2" style="background: linear-gradient(135deg, var(--buriatia-fire), var(--buriatia-hearth)); color: white; border: none;">
+                                    ВЗЯТЬ ПОД КОНТРОЛЬ
+                                </a>
+                                <small class="text-muted d-block mt-2 text-center">Ссылка на Stepik (доступен для предзаписи)</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Разделитель -->
+    <div class="section-divider"></div>
+
+    <!-- Экскурсии -->
+    <section id="excursions" class="py-5" style="background-color: var(--bg-secondary);">
+        <div class="container py-5">
+            <h2 class="section-title-buriatia">ПОПАСТЬ ВНУТРЬ</h2>
+            <p class="lead mb-5" style="color: var(--text-secondary);">
+                Билет в другой мир. Увидь систему изнутри, а не через интерфейс.
+            </p>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-buriatia h-100">
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <span class="badge" style="background: var(--buriatia-sky);">🏭 Экспедиция</span>
+                                <span class="badge" style="background: var(--buriatia-fire);">2 места</span>
+                            </div>
+                            <h4 class="card-title h5" style="color: var(--buriatia-sky);">Аэропорт: хореография хаоса</h4>
+                            <p class="card-text flex-grow-1">Увидим, как диспетчеры, наземные службы и ПО управляют тысячами людей и тонн металла. Поймём, что такое надежность сложной системы.</p>
+                            <div class="mt-4">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <small><i class="bi bi-calendar me-1"></i> 15 октября</small>
+                                    <small><i class="bi bi-geo-alt me-1"></i> Шереметьево</small>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">Лимит: 6 человек</small>
+                                    <a href="#" class="btn btn-sm" style="background: var(--buriatia-sky); color: white;">ЗАБРОНИРОВАТЬ</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-buriatia h-100">
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <span class="badge" style="background: var(--buriatia-hearth);">☕ Кофе</span>
+                                <span class="badge" style="background: var(--buriatia-sky);">Есть места</span>
+                            </div>
+                            <h4 class="card-title h5" style="color: var(--buriatia-hearth);">Кофе с Термоблоком</h4>
+                            <p class="card-text flex-grow-1">Неформальная встреча с создателем уникального строительного материала. Обсудим, как из идеи рождается реальный продукт.</p>
+                            <div class="mt-4">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <small><i class="bi bi-calendar me-1"></i> 22 октября</small>
+                                    <small><i class="bi bi-geo-alt me-1"></i> Кафе "Циолковский"</small>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">Лимит: 8 человек</small>
+                                    <a href="#" class="btn btn-sm" style="background: var(--buriatia-hearth); color: white;">ЗАБРОНИРОВАТЬ</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-buriatia h-100">
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <span class="badge" style="background: var(--buriatia-fire);">🔧 Мастерская</span>
+                                <span class="badge" style="background: var(--buriatia-hearth);">4 места</span>
+                            </div>
+                            <h4 class="card-title h5" style="color: var(--buriatia-fire);">Мастерская Дмитрия</h4>
+                            <p class="card-text flex-grow-1">Целый день в настоящей мастерской изобретателя. Увидим устройства в работе, попробуем собрать простой механизм.</p>
+                            <div class="mt-4">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <small><i class="bi bi-calendar me-1"></i> 5 ноября</small>
+                                    <small><i class="bi bi-geo-alt me-1"></i> Деревня Технологов</small>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">Лимит: 5 человек</small>
+                                    <a href="#" class="btn btn-sm" style="background: var(--buriatia-fire); color: white;">ЗАПИСАТЬСЯ</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Орнамент перед футером -->
+    <div class="footer-ornament"></div>
+
+    <!-- Футер -->
+    <footer class="py-4" style="border-top: 2px solid var(--buriatia-gold);">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h3 class="nav-brand-buriatia mb-2">СБОРКА</h3>
+                    <p class="small mb-0" style="color: var(--text-secondary);">
+                        Свобода через знание. Как небо — безгранично, как огонь — горячо.
+                    </p>
+                    <p class="small" style="color: var(--buriatia-gold);">
+                        ᠰᠠᠶᠤᠮᠪᠤ — вечное движение к знанию
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="small mb-0" style="color: var(--text-secondary);">© 2023 Сборка. Это манифест, а не просто сайт.</p>
+                    <p class="small" style="color: var(--buriatia-fire);">
+                        Разобрать, чтобы понять. Понять, чтобы быть свободным.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Переключение темы
+        document.getElementById('themeSwitch').addEventListener('click', function() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-bs-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-bs-theme', newTheme);
+            
+            // Сохраняем выбор в localStorage
+            localStorage.setItem('theme', newTheme);
+            
+            // Анимация переключения
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 150);
+        });
+        
+        // Загрузка сохраненной темы
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-bs-theme', savedTheme);
+            
+            // Функция для прокрутки к "Трем столпам"
+            window.scrollToPillars = function() {
+                document.getElementById('pillars').scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            };
+            
+            // Простая анимация появления элементов при скролле
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-up');
+                    }
+                });
+            }, observerOptions);
+            
+            // Наблюдаем за карточками и секциями
+            document.querySelectorAll('.card-buriatia, .section-title-buriatia').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Имитация загрузки видео (если видео не загрузится)
+            const video = document.querySelector('.video-background');
+            video.addEventListener('error', function() {
+                // Если видео не загрузилось, показываем градиентный фон
+                this.style.display = 'none';
+                document.querySelector('.hero-video').style.background = 
+                    'linear-gradient(135deg, var(--buriatia-sky) 0%, var(--buriatia-sky-light) 100%)';
+            });
+        });
+    </script>
+</body>
+</html>

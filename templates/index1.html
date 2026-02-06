@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ИТ‑специалист: веб‑разработка, администрирование, программирование</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts: Roboto (нейтральный) + Cyrillic -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #f5f0e6; /* Светло‑бежевый, фон */
+      --accent-1: #d49a3d;   /* Золотисто‑коричневый (традиционный бурятский акцент) */
+      --accent-2: #8b5e3c;   /* Тёмно‑коричневый */
+      --text-dark: #333;
+      --border-radius: 12px;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-dark);
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      background-color: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+      border-radius: 0 0 var(--border-radius) var(--border-radius);
+    }
+
+    .dashboard-card {
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .dashboard-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .book-item, .blog-item, .course-item {
+      border-bottom: 1px solid #eee;
+      padding: 15px 0;
+    }
+
+    .btn-accent {
+      background-color: var(--accent-1);
+      border-color: var(--accent-1);
+      color: white;
+    }
+
+    .btn-accent:hover {
+      background-color: var(--accent-2);
+      border-color: var(--accent-2);
+    }
+
+    /* Бурятские орнаментальные элементы (псевдоэлементы) */
+    .ornament-top {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 10px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 10"><path d="M0,5 Q20,0 40,5 T80,5" stroke="%23d49a3d" stroke-width="2" fill="none"/></svg>') no-repeat center;
+      margin: 20px auto;
+    }
+
+    .ornament-bottom::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, transparent, var(--accent-1), transparent);
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Навигационное меню -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="#">Иванов А.С.</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#dashboard">Дашборд</a></li>
+        <li class="nav-item"><a class="nav-link" href="#books">Библиотека</a></li>
+        <li class="nav-item"><a class="nav-link" href="#blog">Блог</a></li>
+        <li class="nav-item"><a class="nav-link" href="#courses">Курсы</a></li>
+        <li class="nav-item"><a class="nav-link btn btn-sm btn-outline-primary ms-2" href="#contact">Связаться</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Главный экран (Hero) -->
+<section class="hero">
+  <div class="container">
+    <h1 class="display-4 fw-bold">Иванов Александр Сергеевич</h1>
+    <p class="lead mt-3">Веб‑разработка · Системное и сетевое администрирование<br>
+      Программирование на Python и C · Микроконтроллеры</p>
+    <a href="#contact" class="btn btn-light btn-lg mt-4">Связаться со мной</a>
+  </div>
+</section>
+
+<div class="container mt-5">
+
+  <!-- Дашборд достижений -->
+  <section id="dashboard" class="mb-5">
+    <h2 class="text-center mb-4 position-relative">
+      Мой дашборд
+      <div class="ornament-top"></div>
+    </h2>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3">
+        <div class="card dashboard-card h-100">
+          <div class="card-body text-center">
+            <h5 class="card-title text-primary">Проекты</h5>
+            <p class="display-6 fw-bold">24</p>
+            <p class="text-muted">За последние 3 года</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card dashboard-card h-100">
+          <div class="card-body text-center">
+            <h5 class="card-title text-success">Языки</h5>
+            <p class="display-6 fw-bold">5</p>
+            <p class="text-muted">Python, C, JavaScript, Bash, SQL</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card dashboard-card h-100">
+          <div class="card-body text-center">
+            <h5 class="card-title text-warning">Сертификации</h5>
+            <p class="display-6 fw-bold">8</p>
+            <p class="text-muted">Cisco, Python, Linux</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card dashboard-card h-100">
+          <div class="card-body text-center">
+            <h5 class="card-title text-danger">Ученики</h5>
+            <p class="display-6 fw-bold">47</p>
+            <p class="text-muted">Прошли мои курсы</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Библиотека: последние прочитанные книги -->
+  <section id="books" class="mb-5">
+    <h2 class="text-center mb-4 position-relative">
+      Моя библиотека
+      <div class="ornament-top"></div>
+    </h2>
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="card dashboard-card">
+          <div class="card-body">
+            <ul class="list-unstyled">
+              <li class="book-item">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <h6 class="mb-1">Чистый код. Создание, анализ и рефакторинг</h6>
+                    <p class="text-muted mb-0">Роберт Мартин</p>
+                  </div>
+                  <span class="badge bg-primary rounded-pill">2025</span>
+                </div>
+              </li>
+              <li class="book-item">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <h6 class="mb-1">Архитектура компьютерных систем</h6>
+                    <p class="text-muted mb-0">Э. Таненбаум, Т. Остин</p>
+                  </div>
+                  <span class="badge bg-primary rounded-pill">2024</span>
+                </div>
+              </li>
+              <li class="book-item">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <h6 class="mb-1">Python. К вершинам мастерства</h6>
+                    <p class="text-muted mb-0">Лусиану Рамальо</p>
+                  </div>
+                  <span class="badge bg-primary rounded-pill">2024</span>
+                </div>
+              </li>
+              <li class="book-item">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <h6 class="mb-1">Сетевое взаимодействие в Linux</h6>
+                    <p class="text-muted mb-0">Оливер К.</p>
+                  </div>
+                  <span class="badge bg-primary rounded-pill">2023</span>
+                </div>
+              </li>
+            </ul>
+            <div class="text-center mt-3">
+              <a href="#" class="btn btn-outline-secondary btn-sm">Вся библиотека</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Блог: последние статьи -->
+  <section id="blog" class="mb-5">
+    <h2 class="text-center mb-4 position-relative">
+      Последние статьи блога
+      <div class="ornament-top"></div>
+    </h2>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="card dashboard-card h-100">
+          <img src="https://via.placeholder.com/400x225/d49a3d/ffffff?text=Статья+1" class="card-img-top" alt="Обложка статьи">
+          <div class="card-body">
+            <h5 class="card-title">Оптимизация Python‑приложений: профилирование и тюнинг</h5>
+            <p class="card-text text-muted">Разбираем инструменты cProfile, memory_profiler и приёмы ускорения кода.</p>
+            <a href="#" class="btn btn-sm btn-accent">Читать далее</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card dashboard-card h-100">
+          <img src="https://via.placeholder.com/400x225/8b5e3c/ffffff?text=Статья+2" class="card-img-top" alt="Обложка статьи">
+          <div class="card-body">
+            <h5 class="card-title">Настройка сетевой безопасности в Linux: iptables и nftables</h5>
+            <p class="card-text text-muted">Практическое руководство по защите сервера от внешних угроз.</p>
+            <a href="#" class="btn btn-sm btn-accent">Читать далее</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card dashboard-card h-100">
+          <img src="https://via.placeholder.com/400x225/d49a3d/ffffff?text=Статья+3" class="card-img-top" alt="Обложка статьи">
+          <div class="card-body">
+            <h5 class="card-title">Микроконтроллеры STM32: первый проект на HAL</h5>
+            <p class="card-text text-muted">Пошаговая сборка и прошивка простого устройства с датчиком температуры.</p>
+            <a href="#" class="btn btn-sm btn-accent">Читать далее</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-4">
+      <a href="#" class="btn btn-outline-secondary">Все статьи блога</a>
+    </div>
+  </section>
+
+  <!-- Курсы для монетизации -->
+  <section id="courses" class="mb-5">
+    <h2 class="text-center mb-4 position-relative">
+      Лучшие курсы
+      <div class="ornament-top"></div>
+    </h2>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="card dashboard-card h-100">
+          <div class="card-body">
+            <h5 class="card-title text-primary">Веб‑разработка с нуля</h5>
+            <p class="card-text text-muted">HTML, CSS, JavaScript, React, Node.js — полный стек за 6 месяцев.</p>
+            <ul class="small ps-3 mb-3">
+              <li>40 видеоуроков</li>
+              <li>10 практических проектов</li>
+              <li>Сертификат по окончании</li>
+            </ul>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="fw-bold text-success">₽ 19 900</span>
+              <a href="#" class="btn btn-sm btn-accent">Записаться</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="card dashboard-card h-100">
+          <div class="card-body">
+            <h5 class="card-title text-success">Системное администрирование Linux</h5>
+            <p class="card-text text-muted">От установки до настройки сервисов: SSH, Nginx, Docker, мониторинг.</p>
+            <ul class="small ps-3 mb-3">
+              <li>25 видеоуроков</li>
+              <li>Практические задания</li>
+              <li>Поддержка 24/7</li>
+            </ul>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="fw-bold text-success">₽ 14 900</span>
+              <a href="#" class="btn btn-sm btn-accent">Записаться</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="card dashboard-card h-100">
+          <div class="card-body">
+            <h5 class="card-title text-warning">Программирование на Python</h5>
+            <p class="card-text text-muted">Основы, ООП, работа с API, асинхронность, проекты.</p>
+            <ul class="small ps-3 mb-3">
+              <li>30 видеоуроков</li>
+              <li>5 реальных проектов</li>
+              <li>Чек‑лист карьерного роста</li>
+            </ul>
+                      </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-4">
+      <a href="#" class="btn btn-outline-secondary">Все курсы</a>
+    </div>
+  </section>
+
+  <!-- Блок контактов -->
+  <section id="contact" class="mb-5">
+    <h2 class="text-center mb-4 position-relative">
+      Связаться со мной
+      <div class="ornament-top"></div>
+    </h2>
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8">
+        <div class="card dashboard-card">
+          <div class="card-body">
+            <form>
+              <div class="mb-3">
+                <label for="name" class="form-label">Ваше имя</label>
+                <input type="text" class="form-control" id="name" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label">Сообщение</label>
+                <textarea class="form-control" id="message" rows="4" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-accent">Отправить</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div> <!-- /container -->
+
+<!-- Подвал -->
+<footer class="bg-dark text-white text-center py-4 ornament-bottom">
+  <div class="container">
+    <p class="mb-1">&copy; 2025 Иванов А.С. Все права защищены.</p>
+    <p class="small mb-0">ИТ‑специалист: веб‑разработка, администрирование, программирование</p>
+    <div class="mt-2">
+      <a href="#" class="text-white me-3">Политика конфиденциальности</a>
+      <a href="#" class="text-white">Условия использования</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap 5 JS (опционально, если нужны компоненты с JS) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
