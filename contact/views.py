@@ -93,4 +93,17 @@ def contact_ajax_form_view(request):
                 'message': 'Пожалуйста, исправьте ошибки в форме'
             }, status=400)
     
-    return JsonResponse({'error': 'Invalid request'}, status=400)
+    return JsonResponse({'error': 'Invalid request'}, status=405)
+
+def refresh_captcha(request):
+    """Генерация новой капчи"""
+    from captcha.models import CaptchaStore
+    from captcha.helpers import captcha_image_url
+    
+    new_key = CaptchaStore.generate_key()
+    new_image_url = captcha_image_url(new_key)
+    
+    return JsonResponse({
+        'key': new_key,
+        'image_url': new_image_url
+    })

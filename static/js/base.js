@@ -2,6 +2,19 @@
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const mainNav = document.getElementById('mainNav');
 
+// Загрузка капчи
+async function loadCaptcha() {
+    try {
+        const response = await fetch('/refresh-captcha/');
+        const data = await response.json();
+        captchaKey = data.key;
+        document.getElementById('id_captcha_0').value = captchaKey;
+        document.getElementById('captcha-image').src = data.image_url;
+    } catch (error) {
+        console.error('Ошибка загрузки капчи:', error);
+    }
+}
+
 function resetMessages() {
         // Скрываем все сообщения
         document.querySelectorAll('.error-message, .success-message').forEach(el => {
@@ -194,6 +207,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const spinner = document.getElementById('spinner');
     const csrfToken = document.getElementById('csrf_token').value;
     
+    document.getElementById('refreshCaptchaBtn').addEventListener('click', refreshCaptcha);
+
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
         

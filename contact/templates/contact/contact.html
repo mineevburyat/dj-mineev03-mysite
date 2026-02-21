@@ -96,6 +96,7 @@
                         {% endif %}
                     </div>
                     <!-- Капча -->
+<<<<<<< Updated upstream:contact/templates/contact/contact.html
                      {% include 'contact/capcha.html' %}
                     <div class="captcha-container">
                         <label for="id_captcha_1">Введите текст с картинки:</label>
@@ -104,6 +105,18 @@
                             <button type="button" class="refresh-btn" onclick="refreshCaptcha()">⟳ Обновить</button>
                         </div>
                         <div id="captcha-error" class="error"></div>
+=======
+                    <div id="captcha-container">
+                        {{ form.captcha }}
+                        <label for="id_captcha_1">Код с картинки:</label>
+                        <input type="text" id="id_captcha_1" name="captcha_1" autocomplete="off">
+                        <input type="hidden" id="id_captcha_0" name="captcha_0">
+                        
+                        <div>
+                            <img id="captcha-image" src="" alt="captcha">
+                            <button type="button" id="refresh-captcha">Обновить капчу</button>
+                        </div>
+>>>>>>> Stashed changes:home/templates/contact.html
                     </div>
                     <button type="submit" class="btn btn-primary" style="width: 100%;" id="submit-btn">
                         Отправить сообщение

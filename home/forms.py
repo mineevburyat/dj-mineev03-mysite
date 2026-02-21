@@ -21,5 +21,11 @@ class ContactForm(forms.Form):
         label='Сообщение',
         widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 5})
     )
-    
-    captcha = CaptchaField(label='Введите текст с картинки')
+    captcha = CaptchaField(
+        label='Код с картинки',
+        error_messages={
+            'invalid': 'Неверный код с картинки. Попробуйте еще раз.',
+            'required': 'Пожалуйста, введите код с картинки.'
+        }
+    )
+

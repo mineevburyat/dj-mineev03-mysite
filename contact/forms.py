@@ -48,5 +48,9 @@ class AjaxContactForm(forms.Form):
             'placeholder': 'Ваш телефон (необязательно)'
         })
     )
+<<<<<<< Updated upstream
 
     captcha = CaptchaField(label='Введите текст с картинки')
+=======
+    captcha = CaptchaField()
+>>>>>>> Stashed changes
