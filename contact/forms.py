@@ -1,10 +1,11 @@
 from django import forms
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
-from captcha.fields import CaptchaTextInput, CaptchaField
+# from captcha.fields import CaptchaTextInput, CaptchaField
+from .models import Lead
 
-class CustomCaptchaTextInput(CaptchaTextInput):
-    template_name = 'custom_captcha_field.html'
+# class CustomCaptchaTextInput(CaptchaTextInput):
+#     template_name = 'custom_captcha_field.html'
 
 class AjaxContactForm(forms.Form):
     name = forms.CharField(
@@ -48,9 +49,15 @@ class AjaxContactForm(forms.Form):
             'placeholder': 'Ваш телефон (необязательно)'
         })
     )
-<<<<<<< Updated upstream
+    # captcha = CaptchaField(label='Введите текст с картинки')
 
-    captcha = CaptchaField(label='Введите текст с картинки')
-=======
-    captcha = CaptchaField()
->>>>>>> Stashed changes
+
+class LeadForm(forms.ModelForm):
+    class Meta:
+        model = Lead
+        fields = ['name', 'email', 'telegram', 'source', 'url', ]
+        widgets = {
+            'source': forms.HiddenInput(),
+            'url': forms.HiddenInput(),
+        }
+

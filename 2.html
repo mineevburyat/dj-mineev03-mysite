@@ -1,0 +1,64 @@
+<script>
+        function getCSRFToken() {
+            return document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
+        }
+
+        (function() {
+            const popup = document.getElementById('popup');
+            const closeBtn = document.getElementById('popup-close');
+            const popupForm = document.getElementById('popupForm');
+            const formSource = document.getElementById('formSource');
+            
+            window.openPopup = function(source = 'button') {
+                if (formSource) formSource.value = source;
+                const hasSubmitted = sessionStorage.getItem('leadFormSubmitted') === 'true';
+                if (!hasSubmitted) popup.classList.add('show');
+            };
+            
+            window.closePopup = function() {
+                popup.classList.remove('show');
+            };
+            
+            document.querySelectorAll('.cta-trigger').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.openPopup('button');
+                });
+            });
+            
+            if (closeBtn) {
+                closeBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.closePopup();
+                });
+            }
+            
+            popup.addEventListener('click', (e) => {
+                if (e.target === popup) window.closePopup();
+            });
+            
+            // Exit intent
+            document.addEventListener('mouseleave', (e) => {
+                const hasSubmitted = sessionStorage.getItem('leadFormSubmitted') === 'true';
+                if (e.clientY < 10 && !hasSubmitted && !popup.classList.contains('show')) {
+                    window.openPopup('exit_intent');
+                }
+            });
+            
+            if (popupForm) {
+                popupForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const formData = new FormData(popupForm);
+                    const data = Object.fromEntries(formData);
+                    console.log('Лид:', data);
+                    
+                    // Здесь отправка на бэкенд
+                    
+                    alert('Спасибо! Менеджер свяжется с вами в Telegram в течение 24 часов.');
+                    sessionStorage.setItem('leadFormSubmitted', 'true');
+                    window.closePopup();
+                    popupForm.reset();
+                });
+            }
+        })();
+    </script>

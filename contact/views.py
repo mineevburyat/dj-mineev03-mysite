@@ -10,6 +10,81 @@ import re
 from django.forms.utils import ErrorDict
 import json
 from home.forms import ContactForm
+from .models import Lead
+from .forms import LeadForm
+
+@csrf_exempt
+@require_POST
+def save_lead(request):
+    """Сохранение лида из попапа"""
+    try:
+        # Парсим JSON из запроса
+        data = json.loads(request.body)
+        
+        # Добавляем технические данные
+        data['ip_address'] = request.META.get('REMOTE_ADDR')
+        data['user_agent'] = request.META.get('HTTP_USER_AGENT', '')
+        
+        # Сохраняем через форму
+        form = LeadForm(data)
+        if form.is_valid():
+            lead = form.save()
+
+            # Можно отправить уведомление в Telegram
+            # send_telegram_notification(lead)
+            
+            return JsonResponse({
+                'success': True,
+                'message': 'Спасибо! Проверьте почту.'
+            })
+        else:
+            return JsonResponse({
+                'error': 'Ошибка валидации',
+                'details': form.errors
+            }, status=400)
+            
+    except json.JSONDecodeError:
+        return JsonResponse({'error': 'Неверный формат JSON'}, status=400)
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
+
+def send_telegram_notification(lead):
+    """Отправка уведомления в Telegram"""
+    bot_token = 'YOUR_BOT_TOKEN'  # Замени на свой
+    chat_id = 'YOUR_CHAT_ID'      # Замени на свой
+    
+    message = f"""
+    🔔 <b>Новый лид!</b>
+
+    👤 Имя: {lead.name or 'Не указано'}
+    📧 Email: {lead.email or 'Не указано'}
+    📱 Telegram: {lead.telegram}
+    📌 Источник: {lead.get_source_display()}
+    🕐 Время: {lead.created_at.strftime('%d.%m.%Y %H:%M')}
+    🌐 Страница: {lead.url or 'Не указана'}
+
+    🖥 IP: {lead.ip_address or 'Не определен'}
+    """
+    
+    # Асинхронная отправка (чтобы не тормозить ответ)
+    import threading
+    import requests
+    
+    def send():
+        try:
+            requests.post(
+                f'https://api.telegram.org/bot{bot_token}/sendMessage',
+                json={
+                    'chat_id': chat_id,
+                    'text': message,
+                    'parse_mode': 'HTML'
+                },
+                timeout=5
+            )
+        except:
+            pass
+    
+    threading.Thread(target=send).start()
 
 @require_POST
 def contact_ajax_form_view(request):

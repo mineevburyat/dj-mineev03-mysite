@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ИТ-Инфраструктура — программа курса</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f5fa;
+            color: #13293D;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Хедер */
+        .header {
+            background: #13293D;
+            color: white;
+            padding: 15px 0;
+            border-bottom: 4px solid #2d9cdb;
+        }
+        
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+        }
+        
+        .logo span {
+            color: #2d9cdb;
+        }
+        
+        .trust-badge {
+            background: #1E3F5F;
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+        }
+        
+        /* Заголовок раздела */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin: 60px 0 40px;
+            color: #13293D;
+        }
+        
+        .section-title span {
+            color: #2d9cdb;
+        }
+        
+        /* Дни курса - кликабельные карточки */
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .day-card {
+            background: white;
+            border-radius: 40px;
+            padding: 40px 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .day-card:hover {
+            transform: translateY(-10px);
+            border-color: #2d9cdb;
+            box-shadow: 0 20px 40px -10px rgba(45,156,219,0.3);
+        }
+        
+        .day-card:active {
+            transform: translateY(-5px);
+        }
+        
+        .day-number {
+            font-size: 5rem;
+            font-weight: 800;
+            color: rgba(45,156,219,0.2);
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            line-height: 1;
+        }
+        
+        .day-icon {
+            font-size: 3.5rem;
+            color: #2d9cdb;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .day-card h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #13293D;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .day-card p {
+            color: #4a6782;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .day-tag {
+            display: inline-block;
+            background: #2d9cdb20;
+            color: #13293D;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Модальные окна */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(8, 20, 36, 0.95);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-overlay.show {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 50px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            border: 4px solid #2d9cdb;
+            box-shadow: 0 30px 60px -20px black;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        
+        .modal-overlay.show .modal-content {
+            transform: scale(1);
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 2.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #666;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: 0.2s;
+            z-index: 10;
+        }
+        
+        .modal-close:hover {
+            background: #f0f0f0;
+            color: #2d9cdb;
+            transform: rotate(90deg);
+        }
+        
+        .modal-header {
+            background: #13293D;
+            color: white;
+            padding: 30px;
+            border-radius: 46px 46px 0 0;
+            border-bottom: 4px solid #2d9cdb;
+        }
+        
+        .modal-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .modal-header .day-subtitle {
+            font-size: 1.2rem;
+            color: #a0c4e9;
+        }
+        
+        .modal-body {
+            padding: 40px;
+        }
+        
+        .modal-body h3 {
+            font-size: 1.6rem;
+            color: #13293D;
+            margin: 30px 0 15px;
+            border-left: 6px solid #2d9cdb;
+            padding-left: 15px;
+        }
+        
+        .modal-body h3:first-of-type {
+            margin-top: 0;
+        }
+        
+        .modal-body ul {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .modal-body li {
+            margin: 15px 0;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .modal-body li i {
+            color: #2d9cdb;
+            font-size: 1.3rem;
+            min-width: 24px;
+            margin-top: 3px;
+        }
+        
+        .modal-body li strong {
+            color: #13293D;
+        }
+        
+        .modal-tip {
+            background: #f1f9fe;
+            border-left: 6px solid #2d9cdb;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+            font-size: 1.1rem;
+        }
+        
+        .modal-footer {
+            border-top: 2px solid #e0eef9;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .modal-footer .btn {
+            display: inline-block;
+            background: #2d9cdb;
+            color: #13293D;
+            font-weight: 700;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .modal-footer .btn:hover {
+            background: #4ab0f0;
+            transform: scale(1.05);
+        }
+        
+        /* Футер */
+        .footer {
+            background: #0A1C2C;
+            color: #8AA0B8;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        /* Адаптация */
+        @media (max-width: 900px) {
+            .days-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-header h2 {
+                font-size: 2rem;
+            }
+            
+            .modal-body {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo">⟨/⟩ <span>ИТ-ИНФРАСТРУКТУРА</span></div>
+            <div class="trust-badge"><i class="fas fa-shield-alt"></i> 120+ специалистов обучились</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1 class="section-title">Программа курса <span>«3 дня до цифровой независимости»</span></h1>
+        
+        <!-- Дни курса (кликабельные карточки) -->
+        <div class="days-grid">
+            <!-- День 1 -->
+            <div class="day-card" onclick="openModal('day1')">
+                <div class="day-number">1</div>
+                <div class="day-icon"><i class="fas fa-server"></i></div>
+                <h3>День 1: Личная крепость</h3>
+                <p>Почему мы не можем достучаться до знаний? Аренда VPS, SSH, первые шаги в Linux</p>
+                <span class="day-tag">🔍 Нажми, чтобы узнать план</span>
+            </div>
+            
+            <!-- День 2 -->
+            <div class="day-card" onclick="openModal('day2')">
+                <div class="day-number">2</div>
+                <div class="day-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>День 2: Битва с DPI</h3>
+                <p>Почему OpenVPN и WireGuard ломаются? SSH-туннель как рабочее решение</p>
+                <span class="day-tag">⚔️ Нажми, чтобы узнать план</span>
+            </div>
+            
+            <!-- День 3 -->
+            <div class="day-card" onclick="openModal('day3')">
+                <div class="day-number">3</div>
+                <div class="day-icon"><i class="fas fa-brain"></i></div>
+                <h3>День 3: Ответственность и путь</h3>
+                <p>Что можно и нельзя? Притча о родителе, выбор пути программиста или фрилансера</p>
+                <span class="day-tag">🧠 Нажми, чтобы узнать план</span>
+            </div>
+        </div>
+        
+        <!-- Пояснение -->
+        <div style="background: #e8f5e9; border-left: 6px solid #2ecc71; padding: 25px; border-radius: 30px; margin: 40px 0;">
+            <p style="font-size: 1.3rem;"><i class="fas fa-hand-pointer" style="color: #2d9cdb; margin-right: 15px;"></i> Нажми на любой день, чтобы увидеть подробный план урока с командами и пояснениями.</p>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО ДЕНЬ 1 -->
+    <div class="modal-overlay" id="modal-day1">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('day1')">&times;</button>
+            
+            <div class="modal-header">
+                <h2>День 1: Личная крепость</h2>
+                <div class="day-subtitle">Почему мы не можем достучаться до знаний?</div>
+            </div>
+            
+            <div class="modal-body">
+                <h3>🔍 Диагностика проблемы</h3>
+                <ul>
+                    <li><i class="fas fa-search"></i> <strong>3 уровня блокировок:</strong> геоблокировка (Coursera, edX), DPI, перегруженные узлы</li>
+                    <li><i class="fas fa-globe"></i> <strong>Почему зарубежный VPS:</strong> схема прохождения трафика, сравнение с российским VPS</li>
+                    <li><i class="fas fa-list"></i> <strong>Целевые ресурсы:</strong> coursera.org, github.com, kaggle.com, edx.org</li>
+                </ul>
+                
+                <h3>🖥️ Выбор и аренда VPS</h3>
+                <ul>
+                    <li><i class="fas fa-server"></i> <strong>Провайдеры:</strong> 4VPS, Aeza, ISHosting, Fornex (цены от 300₽/мес)</li>
+                    <li><i class="fas fa-credit-card"></i> <strong>Способы оплаты:</strong> карта Мир, крипта (USDT), ЮMoney</li>
+                    <li><i class="fas fa-cog"></i> <strong>Выбор ОС:</strong> Ubuntu 22.04 LTS — для новичков, миллион гайдов</li>
+                </ul>
+                
+                <h3>🔌 Подключение по SSH</h3>
+                <ul>
+                    <li><i class="fas fa-terminal"></i> <strong>Команды:</strong> ssh root@ip, whoami, pwd, ls -la</li>
+                    <li><i class="fas fa-shield-alt"></i> <strong>Безопасность:</strong> смена порта на 2222, настройка ufw</li>
+                    <li><i class="fas fa-sync"></i> <strong>Обновление:</strong> apt update && apt upgrade -y</li>
+                </ul>
+                
+                <div class="modal-tip">
+                    <i class="fas fa-lightbulb"></i> <strong>Результат дня:</strong> вы умеете арендовать сервер, подключаться по SSH и выполнять базовые команды.
+                </div>
+                
+                <h3>📚 Домашнее задание</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Арендовать VPS, оплатить, подключиться</li>
+                    <li><i class="fas fa-check-circle"></i> Выполнить: whoami, pwd, ls -la, apt update</li>
+                    <li><i class="fas fa-check-circle"></i> Пройти бесплатный курс "Linux для начинающих" на Stepik</li>
+                </ul>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn" onclick="closeModal('day1')">Понятно! 👌</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО ДЕНЬ 2 -->
+    <div class="modal-overlay" id="modal-day2">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('day2')">&times;</button>
+            
+            <div class="modal-header">
+                <h2>День 2: Битва с DPI</h2>
+                <div class="day-subtitle">Почему популярные VPN ломаются и что работает</div>
+            </div>
+            
+            <div class="modal-body">
+                <h3>⚠️ Попытка 1: OpenVPN</h3>
+                <ul>
+                    <li><i class="fas fa-cog"></i> <strong>Установка:</strong> apt install openvpn, настройка server.conf</li>
+                    <li><i class="fas fa-search"></i> <strong>tcpdump:</strong> смотрим, как DPI подменяет пакеты</li>
+                    <li><i class="fas fa-times-circle" style="color: #e74c3c;"></i> <strong>Результат:</strong> подключение есть, пингов нет — враг не дремлет</li>
+                </ul>
+                
+                <h3>⚡ Попытка 2: WireGuard</h3>
+                <ul>
+                    <li><i class="fas fa-bolt"></i> <strong>Установка:</strong> wireguard, генерация ключей</li>
+                    <li><i class="fas fa-robot"></i> <strong>ИИ против нас:</strong> WireGuard ломается на 6-м пакете — ИИ анализирует паттерны</li>
+                    <li><i class="fas fa-times-circle" style="color: #e74c3c;"></i> <strong>Результат:</strong> первые 5 пингов есть, потом обрыв</li>
+                </ul>
+                
+                <h3>🏆 Решение: SSH-туннель</h3>
+                <ul>
+                    <li><i class="fas fa-terminal"></i> <strong>Команда:</strong> ssh -D 1080 -C -q -N user@server_ip</li>
+                    <li><i class="fas fa-globe"></i> <strong>Настройка Chrome:</strong> --proxy-server="socks5://localhost:1080" --host-resolver-rules</li>
+                    <li><i class="fas fa-mobile-alt"></i> <strong>Смартфон:</strong> Termius / Socks5 Proxy приложения</li>
+                    <li><i class="fas fa-check-circle" style="color: #2ecc71;"></i> <strong>Результат:</strong> всё работает! Coursera, GitHub открываются</li>
+                </ul>
+                
+                <h3>🔄 Альтернатива: Dante (SOCKS5 сервер)</h3>
+                <ul>
+                    <li><i class="fas fa-cog"></i> apt install dante-server, минимальный конфиг</li>
+                    <li><i class="fas fa-check-circle"></i> Работает без SSH, но требует отдельной настройки</li>
+                </ul>
+                
+                <div class="modal-tip">
+                    <i class="fas fa-lightbulb"></i> <strong>Результат дня:</strong> вы умеете настраивать рабочий туннель и понимаете, почему другие методы ломаются.
+                </div>
+                
+                <h3>📚 Домашнее задание</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Настроить SSH-туннель и браузер</li>
+                    <li><i class="fas fa-check-circle"></i> Проверить доступ к coursera.org и github.com</li>
+                    <li><i class="fas fa-check-circle"></i> (Для продвинутых) Настроить туннель на телефоне</li>
+                </ul>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn" onclick="closeModal('day2')">Понятно! 👌</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО ДЕНЬ 3 -->
+    <div class="modal-overlay" id="modal-day3">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('day3')">&times;</button>
+            
+            <div class="modal-header">
+                <h2>День 3: Ответственность и путь</h2>
+                <div class="day-subtitle">Что можно и нельзя? Куда развиваться дальше?</div>
+            </div>
+            
+            <div class="modal-body">
+                <h3>❓ Ответы на вопросы</h3>
+                <ul>
+                    <li><i class="fab fa-youtube"></i> <strong>YouTube:</strong> законы РФ не запрещают, но вы отвечаете за просмотр экстремистских материалов. Замедления — саботаж врагов.</li>
+                    <li><i class="fab fa-facebook"></i> <strong>Facebook/Instagram:</strong> платформы признаны экстремистскими — вход на вашу ответственность.</li>
+                    <li><i class="fab fa-telegram"></i> <strong>Telegram:</strong> легален, есть альтернатива через инфраструктуру VK без замедлений.</li>
+                </ul>
+                
+                <h3>👪 Притча о родителе (РКН)</h3>
+                <ul>
+                    <li><i class="fas fa-child"></i> <strong>Вариант 1:</strong> сидеть дома — хулиганы смеются</li>
+                    <li><i class="fas fa-skull-crossbones"></i> <strong>Вариант 2:</strong> идти курить с хулиганами — "отморожу на зло маме уши"</li>
+                    <li><i class="fas fa-brain"></i> <strong>Вариант 3 (наш):</strong> "Я буду играть в футбол, но курить не буду. Доверься мне."</li>
+                </ul>
+                
+                <h3>🔥 Честный вывод</h3>
+                <ul>
+                    <li><i class="fas fa-exclamation-triangle" style="color: #e74c3c;"></i> <strong>Вы пока ничего не поняли:</strong> VPS — это контейнеризация, TCP/IP — сложные алгоритмы, ОС — процессы и ядро</li>
+                    <li><i class="fas fa-iceberg"></i> <strong>Айсберг знаний:</strong> вы увидели только верхушку. Под водой — программирование, сети, ОС, криптография</li>
+                </ul>
+                
+                <h3>🚀 Путь развития</h3>
+                <ul>
+                    <li><i class="fas fa-code"></i> <strong>Программист:</strong> Python, socket, asyncio, scapy — писать свои туннели</li>
+                    <li><i class="fas fa-briefcase"></i> <strong>Фрилансер/бизнес:</strong> настройка защищенных каналов для компаний, консалтинг</li>
+                    <li><i class="fas fa-shield-alt"></i> <strong>Защита Родины:</strong> наши навыки помогают развивать ИТ-сектор России</li>
+                </ul>
+                
+                <div class="modal-tip">
+                    <i class="fas fa-lightbulb"></i> <strong>Главный итог:</strong> мы дали вам ожог — интерес. Настоящее обучение начинается сейчас.
+                </div>
+                
+                <h3>📚 Домашнее задание</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Выбрать язык программирования (рекомендуем Python)</li>
+                    <li><i class="fas fa-check-circle"></i> Начать бесплатный курс на Stepik</li>
+                    <li><i class="fas fa-check-circle"></i> Осознать свою ответственность и сделать выбор</li>
+                </ul>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn" onclick="closeModal('day3')">Понятно! 👌</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© ИТ-Инфраструктура, 2026 | Обучение технологиям защищенного удаленного доступа</p>
+            <div style="margin: 20px 0; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="#" style="color: #2d9cdb; text-decoration: none;">Политика конфиденциальности</a>
+                <a href="#" style="color: #2d9cdb; text-decoration: none;">Условия оплаты</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Функции открытия модальных окон
+        function openModal(day) {
+            document.getElementById(`modal-${day}`).classList.add('show');
+            document.body.style.overflow = 'hidden'; // запрещаем прокрутку фона
+        }
+        
+        function closeModal(day) {
+            document.getElementById(`modal-${day}`).classList.remove('show');
+            document.body.style.overflow = ''; // возвращаем прокрутку
+        }
+        
+        // Закрытие по клику вне модального окна
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal-overlay')) {
+                e.target.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Закрытие по Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay.show').forEach(modal => {
+                    modal.classList.remove('show');
+                    document.body.style.overflow = '';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
